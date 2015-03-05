@@ -1,0 +1,9 @@
+{
+    "name": "logger",
+    "dependence": ["core"],
+    "source":"src",
+    "file_list" : [
+        "logger_logCode.ts",
+        "logger.ts"
+    ]
+}

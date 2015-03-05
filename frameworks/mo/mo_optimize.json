@@ -1,0 +1,109 @@
+{
+    "name": "mo_optimize",
+    "dependence": ["core", "socket", "action", "dragonBones", "3rdParty", "logger", "res"],
+    "source":"optimize",
+    "file_list" : [
+        "mo_code/mo_code.ts",
+        "mo_base/GL.ts",
+
+        "cc/CCUtils.ts",
+
+
+        "mo_base/mo_base.ts",
+        "mo_base/Class.ts",
+        "mo_base/ProjectHandler.ts",
+        "mo_base/factory/BaseFactory.ts",
+        "mo_base/factory/MultiIdBaseFactory.ts",
+
+
+        "mo_arr/mo_arr.ts",
+
+
+        "mo_evt/Event.ts",
+        "mo_evt/TouchEvent.ts",
+        "mo_evt/EventDispatcher.ts",
+        "mo_evt/mo_evt_gEventType.ts",
+        "mo_evt/GlobalEventDispatcher.ts",
+        "mo_evt/EventDispatcherUtils.ts",
+
+
+        "mo/base/Point.ts",
+        "mo/base/Size.ts",
+        "mo/base/Rect.ts",
+        "mo/base/VisibleRect.ts",
+        "mo/base/extension.ts",
+        "mo/base/mo.ts",
+        "mo/base/ColorTransformUtils.ts",
+
+        "mo/mvc/DataController.ts",
+
+        "mo_act/Action.ts",
+        "mo_act/Progress.ts",
+        "mo_act/Ellipse.ts",
+        "mo_act/Bezier.ts",
+        "mo_act/Ease.ts",
+        "mo_act/Shake.ts",
+        "mo_act/Track.ts",
+
+        "mo/node/NodeDefine.ts",
+        "mo/node/Node.ts",
+
+        "mo/layer/Layer.ts",
+
+
+        "mo_ui/widget/define/UIWidgetDefine.ts",
+        "mo_ui/widget/define/UITextDefine.ts",
+        "mo_ui/widget/define/UITextAtlasDefine.ts",
+        "mo_ui/widget/define/UIPanelDefine.ts",
+        "mo_ui/widget/define/UIScrollDefine.ts",
+        "mo_ui/widget/define/UIImageDefine.ts",
+        "mo_ui/widget/define/UIButtonDefine.ts",
+        "mo_ui/widget/define/UILoadingBarDefine.ts",
+        "mo_ui/widget/IWidgetByNameApi.ts",
+        "mo_ui/widget/LayoutMgr.ts",
+        "mo_ui/widget/UIWidget.ts",
+        "mo_ui/widget/UIText.ts",
+        "mo_ui/widget/UIInput.ts",
+        "mo_ui/widget/UITextAtlas.ts",
+        "mo_ui/widget/UITextBMFont.ts",
+        "mo_ui/widget/UIImage.ts",
+        "mo_ui/widget/UIButton.ts",
+        "mo_ui/widget/UILoadingBar.ts",
+        "mo_ui/widget/UIPanel.ts",
+        "mo_ui/widget/UIScrollView.ts",
+        "mo_ui/widget/UIListView.ts",
+        "mo_ui/widget/UIPageView.ts",
+        "mo_ui/widget/UBBParser.ts",
+
+        "mo_ui/reader/factory/UIWidgetFactory.ts",
+        "mo_ui/reader/UIData.ts",
+        "mo_ui/reader/UIDataParser.ts",
+        "mo_ui/reader/UIFntParser.ts",
+        "mo_ui/reader/UIKey.ts",
+        "mo_ui/reader/UIReader.ts",
+        "mo_ui/reader/factory/UITextFactory.ts",
+        "mo_ui/reader/factory/UITextAtlasFactory.ts",
+        "mo_ui/reader/factory/UIInputFactory.ts",
+        "mo_ui/reader/factory/UIImageFactory.ts",
+        "mo_ui/reader/factory/UIButtonFactory.ts",
+        "mo_ui/reader/factory/UILoadingBarFactory.ts",
+        "mo_ui/reader/factory/UIPanelFactory.ts",
+        "mo_ui/reader/factory/UIScrollViewFactory.ts",
+        "mo_ui/reader/factory/UIListViewFactory.ts",
+        "mo_ui/reader/factory/UIPageViewFactory.ts",
+
+        "mo_ui/ctrl/WidgetCtrl.ts",
+        "mo_ui/ctrl/GridController.ts",
+        "mo_ui/ctrl/LinearVerticalCtrl.ts",
+        "mo_ui/ctrl/PageViewController.ts",
+        "mo_ui/ctrl/SidePanelCtrl.ts",
+
+        "mo_ui/grid/GridViewCell.ts",
+        "mo_ui/grid/GridView.ts",
+        "mo_ui/grid/GridScrollView.ts",
+        "mo_ui/grid/UIGridPageIndex.ts",
+        "mo_ui/grid/GridPageView.ts",
+        "mo_ui/grid/UIGridCell.ts",
+        "mo_ui/grid/UIGridView.ts"
+    ]
+}
