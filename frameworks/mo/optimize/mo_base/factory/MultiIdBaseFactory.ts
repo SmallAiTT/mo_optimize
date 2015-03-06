@@ -1,4 +1,4 @@
-module mo {
+module mo_base {
 
     //多ID的缓冲池
     export class MultiIdBaseFactory extends BaseFactory {

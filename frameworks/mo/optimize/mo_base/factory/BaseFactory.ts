@@ -1,6 +1,6 @@
 //缓冲池的基类
 
-module mo{
+module mo_base{
     export class BaseFactory extends mo_base.Class{
         static __className:string = "BaseFactory";
 
