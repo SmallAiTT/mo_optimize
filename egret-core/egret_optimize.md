@@ -22,6 +22,9 @@ egret_string_code 已改
         "egret/display/Sprite.ts",
 
         "egret/utils/getTimer.ts",  合并到Ticker.ts中，并且把__START_TIME改成私有
+
+        "egret/utils/hasDefinition.ts",
+        "egret/utils/callLater.ts",     合并到MainContext.ts中，并将一些变量改成私有
 ```
 
 # 将不用的类挪出来

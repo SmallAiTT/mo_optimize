@@ -26,37 +26,4 @@
  */
 
 module egret {
-
-    export var __callLaterFunctionList:Array<any> = [];
-    export var __callLaterThisList:Array<any> = [];
-    export var __callLaterArgsList:Array<any> = [];
-    /**
-     * 延迟函数到屏幕重绘前执行。
-	 * @method egret.callLater
-     * @param method {Function} 要延迟执行的函数
-     * @param thisObject {any} 回调函数的this引用
-     * @param ...args {any} 函数参数列表
-     */
-    export function callLater(method:Function,thisObject:any,...args):void
-    {
-        __callLaterFunctionList.push(method);
-        __callLaterThisList.push(thisObject);
-        __callLaterArgsList.push(args);
-    }
-
-    export var __callAsyncFunctionList:Array<any> = [];
-    export var __callAsyncThisList:Array<any> = [];
-    export var __callAsyncArgsList:Array<any> = [];
-    /**
-     * 异步调用函数
-     * @param method {Function} 要异步调用的函数
-     * @param thisObject {any} 函数的this引用
-     * @param ...args {any} 函数参数列表
-     */
-    export function __callAsync(method:Function,thisObject:any,...args):void
-    {
-        __callAsyncFunctionList.push(method);
-        __callAsyncThisList.push(thisObject);
-        __callAsyncArgsList.push(args);
-    }
 }
