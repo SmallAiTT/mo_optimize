@@ -505,7 +505,7 @@ module egret {
 
         private setBlendMode(blendMode:string) {
             if (!blendMode) {
-                blendMode = egret.BlendMode.NORMAL;
+                blendMode = egret.consts.BlendMode.NORMAL;
             }
             if (this.currentBlendMode != blendMode) {
                 var blendModeWebGL = RendererContext.blendModesForGL[blendMode];

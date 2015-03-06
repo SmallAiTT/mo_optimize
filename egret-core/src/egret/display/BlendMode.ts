@@ -16,9 +16,9 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module egret {
+module egret.consts {
     /**
-     * @class egret.BlendMode
+     * @class egret.consts.BlendMode
      * @classdesc
      * 提供混合模式可视效果的常量值的类。
      * @link http://docs.egret-labs.org/as2ts/webglcode/blendMode.html BlendMode实例代码对比
@@ -27,18 +27,18 @@ module egret {
 
         /**
          * 该显示对象出现在背景前面。显示对象的像素值会覆盖背景的像素值。在显示对象为透明的区域，背景是可见的。
-         * @constant {string} egret.BlendMode.NORMAL
+         * @constant {string} egret.consts.BlendMode.NORMAL
          */
         public static NORMAL:string = "normal";
         /**
          * 将显示对象的原色值添加到它的背景颜色中，上限值为 0xFF。此设置通常用于使两个对象间的加亮溶解产生动画效果。
          * 例如，如果显示对象的某个像素的 RGB 值为 0xAAA633，背景像素的 RGB 值为 0xDD2200，则显示像素的结果 RGB 值为 0xFFC833（因为 0xAA + 0xDD > 0xFF，0xA6 + 0x22 = 0xC8，且 0x33 + 0x00 = 0x33）。
-         * @constant {string} egret.BlendMode.ADD
+         * @constant {string} egret.consts.BlendMode.ADD
          */
         public static ADD:string = "add";
         /**
          * 根据显示对象的 Alpha 值擦除背景。
-         * @constant {string} egret.BlendMode.ERASE
+         * @constant {string} egret.consts.BlendMode.ERASE
          */
         public static ERASE:string = "erase";
     }

@@ -152,7 +152,7 @@ module egret {
          * @method egret.NativeRendererContext#setAlpha
          * @param value {number}
          * @stable A
-         * @param blendMode {egret.BlendMode}
+         * @param blendMode {egret.consts.BlendMode}
          */
         public setAlpha(value:number, blendMode:string) {
             //if (this.currentAlpha != value) {
@@ -166,7 +166,7 @@ module egret {
 
         private setBlendMode(blendMode:string) {
             if (!blendMode) {
-                blendMode = egret.BlendMode.NORMAL;
+                blendMode = egret.consts.BlendMode.NORMAL;
             }
             //if (this.currentBlendMode != blendMode) {
                 var blendModeArg = RendererContext.blendModesForGL[blendMode];

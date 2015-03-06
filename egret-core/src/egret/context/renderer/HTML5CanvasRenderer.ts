@@ -216,8 +216,8 @@ module egret {
                 this.blendValue = this.blendModes[blendMode];
                 this.drawCanvasContext.globalCompositeOperation = this.blendValue;
             }
-            else if (this.blendValue != egret.BlendMode.NORMAL) {
-                this.blendValue = this.blendModes[egret.BlendMode.NORMAL];
+            else if (this.blendValue != egret.consts.BlendMode.NORMAL) {
+                this.blendValue = this.blendModes[egret.consts.BlendMode.NORMAL];
                 this.drawCanvasContext.globalCompositeOperation = this.blendValue;
             }
         }
@@ -226,9 +226,9 @@ module egret {
 
         private initBlendMode():void {
             this.blendModes = {};
-            this.blendModes[BlendMode.NORMAL] = "source-over";
-            this.blendModes[BlendMode.ADD] = "lighter";
-            this.blendModes[BlendMode.ERASE] = "destination-in";
+            this.blendModes[consts.BlendMode.NORMAL] = "source-over";
+            this.blendModes[consts.BlendMode.ADD] = "lighter";
+            this.blendModes[consts.BlendMode.ERASE] = "destination-in";
         }
 
         public setupFont(textField:TextField, style:egret.ITextStyle = null):void {

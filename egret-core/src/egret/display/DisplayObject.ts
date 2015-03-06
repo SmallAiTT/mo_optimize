@@ -441,8 +441,8 @@ module egret {
         }
 
         /**
-         * BlendMode 类中的一个值，用于指定要使用的混合模式。
-         * 内部绘制位图的方法有两种。 如果启用了混合模式或外部剪辑遮罩，则将通过向矢量渲染器添加有位图填充的正方形来绘制位图。 如果尝试将此属性设置为无效值，则运行时会将此值设置为 BlendMode.NORMAL。
+         * consts.BlendMode 类中的一个值，用于指定要使用的混合模式。
+         * 内部绘制位图的方法有两种。 如果启用了混合模式或外部剪辑遮罩，则将通过向矢量渲染器添加有位图填充的正方形来绘制位图。 如果尝试将此属性设置为无效值，则运行时会将此值设置为 consts.BlendMode.NORMAL。
          * @member {string} egret.DisplayObject#blendMode
          */
         public blendMode:string = null;

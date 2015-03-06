@@ -15,3 +15,15 @@ egret_string_code 已改
         "egret/utils/SAXParser.ts",
         "egret/utils/XML.ts",
 ```
+
+# 将不用的类挪出来
+
+```
+```
+
+# 常量修改空间名为egret.consts
+
+```
+BlendMode       UIImage.ts
+
+```

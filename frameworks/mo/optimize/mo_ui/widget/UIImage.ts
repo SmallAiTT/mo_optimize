@@ -142,7 +142,7 @@ module mo_ui{
         }
 
         public setHighLight(){
-            this.blendMode = egret.BlendMode.ADD;
+            this.blendMode = egret.consts.BlendMode.ADD;
         }
 
         public _render(renderContext:egret.RendererContext):void {
