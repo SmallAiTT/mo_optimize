@@ -1,0 +1,18 @@
+{
+    "name": "3rdParty",
+    "dependence": ["core"],
+    "source":"src",
+    "file_list" : [
+        "date-utils.js",
+        "StandardDate.js",
+        "cron.d.ts",
+        "cron.js",
+        "md5.d.ts",
+        "md5.js",
+
+        "nodejs-api/path.ts",
+        "nodejs-api/process.ts",
+
+        "3rd-api/async.ts"
+    ]
+}
