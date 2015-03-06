@@ -1,9 +1,9 @@
 module res{
-    var _recycler:egret.URLLoader[] = [];
+    var _recycler:egret.net.URLLoader[] = [];
     export function getURLLoader(dataFormat?:string){
-        var loader:egret.URLLoader = _recycler.pop();
+        var loader:egret.net.URLLoader = _recycler.pop();
         if(!loader){
-            loader = new egret.URLLoader();
+            loader = new egret.net.URLLoader();
         }else{
 //            loader.removeEventListener()
         }

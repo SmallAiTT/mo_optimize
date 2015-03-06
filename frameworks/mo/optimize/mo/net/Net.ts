@@ -151,9 +151,9 @@ module mo{
             var params = self._getHttpParams(route, args);
 
             //先这么实现下，以后会继续优化
-            var urlLoader = new egret.URLLoader();
-            var urlRequest = new egret.URLRequest(httpUrl + params);
-            urlLoader.dataFormat = egret.URLLoaderDataFormat.TEXT;
+            var urlLoader = new egret.net.URLLoader();
+            var urlRequest = new egret.net.URLRequest(httpUrl + params);
+            urlLoader.dataFormat = egret.net.URLLoaderDataFormat.TEXT;
             urlLoader.load(urlRequest);
             urlLoader.addEventListener(egret.Event.COMPLETE, function(event){
                 if(needToStopWaiting) mo_utils.stopWaiting();

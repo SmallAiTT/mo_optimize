@@ -23,7 +23,7 @@ module RES {
 
         public constructor(){
             super();
-            this._dataFormat = egret.URLLoaderDataFormat.TEXTURE;
+            this._dataFormat = egret.net.URLLoaderDataFormat.TEXTURE;
         }
 
         /**

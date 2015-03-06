@@ -39,14 +39,14 @@ module egret {
             super();
         }
 
-        public proceed(loader:URLLoader):void{
+        public proceed(loader:net.URLLoader):void{
 
         }
 
-        public static _getUrl(request:URLRequest):string {
+        public static _getUrl(request:net.URLRequest):string {
             var url:string = request.url;
             //get请求没有设置参数，而是设置URLVariables的情况
-            if (url.indexOf("?") == -1 && request.method == URLRequestMethod.GET && request.data && request.data instanceof URLVariables) {
+            if (url.indexOf("?") == -1 && request.method == net.URLRequestMethod.GET && request.data && request.data instanceof net.URLVariables) {
                 url = url + "?" + request.data.toString();
             }
             return url;

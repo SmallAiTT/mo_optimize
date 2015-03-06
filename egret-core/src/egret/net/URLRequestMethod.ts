@@ -25,25 +25,25 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-module egret {
+module egret.net {
 
 	/**
-	 * @class egret.URLRequestMethod
-	 * @classdesc URLRequestMethod 类提供了一些值，这些值可指定在将数据发送到服务器时，
-     * URLRequest 对象应使用 POST 方法还是 GET 方法。
+	 * @class egret.net.URLRequestMethod
+	 * @classdesc net.URLRequestMethod 类提供了一些值，这些值可指定在将数据发送到服务器时，
+     * net.URLRequest 对象应使用 POST 方法还是 GET 方法。
      * @link http://docs.egret-labs.org/post/manual/net/postget.html POST与GET
 	 */
     export class URLRequestMethod {
 
 		/**
-         * 表示 URLRequest 对象是一个 GET。
-		 * @constant {string} egret.URLRequestMethod.GET
+         * 表示 net.URLRequest 对象是一个 GET。
+		 * @constant {string} egret.net.URLRequestMethod.GET
 		 */
         public static GET:string = "get";
 
 		/**
-         * 表示 URLRequest 对象是一个 POST。
-		 * @constant {string} egret.URLRequestMethod.POST
+         * 表示 net.URLRequest 对象是一个 POST。
+		 * @constant {string} egret.net.URLRequestMethod.POST
 		 */
         public static POST:string = "post";
     }

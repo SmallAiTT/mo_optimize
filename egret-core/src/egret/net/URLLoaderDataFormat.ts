@@ -25,42 +25,42 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-module egret {
+module egret.net {
 
 	/**
-	 * @class egret.URLLoaderDataFormat
-	 * @classdesc URLLoaderDataFormat 类提供了一些用于指定如何接收已下载数据的值。
+	 * @class egret.net.URLLoaderDataFormat
+	 * @classdesc net.URLLoaderDataFormat 类提供了一些用于指定如何接收已下载数据的值。
      * @link http://docs.egret-labs.org/post/manual/net/netformat.html 读取不同数据格式
 	 */
     export class URLLoaderDataFormat {
 
 		/**
          * 指定以原始二进制数据形式接收下载的数据。
-		 * @constant {string} egret.URLLoaderDataFormat.BINARY
+		 * @constant {string} egret.net.URLLoaderDataFormat.BINARY
 		 */
         public static BINARY:string = "binary";
 
 		/**
          * 指定以文本形式接收已下载的数据。
-		 * @constant {string} egret.URLLoaderDataFormat.TEXT
+		 * @constant {string} egret.net.URLLoaderDataFormat.TEXT
 		 */
         public static TEXT:string = "text";
 
 		/**
          * 指定以 URL 编码变量形式接收下载的数据。
-		 * @constant {string} egret.URLLoaderDataFormat.VARIABLES
+		 * @constant {string} egret.net.URLLoaderDataFormat.VARIABLES
 		 */
         public static VARIABLES:string = "variables";
 
 		/**
          * 指定以位图纹理形式接收已下载的数据。
-		 * @constant {string} egret.URLLoaderDataFormat.TEXTURE
+		 * @constant {string} egret.net.URLLoaderDataFormat.TEXTURE
 		 */
         public static TEXTURE:string = "texture";
 
         /**
          * 指定以声音形式接收已下载的数据。
-         * @constant {string} egret.URLLoaderDataFormat.SOUND
+         * @constant {string} egret.net.URLLoaderDataFormat.SOUND
          */
         public static SOUND:string = "sound";
 

@@ -7,7 +7,7 @@ module res{
          */
         public _itemInfoDic:any = {};
 
-        public _dataFormat:string = egret.URLLoaderDataFormat.BINARY;
+        public _dataFormat:string = egret.net.URLLoaderDataFormat.BINARY;
         /**
          * URLLoader对象池
          */
@@ -16,11 +16,11 @@ module res{
         /**
          * 获取一个URLLoader对象
          */
-        public _getLoader():egret.URLLoader{
+        public _getLoader():egret.net.URLLoader{
             var self = this;
-            var loader:egret.URLLoader = self._recycler.pop();
+            var loader:egret.net.URLLoader = self._recycler.pop();
             if(!loader){
-                loader = new egret.URLLoader();
+                loader = new egret.net.URLLoader();
                 loader.addEventListener(egret.Event.COMPLETE, self._onLoadFinish, self);
                 loader.addEventListener(egret.IOErrorEvent.IO_ERROR, self._onLoadFinish, self);
             }
@@ -46,9 +46,9 @@ module res{
         public load(resCfgItem:any, cb:(data:any, resCfgItem:ResCfgItem)=>void, ctx?:any):void{
             //这里调用URLLoader去进行资源的加载
             var self = this;
-            var loader:egret.URLLoader = self._getLoader();
+            var loader:egret.net.URLLoader = self._getLoader();
             self._itemInfoDic[loader.hashCode] = {item:resCfgItem, cb:cb, ctx:ctx};
-            loader.load(new egret.URLRequest(self.getRealUrl(resCfgItem)));
+            loader.load(new egret.net.URLRequest(self.getRealUrl(resCfgItem)));
         }
 
         /**
@@ -88,7 +88,7 @@ module res{
          */
         public _onLoadFinish(event:egret.Event):void{
             var self = this;
-            var loader:egret.URLLoader = <egret.URLLoader> (event.target);
+            var loader:egret.net.URLLoader = <egret.net.URLLoader> (event.target);
             var itemInfo:any = self._itemInfoDic[loader.hashCode];
             var data:any = loader.data;
             delete self._itemInfoDic[loader.hashCode];

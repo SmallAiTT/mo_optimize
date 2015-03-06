@@ -31,7 +31,7 @@ module RES {
 
         public constructor() {
             super();
-            this._dataFormat = egret.URLLoaderDataFormat.SOUND;
+            this._dataFormat = egret.net.URLLoaderDataFormat.SOUND;
         }
 
         public analyzeData(resItem:ResourceItem, data:any):void {

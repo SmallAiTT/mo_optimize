@@ -3,7 +3,7 @@ module res{
 
     export class ImageParser extends ResParser{
         //@override
-        public _dataFormat:string = egret.URLLoaderDataFormat.TEXTURE;
+        public _dataFormat:string = egret.net.URLLoaderDataFormat.TEXTURE;
         //@override
         public _parse(resCfgItem:ResCfgItem, data:any):any{
             //这里进行内容的处理，将处理完的结果返回

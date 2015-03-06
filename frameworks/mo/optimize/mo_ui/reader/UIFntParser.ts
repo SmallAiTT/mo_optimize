@@ -12,7 +12,7 @@ module mo_ui._parser{
         private _dataCfgItem:res.ResCfgItem;
 
         //@override
-        public _dataFormat:string = egret.URLLoaderDataFormat.TEXT;
+        public _dataFormat:string = egret.net.URLLoaderDataFormat.TEXT;
 
         constructor(){
             super();

@@ -47,25 +47,25 @@ module egret {
 
         /**
          * @method egret.HTML5NetContext#proceed
-         * @param loader {URLLoader}
+         * @param loader {net.URLLoader}
          */
-        public proceed(loader:URLLoader):void {
+        public proceed(loader:net.URLLoader):void {
 
-            if (loader.dataFormat == URLLoaderDataFormat.TEXTURE) {
+            if (loader.dataFormat == net.URLLoaderDataFormat.TEXTURE) {
                 this.loadTexture(loader);
                 return;
             }
-            if (loader.dataFormat == URLLoaderDataFormat.SOUND) {
+            if (loader.dataFormat == net.URLLoaderDataFormat.SOUND) {
                 this.loadSound(loader);
                 return;
             }
             var self = this;
-            var request:URLRequest = loader._request;
+            var request:net.URLRequest = loader._request;
             var url:string = NetContext._getUrl(request);
             if (url.indexOf("http://") == 0) {
                 this.urlData.type = request.method;
-                if (request.method == URLRequestMethod.POST && request.data && request.data instanceof URLVariables) {
-                    var urlVars:URLVariables = <URLVariables> request.data;
+                if (request.method == net.URLRequestMethod.POST && request.data && request.data instanceof net.URLVariables) {
+                    var urlVars:net.URLVariables = <net.URLVariables> request.data;
                     this.urlData.data = urlVars.toString();
                 }
                 else {
@@ -116,17 +116,17 @@ module egret {
             }
         }
 
-        private getHeaderString(request:URLRequest):string {
+        private getHeaderString(request:net.URLRequest):string {
             var headerObj = {};
             var length = request.requestHeaders.length;
             for(var i:number = 0 ; i < length ; i++){
-                var urlRequestHeader:egret.URLRequestHeader = request.requestHeaders[i];
+                var urlRequestHeader:egret.net.URLRequestHeader = request.requestHeaders[i];
                 headerObj[urlRequestHeader.name] = urlRequestHeader.value;
             }
             return JSON.stringify(headerObj);
         }
 
-        private loadSound(loader:URLLoader) {
+        private loadSound(loader:net.URLLoader) {
             var self = this;
             var request = loader._request;
             var url = request.url;
@@ -162,7 +162,7 @@ module egret {
             }
         }
 
-        private loadTexture(loader:URLLoader):void {
+        private loadTexture(loader:net.URLLoader):void {
             var self = this;
             var request = loader._request;
             var url = request.url;

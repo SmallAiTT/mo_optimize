@@ -43,12 +43,12 @@ module RES {
 				compFunc.call(thisObject,resItem);
 				return;
 			}
-			var loader:egret.URLLoader = this.getLoader();
+			var loader:egret.net.URLLoader = this.getLoader();
 			this.resItemDic[loader.hashCode] = {item:resItem,func:compFunc,thisObject:thisObject};
-			loader.load(new egret.URLRequest(resItem.url));
+			loader.load(new egret.net.URLRequest(resItem.url));
 		}
 
-        public _dataFormat:string = egret.URLLoaderDataFormat.BINARY;
+        public _dataFormat:string = egret.net.URLLoaderDataFormat.BINARY;
 		/**
 		 * URLLoader对象池
 		 */		
@@ -56,10 +56,10 @@ module RES {
 		/**
 		 * 获取一个URLLoader对象
 		 */		
-		private getLoader():egret.URLLoader{
-			var loader:egret.URLLoader = this.recycler.pop();
+		private getLoader():egret.net.URLLoader{
+			var loader:egret.net.URLLoader = this.recycler.pop();
 			if(!loader){
-				loader = new egret.URLLoader();
+				loader = new egret.net.URLLoader();
 				loader.addEventListener(egret.Event.COMPLETE,this.onLoadFinish,this);
 				loader.addEventListener(egret.IOErrorEvent.IO_ERROR,this.onLoadFinish,this);
 			}
@@ -70,7 +70,7 @@ module RES {
 		 * 一项加载结束
 		 */		
 		public onLoadFinish(event:egret.Event):void{
-			var loader:egret.URLLoader = <egret.URLLoader> (event.target);
+			var loader:egret.net.URLLoader = <egret.net.URLLoader> (event.target);
 			var data:any = this.resItemDic[loader.hashCode];
 			delete this.resItemDic[loader.hashCode];
 			var resItem:ResourceItem = data.item;

@@ -39,12 +39,12 @@ module egret {
             super();
         }
 
-        public proceed(loader:URLLoader):void {
-            if (loader.dataFormat == URLLoaderDataFormat.TEXTURE) {
+        public proceed(loader:net.URLLoader):void {
+            if (loader.dataFormat == net.URLLoaderDataFormat.TEXTURE) {
                 this.loadTexture(loader);
                 return;
             }
-            if (loader.dataFormat == URLLoaderDataFormat.SOUND) {
+            if (loader.dataFormat == net.URLLoaderDataFormat.SOUND) {
 //                if(WebAudio.canUseWebAudio) {
 //                    this.loadWebAudio(loader);
 //                }
@@ -54,7 +54,7 @@ module egret {
                 return;
             }
 
-            var request:URLRequest = loader._request;
+            var request:net.URLRequest = loader._request;
             var xhr = this.getXHR();
 //            xhr.onload = onLoadComplete;
             xhr.onreadystatechange = onReadyStateChange;
@@ -63,12 +63,12 @@ module egret {
 
             xhr.open(request.method, url, true);
             this.setResponseType(xhr, loader.dataFormat);
-            if (request.method == URLRequestMethod.GET || !request.data) {
+            if (request.method == net.URLRequestMethod.GET || !request.data) {
                 xhr.send();
             }
-            else if (request.data instanceof URLVariables) {
+            else if (request.data instanceof net.URLVariables) {
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                var urlVars:URLVariables = <URLVariables> request.data;
+                var urlVars:net.URLVariables = <net.URLVariables> request.data;
                 xhr.send(urlVars.toString());
             }
             else {
@@ -97,15 +97,15 @@ module egret {
 
             function onLoadComplete() {
                 switch (loader.dataFormat) {
-                    case URLLoaderDataFormat.TEXT:
+                    case net.URLLoaderDataFormat.TEXT:
                         loader.data = xhr.responseText;
                         break;
 
-                    case URLLoaderDataFormat.VARIABLES:
-                        loader.data = new URLVariables(xhr.responseText);
+                    case net.URLLoaderDataFormat.VARIABLES:
+                        loader.data = new net.URLVariables(xhr.responseText);
                         break;
 
-                    case URLLoaderDataFormat.BINARY:
+                    case net.URLLoaderDataFormat.BINARY:
                         loader.data = xhr.response;
                         break;
                     default:
@@ -116,8 +116,8 @@ module egret {
             }
         }
 
-        private loadSound(loader:URLLoader):void{
-            var request:URLRequest = loader._request;
+        private loadSound(loader:net.URLLoader):void{
+            var request:net.URLRequest = loader._request;
             var audio = new Audio(request.url);
             audio["__timeoutId"] = egret.setTimeout(soundPreloadCanplayHandler, this, 100);
             audio.addEventListener('canplaythrough', soundPreloadCanplayHandler, false);
@@ -142,7 +142,7 @@ module egret {
             };
         }
 
-//        private loadWebAudio(loader:URLLoader):void {
+//        private loadWebAudio(loader:net.URLLoader):void {
 //            var url:string = loader._request.url;
 //            var request = new XMLHttpRequest();
 //            request.open("GET", url, true);
@@ -178,12 +178,12 @@ module egret {
 
         private setResponseType(xhr:XMLHttpRequest, responseType:string):void {
             switch (responseType) {
-                case URLLoaderDataFormat.TEXT:
-                case URLLoaderDataFormat.VARIABLES:
-                    xhr.responseType = URLLoaderDataFormat.TEXT;
+                case net.URLLoaderDataFormat.TEXT:
+                case net.URLLoaderDataFormat.VARIABLES:
+                    xhr.responseType = net.URLLoaderDataFormat.TEXT;
                     break;
 
-                case URLLoaderDataFormat.BINARY:
+                case net.URLLoaderDataFormat.BINARY:
                     xhr.responseType = "arraybuffer";
                     break;
 
@@ -193,9 +193,9 @@ module egret {
             }
         }
 
-        private loadTexture(loader:URLLoader):void {
+        private loadTexture(loader:net.URLLoader):void {
 
-            var request:URLRequest = loader._request;
+            var request:net.URLRequest = loader._request;
             var image = new Image();
 //            image.crossOrigin = "Anonymous";
             image.onload = onImageComplete;

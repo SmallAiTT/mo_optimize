@@ -87,3 +87,5 @@ StageDelegate.ts
 ```
 
 # 修改egret_sin_map、egret_cos_map
+
+# 将net文件夹下面的都转移到egret.net命名空间下

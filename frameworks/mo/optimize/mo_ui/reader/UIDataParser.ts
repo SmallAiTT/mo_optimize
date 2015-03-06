@@ -7,7 +7,7 @@ module mo_ui._parser{
         //@override
         public _onLoadFinish(event:egret.Event):void{
             var self = this;
-            var loader:egret.URLLoader = <egret.URLLoader> (event.target);
+            var loader:egret.net.URLLoader = <egret.net.URLLoader> (event.target);
             var itemInfo:any = self._itemInfoDic[loader.hashCode];
             var data:any = loader.data;
             delete self._itemInfoDic[loader.hashCode];

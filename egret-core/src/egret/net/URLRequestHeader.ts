@@ -25,28 +25,28 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-module egret {
+module egret.net {
     /**
-     * @class egret.URLRequestHeader
+     * @class egret.net.URLRequestHeader
      * @classdesc
-     * URLRequestHeader 对象封装了一个 HTTP 请求标头并由一个名称/值对组成。URLRequestHeader 对象在 URLRequest 类的 requestHeaders 属性中使用。
+     * net.URLRequestHeader 对象封装了一个 HTTP 请求标头并由一个名称/值对组成。net.URLRequestHeader 对象在 net.URLRequest 类的 requestHeaders 属性中使用。
      * 注意：由于浏览器兼容性原因，在 html5 中并未实现
      */
     export class URLRequestHeader {
         /**
          * HTTP 请求标头名称，如 Content-Type
-         * @member {string} egret.URLRequestHeader#name
+         * @member {string} egret.net.URLRequestHeader#name
          */
         public name:string = "";
 
         /**
          * 与 name 属性相关联的值，如 text/plain
-         * @member {string} egret.URLRequestHeader#value
+         * @member {string} egret.net.URLRequestHeader#value
          */
         public value:string = "";
 
         /**
-         * 创建一个 egret.URLRequestHeader 对象
+         * 创建一个 egret.net.URLRequestHeader 对象
          */
         constructor(name:string, value:string) {
             this.name = name;

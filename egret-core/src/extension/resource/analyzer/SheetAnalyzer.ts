@@ -25,7 +25,7 @@ module RES {
 
         public constructor(){
             super();
-            this._dataFormat = egret.URLLoaderDataFormat.TEXT;
+            this._dataFormat = egret.net.URLLoaderDataFormat.TEXT;
         }
 
         /**
@@ -50,7 +50,7 @@ module RES {
          * 一项加载结束
          */
         public onLoadFinish(event:egret.Event):void{
-            var loader:egret.URLLoader = <egret.URLLoader> (event.target);
+            var loader:egret.net.URLLoader = <egret.net.URLLoader> (event.target);
             var data:any = this.resItemDic[loader.hashCode];
             delete this.resItemDic[loader.hashCode];
             var resItem:ResourceItem = data.item;
@@ -62,9 +62,9 @@ module RES {
                     var imageUrl:string = this.analyzeConfig(resItem,loader.data);
                     if(imageUrl){
                         resItem.url = imageUrl;
-                        this._dataFormat = egret.URLLoaderDataFormat.TEXTURE;
+                        this._dataFormat = egret.net.URLLoaderDataFormat.TEXTURE;
                         this.loadFile(resItem,compFunc,data.thisObject);
-                        this._dataFormat = egret.URLLoaderDataFormat.TEXT;
+                        this._dataFormat = egret.net.URLLoaderDataFormat.TEXT;
                         return;
                     }
                 }
