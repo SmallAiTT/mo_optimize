@@ -9,7 +9,7 @@ module pomeloClient{
         private RES_FAIL = 500;
         private RES_OLD_CLIENT = 501;
 
-        private socket:egret.WebSocket;
+        private socket:egret_socket.WebSocket;
         private package:Package;
         private protocol:Protocol;
         private message:Message;
@@ -59,7 +59,7 @@ module pomeloClient{
         private initEgretSocket(host, port, cb){
             var self = this;
 
-            self.socket = new egret.WebSocket(host, port);
+            self.socket = new egret_socket.WebSocket(host, port);
             console.log('init');
             self.socket.addEventListener(egret.Event.CONNECT, function() {
                 console.log('CONNECT');

@@ -71,3 +71,9 @@ ExternalInterface
 ```
 StageDelegate.ts
 ```
+
+# 修改socket相关的空间名为egret_socket
+
+```
+其中，ByteArray.ts路径没改，但是空间名先改成egret_socket了。
+```

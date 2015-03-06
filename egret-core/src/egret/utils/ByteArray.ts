@@ -28,7 +28,7 @@
 module egret.consts {
 
     /**
-     * consts.Endian 类中包含一些值，它们表示用于表示多字节数字的字节顺序。
+     * egret.consts.Endian 类中包含一些值，它们表示用于表示多字节数字的字节顺序。
      * 字节顺序为 bigEndian（最高有效字节位于最前）或 littleEndian（最低有效字节位于最前）。
      * @class egret.consts.Endian
      * @classdesc
@@ -50,7 +50,7 @@ module egret.consts {
 
     }
 }
-module egret{
+module egret_socket{
 
     /**
      * @class egret.ByteArray
@@ -79,7 +79,7 @@ module egret{
 
         constructor(buffer?:ArrayBuffer) {
             this._setArrayBuffer(buffer || new ArrayBuffer(this.BUFFER_EXT_SIZE));
-            this.endian = consts.Endian.BIG_ENDIAN;
+            this.endian = egret.consts.Endian.BIG_ENDIAN;
         }
 
         private _setArrayBuffer(buffer:ArrayBuffer):void {
@@ -234,7 +234,7 @@ module egret{
         public readDouble():number {
             if (!this.validate(ByteArray.SIZE_OF_FLOAT64)) return null;
 
-            var value:number = this.data.getFloat64(this.position, this.endian == consts.Endian.LITTLE_ENDIAN);
+            var value:number = this.data.getFloat64(this.position, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_FLOAT64;
             return value;
         }
@@ -247,7 +247,7 @@ module egret{
         public readFloat():number {
             if (!this.validate(ByteArray.SIZE_OF_FLOAT32)) return null;
 
-            var value:number = this.data.getFloat32(this.position, this.endian == consts.Endian.LITTLE_ENDIAN);
+            var value:number = this.data.getFloat32(this.position, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_FLOAT32;
             return value;
         }
@@ -260,7 +260,7 @@ module egret{
         public readInt():number {
             if (!this.validate(ByteArray.SIZE_OF_INT32)) return null;
 
-            var value = this.data.getInt32(this.position, this.endian == consts.Endian.LITTLE_ENDIAN);
+            var value = this.data.getInt32(this.position, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_INT32;
             return value;
         }
@@ -268,9 +268,9 @@ module egret{
 //        public readInt64():Int64{
 //            if (!this.validate(ByteArray.SIZE_OF_UINT32)) return null;
 //
-//            var low = this.data.getInt32(this.position, this.endian == consts.Endian.LITTLE_ENDIAN);
+//            var low = this.data.getInt32(this.position, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
 //            this.position += ByteArray.SIZE_OF_INT32;
-//            var high = this.data.getInt32(this.position, this.endian == consts.Endian.LITTLE_ENDIAN);
+//            var high = this.data.getInt32(this.position, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
 //            this.position += ByteArray.SIZE_OF_INT32;
 //            return new Int64(low,high);
 //        }
@@ -296,7 +296,7 @@ module egret{
         public readShort():number {
             if (!this.validate(ByteArray.SIZE_OF_INT16)) return null;
 
-            var value = this.data.getInt16(this.position, this.endian == consts.Endian.LITTLE_ENDIAN);
+            var value = this.data.getInt16(this.position, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_INT16;
             return value;
         }
@@ -320,7 +320,7 @@ module egret{
         public readUnsignedInt():number {
             if (!this.validate(ByteArray.SIZE_OF_UINT32)) return null;
 
-            var value = this.data.getUint32(this.position, this.endian == consts.Endian.LITTLE_ENDIAN);
+            var value = this.data.getUint32(this.position, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_UINT32;
             return value;
         }
@@ -347,9 +347,9 @@ module egret{
 //		public readUnsignedInt64():UInt64{
 //            if (!this.validate(ByteArray.SIZE_OF_UINT32)) return null;
 //
-//            var low = this.data.getUint32(this.position, this.endian == consts.Endian.LITTLE_ENDIAN);
+//            var low = this.data.getUint32(this.position, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
 //            this.position += ByteArray.SIZE_OF_UINT32;
-//            var high = this.data.getUint32(this.position, this.endian == consts.Endian.LITTLE_ENDIAN);
+//            var high = this.data.getUint32(this.position, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
 //            this.position += ByteArray.SIZE_OF_UINT32;
 //			return new UInt64(low,high);
 //        }
@@ -362,7 +362,7 @@ module egret{
         public readUnsignedShort():number {
             if (!this.validate(ByteArray.SIZE_OF_UINT16)) return null;
 
-            var value = this.data.getUint16(this.position, this.endian == consts.Endian.LITTLE_ENDIAN);
+            var value = this.data.getUint16(this.position, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_UINT16;
             return value;
         }
@@ -375,7 +375,7 @@ module egret{
         public readUTF():string {
             if (!this.validate(ByteArray.SIZE_OF_UINT16)) return null;
 
-            var length:number = this.data.getUint16(this.position, this.endian == consts.Endian.LITTLE_ENDIAN);
+            var length:number = this.data.getUint16(this.position, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_UINT16;
 
             if (length > 0) {
@@ -503,7 +503,7 @@ module egret{
         public writeDouble(value:number):void {
             this.validateBuffer(ByteArray.SIZE_OF_FLOAT64);
 
-            this.data.setFloat64(this.position, value, this.endian == consts.Endian.LITTLE_ENDIAN);
+            this.data.setFloat64(this.position, value, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_FLOAT64;
         }
 
@@ -515,7 +515,7 @@ module egret{
         public writeFloat(value:number):void {
             this.validateBuffer(ByteArray.SIZE_OF_FLOAT32);
 
-            this.data.setFloat32(this.position, value, this.endian == consts.Endian.LITTLE_ENDIAN);
+            this.data.setFloat32(this.position, value, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_FLOAT32;
         }
 
@@ -527,7 +527,7 @@ module egret{
         public writeInt(value:number):void {
             this.validateBuffer(ByteArray.SIZE_OF_INT32);
 
-            this.data.setInt32(this.position, value, this.endian == consts.Endian.LITTLE_ENDIAN);
+            this.data.setInt32(this.position, value, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_INT32;
         }
 
@@ -549,14 +549,14 @@ module egret{
         public writeShort(value:number):void {
             this.validateBuffer(ByteArray.SIZE_OF_INT16);
 
-            this.data.setInt16(this.position, value, this.endian == consts.Endian.LITTLE_ENDIAN);
+            this.data.setInt16(this.position, value, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_INT16;
         }
 
         //public writeUnsignedShort(value:number):void {
         //    this.validateBuffer(ByteArray.SIZE_OF_UINT16);
         //
-        //    this.data.setUint16(this.position, value, this.endian == consts.Endian.LITTLE_ENDIAN);
+        //    this.data.setUint16(this.position, value, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
         //    this.position += ByteArray.SIZE_OF_UINT16;
         //}
 
@@ -568,7 +568,7 @@ module egret{
         public writeUnsignedInt(value:number):void {
             this.validateBuffer(ByteArray.SIZE_OF_UINT32);
 
-            this.data.setUint32(this.position, value, this.endian == consts.Endian.LITTLE_ENDIAN);
+            this.data.setUint32(this.position, value, this.endian == egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_UINT32;
         }
 
@@ -583,7 +583,7 @@ module egret{
 
             this.validateBuffer(ByteArray.SIZE_OF_UINT16 + length);
 
-            this.data.setUint16(this.position, length, this.endian === consts.Endian.LITTLE_ENDIAN);
+            this.data.setUint16(this.position, length, this.endian === egret.consts.Endian.LITTLE_ENDIAN);
             this.position += ByteArray.SIZE_OF_UINT16;
             this._writeUint8Array(utf8bytes, false);
         }
@@ -622,7 +622,7 @@ module egret{
             if (this.data.byteLength > 0 && this._position + len <= this.data.byteLength) {
                 return true;
             } else {
-                throw Logger.getString(1025);
+                throw egret.Logger.getString(1025);
             }
         }
 
@@ -770,12 +770,12 @@ module egret{
         }
 
         private encoderError(code_point) {
-            throw Logger.getString(1026, code_point);
+            throw egret.Logger.getString(1026, code_point);
         }
 
         private decoderError(fatal, opt_code_point?):number {
             if (fatal) {
-                throw Logger.getString(1027);
+                throw egret.Logger.getString(1027);
             }
             return opt_code_point || 0xFFFD;
         }

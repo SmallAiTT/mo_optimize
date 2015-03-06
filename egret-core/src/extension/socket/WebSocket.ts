@@ -24,7 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-module egret {
+module egret_socket {
     /**
      * @class egret.WebSocket
      * @classdesc
@@ -60,7 +60,7 @@ module egret {
             this._writeMessage = "";
             this._readMessage = "";
 
-            if (MainContext.runtimeType == MainContext.RUNTIME_HTML5) {
+            if (egret.MainContext.runtimeType == egret.MainContext.RUNTIME_HTML5) {
                 this.socket = new HTML5WebSocket();
             }
             else {
