@@ -1,10 +1,10 @@
-module mo_ui.ScrollViewDir{
+module mo_ui.consts.ScrollViewDir{
     export var none: number = 0;
     export var vertical: number = 1;
     export var horizontal: number = 2;
     export var both: number = 3;
 }
-module mo_ui.ScrollViewEventType{
+module mo_ui.consts.ScrollViewEventType{
     export var scrollToTop: number = 0;
     export var scrollToBottom: number = 1;
     export var scrollToLeft: number = 2;
@@ -15,7 +15,7 @@ module mo_ui.ScrollViewEventType{
     export var bounceLeft: number = 7;
     export var bounceRight: number = 8;
 }
-module mo_ui{
+module mo_ui.consts{
     export var AUTOSCROLLMAXSPEED: number = 1000;
     export var SCROLLDIR_UP: mo.Point = mo.p(0, 1);
     export var SCROLLDIR_DOWN: mo.Point = mo.p(0, -1);
@@ -26,7 +26,7 @@ module mo_opt{
 
     export class _ScrollOption extends Option{
         innerContainer: mo_ui.UIPanel;//内部对象容器
-        direction:number;//方向，见mo.ScrollViewDir
+        direction:number;//方向，见mo.consts.ScrollViewDir
         scrollDir:mo.Point;//移动时的方向
         autoScrollDir:mo.Point;
         topBoundary:number;//test
@@ -70,7 +70,7 @@ module mo_opt{
             self.innerContainer = new mo_ui.UIPanel();
             self.innerContainer.setName("innerContainer");
             self.innerContainer.touchEnabled = false;//设置成不可点击
-            self.direction = mo_ui.ScrollViewDir.both;
+            self.direction = mo_ui.consts.ScrollViewDir.both;
             self.scrollDir = mo.p(0, 0);
             self.autoScrollDir = mo.p(0, 0);
             self.topBoundary = 0;//test

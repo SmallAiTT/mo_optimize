@@ -1,4 +1,15 @@
 module mo_ui{
+    /**
+     *
+     * @param pWOrH
+     * @param wOrH
+     * @param aXOrY
+     * @param poseType  0:左/上,1:中,2:右/下
+     * @returns {number}
+     */
+    var _calLayoutXOrY = function(pWOrH:number, wOrH:number, aXOrY:number, poseType:number):number{
+        return pWOrH*poseType/2 - wOrH*(poseType/2-aXOrY);
+    }
 
     export class UIPanel extends UIWidget{
         static __className:string = "UIPanel";
@@ -169,17 +180,17 @@ module mo_ui{
                 return;
             }
             switch (this._nodeOption.layoutType) {
-                case LayoutType.absolute:
+                case consts.LayoutType.absolute:
                     break;
-                case LayoutType.linearHorizontal:
-                case LayoutType.linearVertical:
-                    var layoutParameter = locChild.getLayoutParameter(LayoutParameterType.linear);
+                case consts.LayoutType.linearHorizontal:
+                case consts.LayoutType.linearVertical:
+                    var layoutParameter = locChild.getLayoutParameter(consts.LayoutParameterType.linear);
                     if (!layoutParameter) {
                         locChild.setLayoutParameter(new LinearLayoutParameter());
                     }
                     break;
-                case LayoutType.relative:
-                    var layoutParameter = locChild.getLayoutParameter(LayoutParameterType.relative);
+                case consts.LayoutType.relative:
+                    var layoutParameter = locChild.getLayoutParameter(consts.LayoutParameterType.relative);
                     if (!layoutParameter) {
                         locChild.setLayoutParameter(new RelativeLayoutParameter());
                     }
@@ -214,17 +225,17 @@ module mo_ui{
          */
         _doLayout_linear(linearType:number = 1){
             var self = this, nodeOption = self._nodeOption;
-            var isVertical = linearType == LayoutType.linearVertical;
+            var isVertical = linearType == consts.LayoutType.linearVertical;
             //this._sortWidgetChildrenByPosY();
             var layoutChildrenArray = nodeOption.widgetChildren;//TODO 这里需要根据排序权重重新获取children
             var width = self.width, height = self.height;
-            var layoutParm = self.getLayoutParameter(LayoutParameterType.linear);
+            var layoutParm = self.getLayoutParameter(consts.LayoutParameterType.linear);
             var padding:Padding = layoutParm ? layoutParm.getPadding() : new Padding();
             var sumX = padding.left || 0, sumY = padding.top || 0;
             var autoSizeEnabled = nodeOption.autoSizeEnabled;
             for (var i = 0; i < layoutChildrenArray.length; ++i) {
                 var locChild = layoutChildrenArray[i];
-                var locLayoutParameter = locChild.getLayoutParameter(LayoutParameterType.linear);
+                var locLayoutParameter = locChild.getLayoutParameter(consts.LayoutParameterType.linear);
 
                 if (locLayoutParameter) {
                     var locChildGravity = locLayoutParameter.gravity;
@@ -248,8 +259,8 @@ module mo_ui{
                         else myc = locMargin.top;
                     }
 
-                    locChild.x = calLayoutXOrY(width, lw, lax, xPosType) + mx + sumX + mxc;
-                    locChild.y = calLayoutXOrY(height, lh, lay, yPosType) + my + sumY + myc;
+                    locChild.x = _calLayoutXOrY(width, lw, lax, xPosType) + mx + sumX + mxc;
+                    locChild.y = _calLayoutXOrY(height, lh, lay, yPosType) + my + sumY + myc;
 
                     if(isVertical){
                         sumY += lh + my + locMargin.bottom;
@@ -278,7 +289,7 @@ module mo_ui{
 
             for (var i = 0; i < length; i++) {
                 var locChild = layoutChildrenArray[i];
-                var locLayoutParameter = locChild.getLayoutParameter(LayoutParameterType.relative);
+                var locLayoutParameter = locChild.getLayoutParameter(consts.LayoutParameterType.relative);
                 if (locLayoutParameter) {
                     var lax = locChild.anchorX, lay = locChild.anchorY;
                     var locAlign = locLayoutParameter.align;
@@ -294,8 +305,8 @@ module mo_ui{
                     if(yPosType == 0) mh = locMargin.top || 0;
                     else if(yPosType == 2) mh = -(locMargin.bottom || 0);
 
-                    locFinalPosX = calLayoutXOrY(width, locChild.width, lax, xPosType) + mw;
-                    locFinalPosY = calLayoutXOrY(height, locChild.height, lay, yPosType) + mh;
+                    locFinalPosX = _calLayoutXOrY(width, locChild.width, lax, xPosType) + mw;
+                    locFinalPosY = _calLayoutXOrY(height, locChild.height, lay, yPosType) + mh;
 
                     locChild.setPosition(mo.p(locFinalPosX, locFinalPosY));
                 }
@@ -311,15 +322,15 @@ module mo_ui{
                 self._calcTotalSrcSizeChanged();
             }
             switch (nodeOption.layoutType) {
-                case LayoutType.absolute:
+                case consts.LayoutType.absolute:
                     break;
-                case LayoutType.linearVertical:
-                    self._doLayout_linear(LayoutType.linearVertical);
+                case consts.LayoutType.linearVertical:
+                    self._doLayout_linear(consts.LayoutType.linearVertical);
                     break;
-                case LayoutType.linearHorizontal:
-                    self._doLayout_linear(LayoutType.linearHorizontal);
+                case consts.LayoutType.linearHorizontal:
+                    self._doLayout_linear(consts.LayoutType.linearHorizontal);
                     break;
-                case LayoutType.relative:
+                case consts.LayoutType.relative:
                     self._doLayout_relative();
                     break;
                 default:
@@ -361,7 +372,7 @@ module mo_ui{
             for(var i = 0; i < l; ++i){
                 var child = children[i];
                 var cNodeOption = (<UIWidget>child)._nodeOption;
-                if(cNodeOption && cNodeOption.sizeType == SizeType.percent){
+                if(cNodeOption && cNodeOption.sizeType == consts.SizeType.percent){
                     if((<UIWidget>child)._updateSizeByPercent) (<UIWidget>child)._updateSizeByPercent();
                 }
             }
@@ -489,8 +500,8 @@ module mo_ui{
             if(option.value != null) {
                 var richText:UIText, autoResize = option.autoResize;
 
-                option.hAlign = option.hAlign || ALIGN_H_LEFT;
-                option.vAlign = option.vAlign || ALIGN_V_MIDDLE;
+                option.hAlign = option.hAlign || consts.ALIGN_H_LEFT;
+                option.vAlign = option.vAlign || consts.ALIGN_V_MIDDLE;
 
                 richText = UIText.create();
                 richText.setAnchorPoint(0, 0);
@@ -560,7 +571,7 @@ module mo_ui{
 
         public setPadding(top, right:number=0, bottom:number=0, left:number=0){
             var self = this;
-            var para = self.getLayoutParameter(LayoutParameterType.linear);
+            var para = self.getLayoutParameter(consts.LayoutParameterType.linear);
             if(!para) return;
             if(typeof top == "object"){
                 para.setPadding(top);
@@ -578,7 +589,7 @@ module mo_ui{
      * @returns {number}
      * @private
      */
-    export function _sortFuncByX (node1:UIWidget, node2:UIWidget){
+    var _sortFuncByX = function(node1:UIWidget, node2:UIWidget){
         return node1.getSrcPos().x >= node2.getSrcPos().x ? 1 : -1;
     }
 }

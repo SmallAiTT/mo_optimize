@@ -113,7 +113,7 @@ module mo_ui {
 
         /**
          * 设置文本的横向对齐方式
-         * @param {ALIGN_H_LEFT | ALIGN_H_CENTER | ALIGN_H_RIGHT} hAlign Horizontal Alignment
+         * @param {consts.ALIGN_H_LEFT | consts.ALIGN_H_CENTER | consts.ALIGN_H_RIGHT} hAlign Horizontal Alignment
          */
         public setHAlign(hAlign:string) {
             this._nodeOption.textRenderer.textAlign = hAlign;
@@ -121,7 +121,7 @@ module mo_ui {
 
         /**
          * 获取文本的横向对齐方式
-         * @returns {ALIGN_H_LEFT | ALIGN_H_CENTER | ALIGN_H_RIGHT}
+         * @returns {consts.ALIGN_H_LEFT | consts.ALIGN_H_CENTER | consts.ALIGN_H_RIGHT}
          */
         public getHAlign():string {
             return this._nodeOption.textRenderer.textAlign;
@@ -129,7 +129,7 @@ module mo_ui {
 
         /**
          * 设置文本的垂直对齐方式
-         * @param {ALIGN_V_TOP|ALIGN_V_MIDDLE|ALIGN_V_BOTTOM} vAlign
+         * @param {consts.ALIGN_V_TOP|consts.ALIGN_V_MIDDLE|consts.ALIGN_V_BOTTOM} vAlign
          */
         public setVAlign(vAlign:string) {
             this._nodeOption.textRenderer.verticalAlign = vAlign;
@@ -137,7 +137,7 @@ module mo_ui {
 
         /**
          * 获取文本的垂直对齐方式
-         * @returns {ALIGN_V_TOP|ALIGN_V_MIDDLE|ALIGN_V_BOTTOM}
+         * @returns {consts.ALIGN_V_TOP|consts.ALIGN_V_MIDDLE|consts.ALIGN_V_BOTTOM}
          */
         public getVAlign():string {
             return this._nodeOption.textRenderer.verticalAlign;
@@ -346,18 +346,18 @@ module mo_ui {
                 var destH:number = self._explicitHeight;
                 //y
                 var y, valign = 0;
-                if (textRenderer._verticalAlign == ALIGN_V_MIDDLE)
+                if (textRenderer._verticalAlign == consts.ALIGN_V_MIDDLE)
                     valign = 0.5;
-                else if (textRenderer._verticalAlign == ALIGN_V_BOTTOM)
+                else if (textRenderer._verticalAlign == consts.ALIGN_V_BOTTOM)
                     valign = 1;
                 y = valign * destH - textRenderer._size * (valign - 0.5);
 
                 //x
                 var x, halign = 0;
-                if (textRenderer._textAlign == ALIGN_H_CENTER) {
+                if (textRenderer._textAlign == consts.ALIGN_H_CENTER) {
                     halign = 0.5;
                 }
-                else if (textRenderer._textAlign == ALIGN_H_RIGHT) {
+                else if (textRenderer._textAlign == consts.ALIGN_H_RIGHT) {
                     halign = 1;
                 }
                 x = halign * destW - textRenderer._textMaxWidth * halign;

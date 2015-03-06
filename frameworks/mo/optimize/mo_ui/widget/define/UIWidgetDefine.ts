@@ -34,9 +34,9 @@ module mo_opt{
             }
             self.layoutParameterDictionary = {};
             self.bright = true;
-            self.brightStyle = mo_ui.BrightStyle.none;
-            self.sizeType = mo_ui.SizeType.absolute;
-            self.positionType = mo_ui.PositionType.absolute;
+            self.brightStyle = mo_ui.consts.BrightStyle.none;
+            self.sizeType = mo_ui.consts.SizeType.absolute;
+            self.positionType = mo_ui.consts.PositionType.absolute;
 
             self.srcRect = mo.rect(0, 0, 0, 0);
             self.sizePercent = mo.p(0, 0);

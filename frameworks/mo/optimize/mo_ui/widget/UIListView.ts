@@ -1,8 +1,8 @@
-module mo_ui.ListViewEventType {
+module mo_ui.consts.ListViewEventType {
     export var listViewOnselectedItem:number = 0;
 }
 
-module mo_ui.ListViewGravity {
+module mo_ui.consts.ListViewGravity {
     export var left:number = 0;
     export var right:number = 1;
     export var centerHorizontal:number = 2;
@@ -28,7 +28,7 @@ module mo_ui {
             super._initProp();
 
             this._items = [];
-            this._gravity = ListViewGravity.centerHorizontal;
+            this._gravity = consts.ListViewGravity.centerHorizontal;
             this._itemsMargin = 0;
             this._curSelectedIndex = 0;
             this._refreshViewDirty = true;
@@ -36,7 +36,7 @@ module mo_ui {
 
         _init() {
             super._init.call(this);
-            this.setLayoutType(LayoutType.linearVertical);
+            this.setLayoutType(consts.LayoutType.linearVertical);
         }
 
         /**
@@ -52,7 +52,7 @@ module mo_ui {
 
         updateInnerContainerSize() {
             switch (this._scrollOption.direction) {
-                case ScrollViewDir.vertical:
+                case consts.ScrollViewDir.vertical:
                     var length = this._items.length;
                     var totalHeight = (length - 1) * this._itemsMargin;
                     for (var i = 0; i < length; i++) {
@@ -63,7 +63,7 @@ module mo_ui {
                     var finalHeight = totalHeight;
                     this.setInnerContainerSize(mo.size(finalWidth, finalHeight));
                     break;
-                case ScrollViewDir.horizontal:
+                case consts.ScrollViewDir.horizontal:
                     var length = this._items.length;
                     var totalWidth = (length - 1) * this._itemsMargin;
                     for (var i = 0; i < length; i++) {
@@ -84,19 +84,19 @@ module mo_ui {
                 return;
             }
             switch (this._scrollOption.direction) {
-                case ScrollViewDir.vertical:
-                    var llp = item.getLayoutParameter(LayoutParameterType.linear);
+                case consts.ScrollViewDir.vertical:
+                    var llp = item.getLayoutParameter(consts.LayoutParameterType.linear);
                     if (!llp) {
                         var defaultLp = LinearLayoutParameter.create();
                         switch (this._gravity) {
-                            case ListViewGravity.left:
-                                defaultLp.setGravity(LinearGravity.left);
+                            case consts.ListViewGravity.left:
+                                defaultLp.setGravity(consts.LinearGravity.left);
                                 break;
-                            case ListViewGravity.right:
-                                defaultLp.setGravity(LinearGravity.right);
+                            case consts.ListViewGravity.right:
+                                defaultLp.setGravity(consts.LinearGravity.right);
                                 break;
-                            case ListViewGravity.centerHorizontal:
-                                defaultLp.setGravity(LinearGravity.centerHorizontal);
+                            case consts.ListViewGravity.centerHorizontal:
+                                defaultLp.setGravity(consts.LinearGravity.centerHorizontal);
                                 break;
                             default:
                                 break;
@@ -117,33 +117,33 @@ module mo_ui {
                             llp.setMargin(new Margin(this._itemsMargin, 0, 0, 0));
                         }
                         switch (this._gravity) {
-                            case ListViewGravity.left:
-                                llp.setGravity(LinearGravity.left);
+                            case consts.ListViewGravity.left:
+                                llp.setGravity(consts.LinearGravity.left);
                                 break;
-                            case ListViewGravity.right:
-                                llp.setGravity(LinearGravity.right);
+                            case consts.ListViewGravity.right:
+                                llp.setGravity(consts.LinearGravity.right);
                                 break;
-                            case ListViewGravity.centerHorizontal:
-                                llp.setGravity(LinearGravity.centerHorizontal);
+                            case consts.ListViewGravity.centerHorizontal:
+                                llp.setGravity(consts.LinearGravity.centerHorizontal);
                                 break;
                             default:
                                 break;
                         }
                     }
                     break;
-                case ScrollViewDir.horizontal:
-                    var llp = item.getLayoutParameter(LayoutParameterType.linear);
+                case consts.ScrollViewDir.horizontal:
+                    var llp = item.getLayoutParameter(consts.LayoutParameterType.linear);
                     if (!llp) {
                         var defaultLp = LinearLayoutParameter.create();
                         switch (this._gravity) {
-                            case ListViewGravity.top:
-                                defaultLp.setGravity(LinearGravity.top);
+                            case consts.ListViewGravity.top:
+                                defaultLp.setGravity(consts.LinearGravity.top);
                                 break;
-                            case ListViewGravity.bottom:
-                                defaultLp.setGravity(LinearGravity.bottom);
+                            case consts.ListViewGravity.bottom:
+                                defaultLp.setGravity(consts.LinearGravity.bottom);
                                 break;
-                            case ListViewGravity.centerVertical:
-                                defaultLp.setGravity(LinearGravity.centerVertical);
+                            case consts.ListViewGravity.centerVertical:
+                                defaultLp.setGravity(consts.LinearGravity.centerVertical);
                                 break;
                             default:
                                 break;
@@ -164,14 +164,14 @@ module mo_ui {
                             llp.setMargin(new Margin(0.0, 0.0, 0.0, this._itemsMargin));
                         }
                         switch (this._gravity) {
-                            case ListViewGravity.top:
-                                llp.setGravity(LinearGravity.top);
+                            case consts.ListViewGravity.top:
+                                llp.setGravity(consts.LinearGravity.top);
                                 break;
-                            case ListViewGravity.bottom:
-                                llp.setGravity(LinearGravity.bottom);
+                            case consts.ListViewGravity.bottom:
+                                llp.setGravity(consts.LinearGravity.bottom);
                                 break;
-                            case ListViewGravity.centerVertical:
-                                llp.setGravity(LinearGravity.centerVertical);
+                            case consts.ListViewGravity.centerVertical:
+                                llp.setGravity(consts.LinearGravity.centerVertical);
                                 break;
                             default:
                                 break;
@@ -337,13 +337,13 @@ module mo_ui {
          */
         _setDirection(dir:number) {
             switch (dir) {
-                case ScrollViewDir.vertical:
-                    this.setLayoutType(LayoutType.linearVertical);
+                case consts.ScrollViewDir.vertical:
+                    this.setLayoutType(consts.LayoutType.linearVertical);
                     break;
-                case ScrollViewDir.horizontal:
-                    this.setLayoutType(LayoutType.linearHorizontal);
+                case consts.ScrollViewDir.horizontal:
+                    this.setLayoutType(consts.LayoutType.linearHorizontal);
                     break;
-                case ScrollViewDir.both:
+                case consts.ScrollViewDir.both:
                     return;
                 default:
                     return;
@@ -365,7 +365,7 @@ module mo_ui {
 
         selectedItemEvent() {
             if (this._listViewEventSelector && this._listViewEventListener) {
-                this._listViewEventSelector.call(this._listViewEventListener, this, ListViewEventType.listViewOnselectedItem);
+                this._listViewEventSelector.call(this._listViewEventListener, this, consts.ListViewEventType.listViewOnselectedItem);
             }
         }
 

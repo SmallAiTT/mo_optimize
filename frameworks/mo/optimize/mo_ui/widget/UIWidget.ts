@@ -2,7 +2,7 @@
  * bright style
  * @type {Object}
  */
-module mo_ui.BrightStyle {
+module mo_ui.consts.BrightStyle {
     export var none:number = -1;
     export var normal:number = 0;
     export var high_light:number = 1;
@@ -12,7 +12,7 @@ module mo_ui.BrightStyle {
  * widget style
  * @type {Object}
  */
-module mo_ui.WidgetType {
+module mo_ui.consts.WidgetType {
     export var widget:number = 0;
     export var container:number = 1;
 }
@@ -21,28 +21,16 @@ module mo_ui.WidgetType {
  * texture resource type
  * @type {Object}
  */
-module mo_ui.TextureResType {
+module mo_ui.consts.TextureResType {
     export var local:number = 0;
     export var plist:number = 1;
-}
-
-/**
- * touch event type
- * @type {Object}
- */
-module mo_ui.TouchEventType {
-    export var began:number = 0;
-    export var moved:number = 1;
-    export var ended:number = 2;
-    export var canceled:number = 3;
-    export var lbegan:number = 4;
 }
 
 /**
  * size type
  * @type {Object}
  */
-module mo_ui.SizeType {
+module mo_ui.consts.SizeType {
     export var absolute:number = 0;
     export var percent:number = 1;
 }
@@ -51,7 +39,7 @@ module mo_ui.SizeType {
  * position type
  * @type {Object}
  */
-module mo_ui.PositionType {
+module mo_ui.consts.PositionType {
     export var absolute:number = 0;
     export var percent:number = 1;
 }
@@ -77,7 +65,7 @@ module mo_ui {
             if(sizePercent._xDirty) {
                 self._dirty = true;
                 var parent = self._parent;
-                if(parent && nodeOption.sizeType == SizeType.percent){
+                if(parent && nodeOption.sizeType == consts.SizeType.percent){
                     self._setWidth(parent.width * sizePercentX);
                 }
             }
@@ -95,7 +83,7 @@ module mo_ui {
             if(sizePercent._yDirty) {
                 self._dirty = true;
                 var parent = self._parent;
-                if(parent && nodeOption.sizeType == SizeType.percent){
+                if(parent && nodeOption.sizeType == consts.SizeType.percent){
                     self._setHeight(parent.height * sizePercentY);
                 }
             }
@@ -125,7 +113,7 @@ module mo_ui {
         }
         _updateSizeByPercent(){
             var self = this, nodeOption = self._nodeOption;
-            if(nodeOption.sizeType == SizeType.percent){
+            if(nodeOption.sizeType == consts.SizeType.percent){
                 var parent = self.parent;
                 if(parent){
                     var sizePercent = nodeOption.sizePercent;
@@ -139,7 +127,7 @@ module mo_ui {
             var self = this, nodeOption = self._nodeOption;
             var posPercent = nodeOption.posPercent;
             posPercent._setX(posPercentX);
-            if(nodeOption.positionType == PositionType.percent && posPercent._xDirty) {
+            if(nodeOption.positionType == consts.PositionType.percent && posPercent._xDirty) {
                 self._dirty = true;
             }
         }
@@ -153,7 +141,7 @@ module mo_ui {
             var self = this, nodeOption = self._nodeOption;
             var posPercent = nodeOption.posPercent;
             posPercent._setY(posPercentY);
-            if(nodeOption.positionType == PositionType.percent && posPercent._yDirty) {
+            if(nodeOption.positionType == consts.PositionType.percent && posPercent._yDirty) {
                 self._dirty = true;
             }
         }
@@ -165,7 +153,7 @@ module mo_ui {
         }
         _updatePosByPercent(){
             var self = this, nodeOption = self._nodeOption;
-            if(nodeOption.positionType == PositionType.percent){
+            if(nodeOption.positionType == consts.PositionType.percent){
                 var parent = self.parent;
                 if(parent){
                     var posPercent = nodeOption.posPercent;
@@ -280,7 +268,7 @@ module mo_ui {
             }else{
                 nodeOption.nodes.push(widget);
             }
-            if(widget.sizeType == SizeType.percent){
+            if(widget.sizeType == consts.SizeType.percent){
                 widget._updateSizeByPercent();
                 widget.updateSizeByPercentForChildren();//改变子节点百分比大小
             }
@@ -294,7 +282,7 @@ module mo_ui {
                 var children = self._children;
                 for (var i = 0, l_i = children.length; i < l_i; i++) {
                     child = children[i];
-                    if(child._sizeType == SizeType.percent){
+                    if(child._sizeType == consts.SizeType.percent){
                         child._updateSizeByPercent();//改变自身大小
                         child.updateSizeByPercentForChildren();//改变子节点百分比大小
                     }
@@ -315,7 +303,7 @@ module mo_ui {
             for (var i = 0, l_i = children.length; i < l_i; i++) {
                 var child:UIWidget = <UIWidget>children[i];
                 var cNodeOption = child._nodeOption;
-                if(cNodeOption && cNodeOption.positionType == PositionType.percent){
+                if(cNodeOption && cNodeOption.positionType == consts.PositionType.percent){
                     var posPercent = cNodeOption.posPercent;
                     posPercent._setDirty(true);
                     child._dirty = true;
@@ -332,9 +320,9 @@ module mo_ui {
             var nodeOption = self._nodeOption;
             var pNodeOption = (<any>parent)._nodeOption;
             var pLayoutType = pNodeOption ? (<any>pNodeOption).layoutType : null;
-            if(pLayoutType == null || pLayoutType == LayoutType.absolute){
+            if(pLayoutType == null || pLayoutType == consts.LayoutType.absolute){
                 if(nodeOption.posPercent._dirty
-                    || (nodeOption.positionType == PositionType.percent && (<mo.Node>parent)._nodeOption.nodeSizeDirty)){
+                    || (nodeOption.positionType == consts.PositionType.percent && (<mo.Node>parent)._nodeOption.nodeSizeDirty)){
                     self._updatePosByPercent();
                 }
             }
@@ -381,10 +369,10 @@ module mo_ui {
             nodeOption.focus = focus;
             if (nodeOption.bright) {
                 if (focus) {
-                    self.setBrightStyle(BrightStyle.high_light);
+                    self.setBrightStyle(consts.BrightStyle.high_light);
                 }
                 else {
-                    self.setBrightStyle(BrightStyle.normal);
+                    self.setBrightStyle(consts.BrightStyle.normal);
                 }
             }
             else {
@@ -396,8 +384,8 @@ module mo_ui {
             var self = this, nodeOption = self._nodeOption;
             nodeOption.bright = bright;
             if (bright) {
-                nodeOption.brightStyle = BrightStyle.none;
-                self.setBrightStyle(BrightStyle.normal);
+                nodeOption.brightStyle = consts.BrightStyle.none;
+                self.setBrightStyle(consts.BrightStyle.normal);
             }
             else {
                 self._onPressStateChanged(2);
@@ -409,13 +397,13 @@ module mo_ui {
             if (nodeOption.brightStyle == style) {
                 return;
             }
-            style = style || BrightStyle.normal;
+            style = style || consts.BrightStyle.normal;
             nodeOption.brightStyle = style;
             switch (style) {
-                case BrightStyle.normal:
+                case consts.BrightStyle.normal:
                     self._onPressStateChanged(0);
                     break;
-                case BrightStyle.high_light:
+                case consts.BrightStyle.high_light:
                     self._onPressStateChanged(1);
                     break;
                 default:

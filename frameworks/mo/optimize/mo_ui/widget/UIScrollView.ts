@@ -200,17 +200,17 @@ module mo_ui{
             innerContainer.height = innerSizeHeight;
             self._initBoundary();
 //            switch (this._direction) {
-//                case ScrollViewDir.vertical:
+//                case consts.ScrollViewDir.vertical:
 //                    var offset = oldHeight - innerContainer.height;
 //                    this.scrollChildren(0, offset);
 //                    break;
-//                case ScrollViewDir.horizontal:
+//                case consts.ScrollViewDir.horizontal:
 //                    if (this._innerContainer.getRightInParent() <= locSize.width) {
 //                        var offset = oldWidth - innerContainer.width;
 //                        this.scrollChildren(offset, 0);
 //                    }
 //                    break;
-//                case ScrollViewDir.both:
+//                case consts.ScrollViewDir.both:
 //                    var offsetY = oldHeight - innerContainer.height;
 //                    var offsetX = 0;
 //                    if (innerContainer.getRightInParent() <= locSize.width) {
@@ -543,7 +543,7 @@ module mo_ui{
                 dir = scrollOption.autoScrollDir, dest = scrollOption.autoScrollDestination;
             var scrollEnabled = true;
             switch (scrollOption.direction) {
-                case ScrollViewDir.vertical: // vertical
+                case consts.ScrollViewDir.vertical: // vertical
                     if (dir.y > 0) {
                         var icBottomPos = container.getBottomInParent();
                         if (icBottomPos + touchOffsetY >= dest.y) {
@@ -559,7 +559,7 @@ module mo_ui{
                         }
                     }
                     break;
-                case ScrollViewDir.horizontal: // horizontal
+                case consts.ScrollViewDir.horizontal: // horizontal
                     if (dir.x > 0) {
                         var icLeftPos = container.getLeftInParent();
                         if (icLeftPos + touchOffsetX >= dest.x) {
@@ -575,7 +575,7 @@ module mo_ui{
                         }
                     }
                     break;
-                case ScrollViewDir.both:
+                case consts.ScrollViewDir.both:
                     if (touchOffsetX > 0.0 && touchOffsetY > 0.0) // up right
                     {
                         var icLeftPos = container.getLeftInParent();
@@ -679,9 +679,9 @@ module mo_ui{
             var topBoundary = 0, bottomBoundary = 0, leftBoundary = 0, rightBoundary = 0;
             var scrollEnabled = true;
 
-            if(direction == ScrollViewDir.horizontal) offX = touchOffsetX;
-            else if(direction == ScrollViewDir.vertical) offY = touchOffsetY;
-            else if(direction == ScrollViewDir.both){
+            if(direction == consts.ScrollViewDir.horizontal) offX = touchOffsetX;
+            else if(direction == consts.ScrollViewDir.vertical) offY = touchOffsetY;
+            else if(direction == consts.ScrollViewDir.both){
                 offX = touchOffsetX;
                 offY = touchOffsetY;
             }
@@ -759,25 +759,25 @@ module mo_ui{
                 var totalDis:number = 0;
                 var dir:mo.Point;
                 switch (scrollOption.direction) {
-                    case ScrollViewDir.vertical :
+                    case consts.ScrollViewDir.vertical :
                         totalDis = touchOption.touchEndedPoint.y - touchOption.touchBeganPoint.y;
                         if (totalDis < 0) {
-                            dir = SCROLLDIR_DOWN;
+                            dir = consts.SCROLLDIR_DOWN;
                         }
                         else {
-                            dir = SCROLLDIR_UP;
+                            dir = consts.SCROLLDIR_UP;
                         }
                         break;
-                    case ScrollViewDir.horizontal:
+                    case consts.ScrollViewDir.horizontal:
                         totalDis = touchOption.touchEndedPoint.x - touchOption.touchBeganPoint.x;
                         if (totalDis < 0) {
-                            dir = SCROLLDIR_LEFT;
+                            dir = consts.SCROLLDIR_LEFT;
                         }
                         else {
-                            dir = SCROLLDIR_RIGHT;
+                            dir = consts.SCROLLDIR_RIGHT;
                         }
                         break;
-                    case ScrollViewDir.both :
+                    case consts.ScrollViewDir.both :
                         var subVector = touchOption.touchEndedPoint.sub(touchOption.touchBeganPoint);
                         totalDis = subVector.length;
                         dir = subVector.normalize();
@@ -785,7 +785,7 @@ module mo_ui{
                     default:
                         break;
                 }
-                var orSpeed = Math.min(Math.abs(totalDis*1000) / (scrollOption.slidTime), AUTOSCROLLMAXSPEED);//像素每秒
+                var orSpeed = Math.min(Math.abs(totalDis*1000) / (scrollOption.slidTime), consts.AUTOSCROLLMAXSPEED);//像素每秒
                 this.startAutoScrollChildrenWithOriginalSpeed(dir, orSpeed, true, -1000);
                 scrollOption.slidTime = 0;
             }
@@ -893,63 +893,63 @@ module mo_ui{
         scrollToTopEvent():void{
             var self = this, scrollOption = self._scrollOption;
             if (scrollOption.scrollViewEventListener && scrollOption.scrollViewEventSelector) {
-                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, ScrollViewEventType.scrollToTop);
+                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, consts.ScrollViewEventType.scrollToTop);
             }
         }
 
         scrollToBottomEvent():void{
             var self = this, scrollOption = self._scrollOption;
             if (scrollOption.scrollViewEventListener && scrollOption.scrollViewEventSelector) {
-                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, ScrollViewEventType.scrollToBottom);
+                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, consts.ScrollViewEventType.scrollToBottom);
             }
         }
 
         scrollToLeftEvent():void{
             var self = this, scrollOption = self._scrollOption;
             if (scrollOption.scrollViewEventListener && scrollOption.scrollViewEventSelector) {
-                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, ScrollViewEventType.scrollToLeft);
+                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, consts.ScrollViewEventType.scrollToLeft);
             }
         }
 
         scrollToRightEvent():void{
             var self = this, scrollOption = self._scrollOption;
             if (scrollOption.scrollViewEventListener && scrollOption.scrollViewEventSelector) {
-                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, ScrollViewEventType.scrollToRight);
+                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, consts.ScrollViewEventType.scrollToRight);
             }
         }
 
         scrollingEvent():void{
             var self = this, scrollOption = self._scrollOption;
             if (scrollOption.scrollViewEventListener && scrollOption.scrollViewEventSelector) {
-                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, ScrollViewEventType.scrolling);
+                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, consts.ScrollViewEventType.scrolling);
             }
         }
 
         bounceTopEvent():void{
             var self = this, scrollOption = self._scrollOption;
             if (scrollOption.scrollViewEventListener && scrollOption.scrollViewEventSelector) {
-                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, ScrollViewEventType.bounceTop);
+                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, consts.ScrollViewEventType.bounceTop);
             }
         }
 
         bounceBottomEvent():void{
             var self = this, scrollOption = self._scrollOption;
             if (scrollOption.scrollViewEventListener && scrollOption.scrollViewEventSelector) {
-                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, ScrollViewEventType.bounceBottom);
+                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, consts.ScrollViewEventType.bounceBottom);
             }
         }
 
         bounceLeftEvent():void{
             var self = this, scrollOption = self._scrollOption;
             if (scrollOption.scrollViewEventListener && scrollOption.scrollViewEventSelector) {
-                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, ScrollViewEventType.bounceLeft);
+                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, consts.ScrollViewEventType.bounceLeft);
             }
         }
 
         bounceRightEvent():void{
             var self = this, scrollOption = self._scrollOption;
             if (scrollOption.scrollViewEventListener && scrollOption.scrollViewEventSelector) {
-                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, ScrollViewEventType.bounceRight);
+                scrollOption.scrollViewEventSelector.call(scrollOption.scrollViewEventListener, self, consts.ScrollViewEventType.bounceRight);
             }
         }
 
@@ -993,17 +993,17 @@ module mo_ui{
             var finalOffsetX = des.x;
             var finalOffsetY = des.y;
             switch (scrollOption.direction) {
-                case ScrollViewDir.vertical:
+                case consts.ScrollViewDir.vertical:
                     if (des.y <= 0) {
                         finalOffsetY = Math.max(des.y, self.height - container.height);
                     }
                     break;
-                case ScrollViewDir.horizontal:
+                case consts.ScrollViewDir.horizontal:
                     if (des.x <= 0) {
                         finalOffsetX = Math.max(des.x, self.width - container.width);
                     }
                     break;
-                case ScrollViewDir.both:
+                case consts.ScrollViewDir.both:
                     if (des.y <= 0) {
                         finalOffsetY = Math.max(des.y, self.height - container.height);
                     }
@@ -1040,7 +1040,7 @@ module mo_ui{
         }
 
         public scrollToTopLeft(time:number, attenuated:boolean):void{
-            if (this._scrollOption.direction != ScrollViewDir.both) {
+            if (this._scrollOption.direction != consts.ScrollViewDir.both) {
                 logger.debug("Scroll diretion is not both!");
                 return;
             }
@@ -1049,7 +1049,7 @@ module mo_ui{
 
         public scrollToTopRight(time:number, attenuated:boolean):void{
             var self = this, container = self._scrollOption.innerContainer;
-            if (self._scrollOption.direction != ScrollViewDir.both) {
+            if (self._scrollOption.direction != consts.ScrollViewDir.both) {
                 logger.debug("Scroll diretion is not both!");
                 return;
             }
@@ -1058,7 +1058,7 @@ module mo_ui{
 
         public scrollToBottomLeft(time:number, attenuated:boolean):void{
             var self = this, container = self._scrollOption.innerContainer;
-            if (self._scrollOption.direction != ScrollViewDir.both) {
+            if (self._scrollOption.direction != consts.ScrollViewDir.both) {
                 logger.debug("Scroll diretion is not both!");
                 return;
             }
@@ -1067,7 +1067,7 @@ module mo_ui{
 
         public scrollToBottomRight(time:number, attenuated:boolean):void{
             var self = this, container = self._scrollOption.innerContainer;
-            if (self._scrollOption.direction != ScrollViewDir.both) {
+            if (self._scrollOption.direction != consts.ScrollViewDir.both) {
                 logger.debug("Scroll diretion is not both!");
                 return;
             }
@@ -1088,7 +1088,7 @@ module mo_ui{
 
         public scrollToPercentBothDirection(percent:mo.Point, time:number, attenuated:boolean):void{
             var self = this, container = self._scrollOption.innerContainer;
-            if (self._scrollOption.direction != ScrollViewDir.both) {
+            if (self._scrollOption.direction != consts.ScrollViewDir.both) {
                 return;
             }
             var minY = self.height - container.height;
@@ -1118,7 +1118,7 @@ module mo_ui{
         }
 
         public jumpToTopLeft():void{
-            if (this._scrollOption.direction != ScrollViewDir.both) {
+            if (this._scrollOption.direction != consts.ScrollViewDir.both) {
                 logger.debug("Scroll diretion is not both!");
                 return;
             }
@@ -1127,7 +1127,7 @@ module mo_ui{
 
         public jumpToTopRight():void{
             var self = this, container = self._scrollOption.innerContainer;
-            if (self._scrollOption.direction != ScrollViewDir.both) {
+            if (self._scrollOption.direction != consts.ScrollViewDir.both) {
                 logger.debug("Scroll diretion is not both!");
                 return;
             }
@@ -1136,7 +1136,7 @@ module mo_ui{
 
         public jumpToBottomLeft():void{
             var self = this, container = self._scrollOption.innerContainer;
-            if (self._scrollOption.direction != ScrollViewDir.both) {
+            if (self._scrollOption.direction != consts.ScrollViewDir.both) {
                 logger.debug("Scroll diretion is not both!");
                 return;
             }
@@ -1145,7 +1145,7 @@ module mo_ui{
 
         public jumpToBottomRight():void{
             var self = this, container = self._scrollOption.innerContainer;
-            if (self._scrollOption.direction != ScrollViewDir.both) {
+            if (self._scrollOption.direction != consts.ScrollViewDir.both) {
                 logger.debug("Scroll diretion is not both!");
                 return;
             }
@@ -1164,7 +1164,7 @@ module mo_ui{
         }
         public jumpToPercentBothDirection(percent:mo.Point):void{
             var self = this, container = self._scrollOption.innerContainer;
-            if (self._scrollOption.direction != ScrollViewDir.both) {
+            if (self._scrollOption.direction != consts.ScrollViewDir.both) {
                 return;
             }
             var minY = self.height - container.height;

@@ -569,7 +569,7 @@ module mo_ui {
      * @example
      *
      var gridView = ccs.GridView.create(mo.size(240 / 10, 160 / 10),10,5,this.gridviewDataSource, this);
-     gridView.setBackGroundColorType(ccs.LayoutBackGroundColorType.solid);
+     gridView.setBackGroundColorType(ccs.consts.LayoutBackGroundColorType.solid);
      gridView.setBackGroundColor(mo.c3b(111,111,111));
      uiLayer.addWidget(gridView);
 

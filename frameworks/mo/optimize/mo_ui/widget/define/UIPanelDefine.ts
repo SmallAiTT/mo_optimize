@@ -1,4 +1,4 @@
-module mo_ui.LinearGravity{
+module mo_ui.consts.LinearGravity{
     export var none:number = 0;
     export var left:number = 1;
     export var centerHorizontal:number = 2;
@@ -7,7 +7,7 @@ module mo_ui.LinearGravity{
     export var centerVertical:number = 5;
     export var bottom:number = 6;
 }
-module mo_ui.RelativeAlign{
+module mo_ui.consts.RelativeAlign{
     export var alignNone:number = 0;
     export var alignParentTopLeft:number = 1;
     export var alignParentTopCenterHorizontal:number = 2;
@@ -20,7 +20,7 @@ module mo_ui.RelativeAlign{
     export var alignParentRightBottom:number = 9;
 }
 
-module mo_ui.LayoutParameterType{
+module mo_ui.consts.LayoutParameterType{
     export var none:number = 0;
     export var linear:number = 1;
     export var relative:number = 2;
@@ -95,18 +95,18 @@ module mo_ui{
     }
 }
 
-module mo_ui.LayoutBackGroundColorType {
+module mo_ui.consts.LayoutBackGroundColorType {
     export var none:number = 0;
     export var solid:number = 1;
     export var gradient:number = 2;
 }
-module mo_ui.LayoutType{
+module mo_ui.consts.LayoutType{
     export var absolute:number = 0;
     export var linearVertical:number = 1;
     export var linearHorizontal:number = 2;
     export var relative:number = 3;
 }
-module mo_ui.LayoutClippingType {
+module mo_ui.consts.LayoutClippingType {
     export var stencil:number = 0;
     export var scissor:number = 1;
 }
@@ -116,7 +116,7 @@ module mo_ui{
         static LINEAR_ALIGN_HT_RIGHT:number = 1;
 
         _margin:Margin = new Margin();
-        _type:number = LayoutParameterType.none;
+        _type:number = consts.LayoutParameterType.none;
 
         public setMargin(margin:Margin){
             var marginObj = this._margin;
@@ -161,7 +161,7 @@ module mo_ui{
 
     export class LinearLayoutParameter extends LayoutParameter{
         //@override
-        _type:number = LayoutParameterType.linear;
+        _type:number = consts.LayoutParameterType.linear;
         _gravity:number;
         _setGravity(gravity:number){
             this._gravity = gravity;
@@ -194,10 +194,10 @@ module mo_ui{
 
     export class RelativeLayoutParameter extends LayoutParameter{
         //@override
-        _type:number = LayoutParameterType.relative;
+        _type:number = consts.LayoutParameterType.relative;
         _put:boolean = false;
 
-        _align:number = RelativeAlign.alignNone;
+        _align:number = consts.RelativeAlign.alignNone;
         _setAlign(align:number){
             this._align = align;
         }
@@ -251,7 +251,7 @@ module mo_opt{
             super._initProp();
             var self = this;
 
-            self.layoutType = mo_ui.LayoutType.absolute;//布局类型
+            self.layoutType = mo_ui.consts.LayoutType.absolute;//布局类型
             self.doLayoutDirty = true;
             self.clippingEnabled = false;//是否开启裁剪
             self.clippingDirty = false;

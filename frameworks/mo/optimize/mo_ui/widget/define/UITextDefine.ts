@@ -1,4 +1,4 @@
-module mo_ui {
+module mo_ui.consts {
     export var ALIGN_H_LEFT:string = egret.HorizontalAlign.LEFT;
     export var ALIGN_H_CENTER:string = egret.HorizontalAlign.CENTER;
     export var ALIGN_H_RIGHT:string = egret.HorizontalAlign.RIGHT;

@@ -23,7 +23,7 @@ module mo_ui {
         init(viewSize:mo.Size, cellSize:mo.Size, cols:number, totalCount:number, selector:Function, target:any, cellClass:any) {
             super.init.apply(this, arguments);
             this.setTouchEnabled(true);
-            this.setDirection(ScrollViewDir.vertical);
+            this.setDirection(consts.ScrollViewDir.vertical);
             this.setBounceEnabled(true);
 
             this._viewSize = viewSize;

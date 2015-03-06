@@ -82,7 +82,6 @@
         "mo_ui/widget/define/UIButtonDefine.ts",
         "mo_ui/widget/define/UILoadingBarDefine.ts",
         "mo_ui/widget/IWidgetByNameApi.ts",
-        "mo_ui/widget/LayoutMgr.ts",
         "mo_ui/widget/UIWidget.ts",
         "mo_ui/widget/UIText.ts",
         "mo_ui/widget/UIInput.ts",

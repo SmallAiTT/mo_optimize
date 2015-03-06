@@ -36,7 +36,7 @@ module mo_opt{
         _initProp():void{
             super._initProp();
             var self = this;
-            self.barType = mo_ui.LoadingBarType.LEFT;
+            self.barType = mo_ui.consts.LoadingBarType.LEFT;
             self.percent = 100;
         }
 

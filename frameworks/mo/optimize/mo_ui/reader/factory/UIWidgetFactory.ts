@@ -88,12 +88,12 @@ module mo_ui._parser{
             if(layoutParameter){
                 var param;
                 switch (layoutParameter.type){
-                    case LayoutParameterType.none:break;
-                    case LayoutParameterType.linear:
+                    case consts.LayoutParameterType.none:break;
+                    case consts.LayoutParameterType.linear:
                         param = new LinearLayoutParameter();
                         param.gravity = layoutParameter.gravity || param.gravity;
                         break;
-                    case LayoutParameterType.relative:
+                    case consts.LayoutParameterType.relative:
                         param = new RelativeLayoutParameter();
                         param.align = layoutParameter.align;
                         break;

@@ -1,8 +1,8 @@
-module mo_ui.PageViewEventType {
+module mo_ui.consts.PageViewEventType {
     export var turning:number = 0;
 }
 
-module mo_ui.PVTouchDir {
+module mo_ui.consts.PVTouchDir {
     export var touchLeft:number = 0;
     export var touchRight:number = 1;
 }
@@ -35,7 +35,7 @@ module mo_ui {
             var self = this;
             self._curPageIdx = 0;
             self._pages = [];
-            self._touchMoveDir = PVTouchDir.touchLeft;
+            self._touchMoveDir = consts.PVTouchDir.touchLeft;
             self._touchStartLocation = 0;
             self._touchMoveStartLocation = 0;
             self._leftBoundary = 0;
@@ -374,7 +374,7 @@ module mo_ui {
             var realOffset = touchOffset;
 
             switch (this._touchMoveDir) {
-                case PVTouchDir.touchLeft: // left
+                case consts.PVTouchDir.touchLeft: // left
                     if (this._rightChild.getRightInParent() + touchOffset <= this._rightBoundary) {
                         realOffset = this._rightBoundary - this._rightChild.getRightInParent();
                         this.movePages(realOffset);
@@ -382,7 +382,7 @@ module mo_ui {
                     }
                     break;
 
-                case PVTouchDir.touchRight: // right
+                case consts.PVTouchDir.touchRight: // right
                     if (this._leftChild.getLeftInParent() + touchOffset >= this._leftBoundary) {
                         realOffset = this._leftBoundary - this._leftChild.getLeftInParent();
                         this.movePages(realOffset);
@@ -410,10 +410,10 @@ module mo_ui {
             offset = moveX - this._touchMoveStartLocation;
             this._touchMoveStartLocation = moveX;
             if (offset < 0) {
-                this._touchMoveDir = PVTouchDir.touchLeft;
+                this._touchMoveDir = consts.PVTouchDir.touchLeft;
             }
             else if (offset > 0) {
-                this._touchMoveDir = PVTouchDir.touchRight;
+                this._touchMoveDir = consts.PVTouchDir.touchRight;
             }
             this.scrollPages(offset);
         }
@@ -449,7 +449,7 @@ module mo_ui {
 
         pageTurningEvent() {
             if (this._pageViewEventListener && this._pageViewEventSelector) {
-                this._pageViewEventSelector.call(this._pageViewEventListener, this, PageViewEventType.turning);
+                this._pageViewEventSelector.call(this._pageViewEventListener, this, consts.PageViewEventType.turning);
             }
         }
 

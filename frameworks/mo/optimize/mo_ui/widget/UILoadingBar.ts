@@ -1,4 +1,4 @@
-module mo_ui.LoadingBarType {
+module mo_ui.consts.LoadingBarType {
     export var LEFT = 0;
     export var RIGHT = 1;
 }
@@ -91,13 +91,13 @@ module mo_ui {
             var bitmapHeight:number = texture._bitmapHeight||texture._textureHeight;
 
             var percent = barOption.percent, clipWidth;
-            if(barOption.barType == LoadingBarType.LEFT){
+            if(barOption.barType == consts.LoadingBarType.LEFT){
                 clipWidth = 0 | (bitmapWidth * percent / 100);
                 renderFilter.drawImage(renderContext, this, texture._bitmapX, texture._bitmapY,
                     clipWidth, bitmapHeight, texture._offsetX, texture._offsetY, clipWidth, bitmapHeight);
             }
             //todo 右边向左边的先不做了
-//            else if(barOption.barType == LoadingBarType.RIGHT){
+//            else if(barOption.barType == consts.LoadingBarType.RIGHT){
 //                clipWidth = 0 | bitmapWidth * (100 - percent) / 100;
 //                var clipWidth1 = bitmapWidth - clipWidth;
 //                renderFilter.drawImage(renderContext, this, texture._bitmapX + clipWidth, texture._bitmapY,

@@ -15,12 +15,12 @@ module mo_ui._parser{
 
 
     var HALIGN_MAP = {}, VALIGN_MAP = {};
-    HALIGN_MAP[0] = ALIGN_H_LEFT;
-    HALIGN_MAP[1] = ALIGN_H_CENTER;
-    HALIGN_MAP[2] = ALIGN_H_RIGHT;
-    VALIGN_MAP[0] = ALIGN_V_TOP;
-    VALIGN_MAP[1] = ALIGN_V_MIDDLE;
-    VALIGN_MAP[2] = ALIGN_V_BOTTOM;
+    HALIGN_MAP[0] = consts.ALIGN_H_LEFT;
+    HALIGN_MAP[1] = consts.ALIGN_H_CENTER;
+    HALIGN_MAP[2] = consts.ALIGN_H_RIGHT;
+    VALIGN_MAP[0] = consts.ALIGN_V_TOP;
+    VALIGN_MAP[1] = consts.ALIGN_V_MIDDLE;
+    VALIGN_MAP[2] = consts.ALIGN_V_BOTTOM;
 
     export class UITextFactory extends UIWidgetFactory{
         //@override
