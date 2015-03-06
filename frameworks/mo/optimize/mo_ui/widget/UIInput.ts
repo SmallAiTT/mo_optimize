@@ -18,7 +18,7 @@ module mo_ui {
          */
         initRenderer() {
             super.initRenderer();
-            this._nodeOption.textRenderer.type = egret.TextFieldType.INPUT;
+            this._nodeOption.textRenderer.type = egret.consts.TextFieldType.INPUT;
             this.addChild(this._nodeOption.textRenderer);
         }
 

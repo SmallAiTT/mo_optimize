@@ -323,7 +323,7 @@ module egret.gui {
 
 				case TouchEvent.TOUCH_BEGIN:{
 					this.addStageMouseHandlers();
-                    if(InteractionMode.mode==InteractionMode.TOUCH)
+                    if(consts.InteractionMode.mode==consts.InteractionMode.TOUCH)
                         this.hovered = true;
 					this.mouseCaptured = true;
 					break;
@@ -406,7 +406,7 @@ module egret.gui {
 			if (this.isDown()||this._keepDown)
 				return "down";
 
-			if (InteractionMode.mode==InteractionMode.MOUSE&&(this.hovered || this.mouseCaptured))
+			if (consts.InteractionMode.mode==consts.InteractionMode.MOUSE&&(this.hovered || this.mouseCaptured))
 				return "over";
 
 			return "up";

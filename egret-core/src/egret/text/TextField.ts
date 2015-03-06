@@ -40,7 +40,7 @@ module egret {
         public static default_fontFamily:string = "Arial";
 
         private isInput():boolean {
-            return this._type == TextFieldType.INPUT;
+            return this._type == consts.TextFieldType.INPUT;
         }
 
         public _inputEnabled:boolean = false;
@@ -57,7 +57,7 @@ module egret {
 
         /**
          * 文本字段的类型。
-         * 以下 TextFieldType 常量中的任一个：TextFieldType.DYNAMIC（指定用户无法编辑的动态文本字段），或 TextFieldType.INPUT（指定用户可以编辑的输入文本字段）。
+         * 以下 consts.TextFieldType 常量中的任一个：consts.TextFieldType.DYNAMIC（指定用户无法编辑的动态文本字段），或 consts.TextFieldType.INPUT（指定用户可以编辑的输入文本字段）。
          * 默认值为 dynamic。
          * @member {string} egret.TextField#type
          */
@@ -68,7 +68,7 @@ module egret {
         public _setType(value:string):void {
             if (this._type != value) {
                 this._type = value;
-                if (this._type == TextFieldType.INPUT) {//input，如果没有设置过宽高，则设置默认值为100，30
+                if (this._type == consts.TextFieldType.INPUT) {//input，如果没有设置过宽高，则设置默认值为100，30
                     if (!this._hasWidthSet) {
                         this._setWidth(100);
                     }
@@ -106,7 +106,7 @@ module egret {
         }
 
         public _getText():string {
-            if (this._type == egret.TextFieldType.INPUT) {
+            if (this._type == egret.consts.TextFieldType.INPUT) {
                 return this._inputUtils._getText();
             }
 
@@ -497,7 +497,7 @@ module egret {
         public _multiline:boolean = false;
         /**
          * 表示字段是否为多行文本字段。注意，此属性仅在type为TextFieldType.INPUT时才有效。
-         * 如果值为 true，则文本字段为多行文本字段；如果值为 false，则文本字段为单行文本字段。在类型为 TextFieldType.INPUT 的字段中，multiline 值将确定 Enter 键是否创建新行（如果值为 false，则将忽略 Enter 键）。
+         * 如果值为 true，则文本字段为多行文本字段；如果值为 false，则文本字段为单行文本字段。在类型为 consts.TextFieldType.INPUT 的字段中，multiline 值将确定 Enter 键是否创建新行（如果值为 false，则将忽略 Enter 键）。
          * 默认值为 false。
          * @member {boolean} egret.TextField#multiline
          */
@@ -529,7 +529,7 @@ module egret {
 
             this._removeEvent();
 
-            if (this._type == TextFieldType.INPUT) {
+            if (this._type == consts.TextFieldType.INPUT) {
                 this._inputUtils._removeStageText();
             }
         }
@@ -539,7 +539,7 @@ module egret {
 
             this._addEvent();
 
-            if (this._type == TextFieldType.INPUT) {
+            if (this._type == consts.TextFieldType.INPUT) {
                 this._inputUtils._addStageText();
             }
         }
@@ -554,7 +554,7 @@ module egret {
         }
 
         public _updateTransform():void {
-            if (this._type == TextFieldType.INPUT) {
+            if (this._type == consts.TextFieldType.INPUT) {
                 if (this._normalDirty) {//本身有变化
                     //this._clearDirty();
                     this._inputUtils._updateProperties();
@@ -722,7 +722,7 @@ module egret {
                         lineH = 0;
                     }
 
-                    if (self._type == egret.TextFieldType.INPUT) {
+                    if (self._type == egret.consts.TextFieldType.INPUT) {
                         lineH = self._size;
                     }
                     else {
@@ -777,7 +777,7 @@ module egret {
                         self._textMaxWidth = Math.max(self._textMaxWidth, lineW);
                         self._textMaxHeight += lineH;
 
-                        if (self._type == TextFieldType.INPUT && !self._multiline) {
+                        if (self._type == consts.TextFieldType.INPUT && !self._multiline) {
                             self._numLines = linesArr.length;
                             return linesArr;
                         }
@@ -855,7 +855,7 @@ module egret {
                     var element:egret.IWTextElement = line.elements[j];
                     var size:number = element.style.size || self._size;
 
-                    if (self._type == egret.TextFieldType.INPUT) {
+                    if (self._type == egret.consts.TextFieldType.INPUT) {
                         renderContext.drawText(self, element.text, drawX, drawY + (h - size) / 2, element.width);
                     }
                     else {
@@ -879,7 +879,7 @@ module egret {
 
         //处理富文本中有href的
         private onTapHandler(e:egret.TouchEvent):void {
-            if (this._type == egret.TextFieldType.INPUT) {
+            if (this._type == egret.consts.TextFieldType.INPUT) {
                 return;
             }
             var ele:ITextElement = this._getTextElement(e.localX, e.localY);

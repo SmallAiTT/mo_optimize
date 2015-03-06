@@ -35,4 +35,16 @@ HorizontalAlign         UITextDefine.ts
 VerticalAlign           UITextDefine.ts
 
 StageScaleMode          egret_loader.js native_require.js
+
+BitmapFillMode
+
+TextFieldType
+InteractionMode
+Endian
+```
+
+
+# 待处理
+```
+ExternalInterface
 ```

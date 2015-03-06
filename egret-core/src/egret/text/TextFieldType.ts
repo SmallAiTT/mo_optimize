@@ -25,24 +25,24 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-module egret {
+module egret.consts {
 
 	/**
-	 * @class egret.TextFieldType
+	 * @class egret.consts.TextFieldType
 	 * @classdesc
-     * TextFieldType 类是在设置 TextField 类的 type 属性时使用的常数值的枚举。
+     * consts.TextFieldType 类是在设置 TextField 类的 type 属性时使用的常数值的枚举。
 	 */
     export class TextFieldType{
 
 		/**
          * 用于指定动态文本
-		 * @constant {string} egret.TextFieldType.DYNAMIC
+		 * @constant {string} egret.consts.TextFieldType.DYNAMIC
 		 */
         public static DYNAMIC:string = "dynamic";
 
 		/**
          * 用于指定输入文本
-		 * @constant {string} egret.TextFieldType.INPUT
+		 * @constant {string} egret.consts.TextFieldType.INPUT
 		 */
         public static INPUT:string = "input";
 

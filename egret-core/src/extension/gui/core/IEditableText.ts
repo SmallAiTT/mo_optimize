@@ -66,7 +66,7 @@ module egret.gui {
 
         /**
          * 表示字段是否为多行文本字段。如果值为 true，则文本字段为多行文本字段；
-         * 如果值为 false，则文本字段为单行文本字段。在类型为 TextFieldType.INPUT 的字段中，
+         * 如果值为 false，则文本字段为单行文本字段。在类型为 consts.TextFieldType.INPUT 的字段中，
          * multiline 值将确定 Enter 键是否创建新行（如果值为 false，则将忽略 Enter 键）。
          * 如果将文本粘贴到其 multiline 值为 false 的 TextField 中，则文本中将除去新行。
          * @member egret.gui.IEditableText#multiline

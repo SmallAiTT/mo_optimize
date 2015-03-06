@@ -427,7 +427,7 @@ module egret.gui {
 			super.commitProperties();
 			
 			if(this.editableChanged){
-				this._textField.type = this._editable?TextFieldType.INPUT:TextFieldType.DYNAMIC;
+				this._textField.type = this._editable?consts.TextFieldType.INPUT:consts.TextFieldType.DYNAMIC;
 				this.editableChanged = false;
 			}
 			
@@ -595,7 +595,7 @@ module egret.gui {
 		 */		
 		public _createTextField():void{   
 			super._createTextField();
-			this._textField.type = this._editable?TextFieldType.INPUT:TextFieldType.DYNAMIC;
+			this._textField.type = this._editable?consts.TextFieldType.INPUT:consts.TextFieldType.DYNAMIC;
 			this._textField.multiline = this._multiline;
 			//this._textField.wordWrap = this._multiline;
 			
