@@ -53,10 +53,22 @@ module egret {
 		/**
 		 * 获取完全限定类名
 		 */		
-		private static getKey(hostComponentKey:any):string{
-			if(typeof(hostComponentKey)=="string")
-				return <string> hostComponentKey;
-			return getQualifiedClassName(hostComponentKey);
+		private static getKey(value:any):string{
+			if(typeof(value)=="string")
+				return <string> value;
+			var prototype: any = value.prototype ? value.prototype : Object.getPrototypeOf(value);
+			if(prototype.hasOwnProperty("__class__")){
+				return prototype["__class__"];
+			}
+			var constructorString:string = prototype.constructor.toString();
+			var index:number = constructorString.indexOf("(");
+			var className:string = constructorString.substring(9, index);
+			Object.defineProperty(prototype, "__class__", {
+				value: className,
+				enumerable: false,
+				writable: true
+			});
+			return className;
 		}
 		
 		private static mapValueDic:any = {};

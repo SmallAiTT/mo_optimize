@@ -54,7 +54,7 @@ egret_h5.startGame = function () {
 
     var rootClass;
     if(document_class){
-        rootClass = egret.getDefinitionByName(document_class);
+        rootClass = Main;//TODO 注意，这里直接写死了直接写死
     }
     if(rootClass) {
         var rootContainer = new rootClass();

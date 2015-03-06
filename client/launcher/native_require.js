@@ -108,7 +108,7 @@ egret_native.egretStart = function () {
     var document_class = "Main";
     var rootClass;
     if (document_class) {
-        rootClass = egret.getDefinitionByName(document_class);
+        rootClass = Main;//TODO 注意，这里直接写死了直接写死
     }
     var context = egret.MainContext.instance;
     if (rootClass) {

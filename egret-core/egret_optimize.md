@@ -36,6 +36,10 @@ egret.__callAsync--->MainContext
         "egret/display/MovieClip.ts",
         "egret/display/MovieClipData.ts",
         "egret/display/MovieClipDataFactory.ts",
+
+        "egret/utils/getQualifiedClassName.ts", 因为只有Injector里面需要，GUI的我们没用，所以直接把方法内容复制过去。
+                NativeSocket.ts中加上__global的初始化
+        "egret/utils/getDefinitionByName.ts",   egret_loader.js, native_require.js
 ```
 
 # 将不用的类挪出来
