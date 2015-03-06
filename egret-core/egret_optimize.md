@@ -25,6 +25,10 @@ egret_string_code 已改
 
         "egret/utils/hasDefinition.ts",
         "egret/utils/callLater.ts",     合并到MainContext.ts中，并将一些变量改成私有
+
+        "egret/tween/Tween.ts",
+        "egret/tween/Ease.ts",
+                需要把Ease中的常量复制到mo_act.Ease中
 ```
 
 # 将不用的类挪出来
