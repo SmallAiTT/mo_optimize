@@ -1,0 +1,17 @@
+{
+    "name": "res",
+    "dependence": ["core", "3rdParty"],
+    "source":"src",
+    "file_list" : [
+        "res.ts",
+        "recycler4URLLoader.ts",
+        "resMgr.ts",
+
+        "parser/ResParser.ts",
+        "parser/TextParser.ts",
+        "parser/JsonParser.ts",
+        "parser/ImageParser.ts",
+        "parser/AudioParser.ts",
+        "parser/SheetParser.ts"
+    ]
+}
