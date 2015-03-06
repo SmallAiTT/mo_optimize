@@ -37,7 +37,11 @@
 	  "path": "../frameworks/unit"
 	},
 	{
-	  "name": "mo_test",
+	  "name": "egret_unit",
+	  "path": "../frameworks/egret_unit"
+	},
+	{
+	  "name": "mo_unit",
 	  "path": "../frameworks/mo"
 	}
   ],

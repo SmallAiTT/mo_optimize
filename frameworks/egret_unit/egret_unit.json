@@ -1,0 +1,8 @@
+{
+    "name": "egret_unit",
+    "dependence": ["core", "res", "unit"],
+    "source":"src",
+    "file_list" : [
+        "unit_DisplayObject.ts"
+    ]
+}

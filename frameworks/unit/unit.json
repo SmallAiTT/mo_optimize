@@ -3,6 +3,7 @@
     "dependence": ["core", "res"],
     "source":"src",
     "file_list" : [
+        "unit_consts.ts",
         "unit.ts"
     ]
 }
