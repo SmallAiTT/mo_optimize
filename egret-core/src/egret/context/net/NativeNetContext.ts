@@ -96,7 +96,7 @@ module egret {
                 download();
             }
             else {
-                __callAsync(onLoadComplete, this);
+                MainContext.__callAsync(onLoadComplete, this);
             }
 
             function download() {
@@ -141,7 +141,7 @@ module egret {
                 download();
             }
             else {
-                __callAsync(onLoadComplete, this);
+                MainContext.__callAsync(onLoadComplete, this);
             }
 
             function download() {
@@ -180,7 +180,7 @@ module egret {
                     onLoadComplete();
                 }
                 else {
-                    egret.__callAsync(onLoadComplete, this);
+                    egret.MainContext.__callAsync(onLoadComplete, this);
                 }
             }
 

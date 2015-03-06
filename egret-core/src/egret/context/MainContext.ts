@@ -48,18 +48,7 @@ module egret {
     var __callAsyncFunctionList:Array<any> = [];
     var __callAsyncThisList:Array<any> = [];
     var __callAsyncArgsList:Array<any> = [];
-    /**
-     * 异步调用函数
-     * @param method {Function} 要异步调用的函数
-     * @param thisObject {any} 函数的this引用
-     * @param ...args {any} 函数参数列表
-     */
-    export function __callAsync(method:Function,thisObject:any,...args):void
-    {
-        __callAsyncFunctionList.push(method);
-        __callAsyncThisList.push(thisObject);
-        __callAsyncArgsList.push(args);
-    }
+
 
     /**
      * @class egret.MainContext
@@ -69,6 +58,18 @@ module egret {
      * @private
      */
     export class MainContext extends EventDispatcher {
+        /**
+         * 异步调用函数
+         * @param method {Function} 要异步调用的函数
+         * @param thisObject {any} 函数的this引用
+         * @param ...args {any} 函数参数列表
+         */
+        static __callAsync(method:Function,thisObject:any,...args):void
+        {
+            __callAsyncFunctionList.push(method);
+            __callAsyncThisList.push(thisObject);
+            __callAsyncArgsList.push(args);
+        }
 
         constructor() {
             super();

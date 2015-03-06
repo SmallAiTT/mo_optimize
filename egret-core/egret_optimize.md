@@ -9,6 +9,8 @@ egret_string_code 已改
 ```
 将getString改到Logger下面
 
+egret.__callAsync--->MainContext
+
 ```
 
 # 去掉的js列表

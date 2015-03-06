@@ -112,7 +112,7 @@ module egret {
                         loader.data = xhr.responseText;
                         break;
                 }
-                __callAsync(Event.dispatchEvent, Event, loader, Event.COMPLETE);
+                MainContext.__callAsync(Event.dispatchEvent, Event, loader, Event.COMPLETE);
             }
         }
 
@@ -131,7 +131,7 @@ module egret {
                 var sound = new Sound();
                 sound._setAudio(audio);
                 loader.data = sound;
-                __callAsync(Event.dispatchEvent, Event, loader, Event.COMPLETE);
+                MainContext.__callAsync(Event.dispatchEvent, Event, loader, Event.COMPLETE);
             };
 
             function soundPreloadErrorHandler(event) {
@@ -160,7 +160,7 @@ module egret {
 //                var sound = new Sound();
 //                sound._setAudio(audio);
 //                loader.data = sound;
-//                __callAsync(Event.dispatchEvent, Event, loader, Event.COMPLETE);
+//                MainContext.__callAsync(Event.dispatchEvent, Event, loader, Event.COMPLETE);
 //            }
 //
 //            function onErrorHandler() {
@@ -208,7 +208,7 @@ module egret {
                 var texture:Texture = new Texture();
                 texture._setBitmapData(image);
                 loader.data = texture;
-                __callAsync(Event.dispatchEvent, Event, loader, Event.COMPLETE);
+                MainContext.__callAsync(Event.dispatchEvent, Event, loader, Event.COMPLETE);
             }
 
             function onLoadError(event) {
