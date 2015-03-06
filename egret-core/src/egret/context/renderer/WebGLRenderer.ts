@@ -366,7 +366,7 @@ module egret {
         private createCanvas():HTMLCanvasElement {
             var canvas:HTMLCanvasElement = egret.Browser.getInstance().$("#egretCanvas");
             if (!canvas) {
-                var container = document.getElementById(egret.StageDelegate.canvas_div_name);
+                var container = document.getElementById(egret.resolution.StageDelegate.canvas_div_name);
                 canvas = egret.Browser.getInstance().$new("canvas");
                 canvas.id = "egretCanvas";
                 container.appendChild(canvas);
@@ -377,7 +377,7 @@ module egret {
 
         private onResize():void {
             //设置canvas宽高
-            var container = document.getElementById(egret.StageDelegate.canvas_div_name);
+            var container = document.getElementById(egret.resolution.StageDelegate.canvas_div_name);
             if (this.canvas) {
                 this.canvas.width = egret.MainContext.instance.stage.stageWidth; //stageW
                 this.canvas.height = egret.MainContext.instance.stage.stageHeight; //stageH

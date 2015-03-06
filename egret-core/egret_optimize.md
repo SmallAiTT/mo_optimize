@@ -54,3 +54,9 @@ Endian
 ```
 ExternalInterface
 ```
+
+# 将适配相关的改到egret.resolution命名空间下
+
+```
+StageDelegate.ts
+```

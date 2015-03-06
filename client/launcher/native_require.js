@@ -60,10 +60,10 @@ egret_native.egretInit = function () {
     context.touchContext = new egret.NativeTouchContext();
     context.deviceContext = new egret.NativeDeviceContext();
 
-    egret.StageDelegate.getInstance().setDesignSize(2304, 1536);
+    egret.resolution.StageDelegate.getInstance().setDesignSize(2304, 1536);
     context.stage = new egret.Stage();
     var StageScaleMode = egret.consts.StageScaleMode;
-    egret.Stage.registerScaleMode(StageScaleMode.NO_BORDER, new egret.FixedHeight(), true);
+    egret.Stage.registerScaleMode(StageScaleMode.NO_BORDER, new egret.resolution.FixedHeight(), true);
     context.stage.scaleMode = StageScaleMode.NO_BORDER;
 
     egret.MainContext.instance.rendererContext.texture_scale_factor = 2304/720;

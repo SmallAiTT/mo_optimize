@@ -113,11 +113,11 @@ module egret {
             if (!content){
                 throw new Error(Logger.getString(1024));
             }
-            var container = new egret.EqualToFrame();
-            var policy = new egret.ResolutionPolicy(container, content);
-            egret.StageDelegate.getInstance()._setResolutionPolicy(policy);
-            this._stageWidth = egret.StageDelegate.getInstance()._stageWidth;
-            this._stageHeight = egret.StageDelegate.getInstance()._stageHeight;
+            var container = new egret.resolution.EqualToFrame();
+            var policy = new egret.resolution.ResolutionPolicy(container, content);
+            egret.resolution.StageDelegate.getInstance()._setResolutionPolicy(policy);
+            this._stageWidth = egret.resolution.StageDelegate.getInstance()._stageWidth;
+            this._stageHeight = egret.resolution.StageDelegate.getInstance()._stageHeight;
         }
 
         private _stageWidth:number = NaN;
@@ -208,7 +208,7 @@ module egret {
          * @param override {boolean} 是否覆盖
          * @method egret.Stage#registerScaleMode
          */
-        public static registerScaleMode(key:string, value:ContentStrategy, override?:boolean):void {
+        public static registerScaleMode(key:string, value:resolution.ContentStrategy, override?:boolean):void {
             if(Stage.SCALE_MODE_ENUM[key] && !override) {
                 egret.Logger.warningWithErrorId(1009, key);
             }
@@ -219,9 +219,9 @@ module egret {
     }
 }
 
-egret.Stage.SCALE_MODE_ENUM[egret.consts.StageScaleMode.NO_SCALE] = new egret.NoScale();
-egret.Stage.SCALE_MODE_ENUM[egret.consts.StageScaleMode.SHOW_ALL] = new egret.ShowAll();
-egret.Stage.SCALE_MODE_ENUM[egret.consts.StageScaleMode.NO_BORDER] = new egret.FixedWidth();
-egret.Stage.SCALE_MODE_ENUM[egret.consts.StageScaleMode.EXACT_FIT] = new egret.FullScreen();
+egret.Stage.SCALE_MODE_ENUM[egret.consts.StageScaleMode.NO_SCALE] = new egret.resolution.NoScale();
+egret.Stage.SCALE_MODE_ENUM[egret.consts.StageScaleMode.SHOW_ALL] = new egret.resolution.ShowAll();
+egret.Stage.SCALE_MODE_ENUM[egret.consts.StageScaleMode.NO_BORDER] = new egret.resolution.FixedWidth();
+egret.Stage.SCALE_MODE_ENUM[egret.consts.StageScaleMode.EXACT_FIT] = new egret.resolution.FullScreen();
 
 

@@ -43,8 +43,8 @@ module egret {
         constructor() {
             super();
 
-            var scaleX = egret.StageDelegate.getInstance().getScaleX();
-            var scaleY = egret.StageDelegate.getInstance().getScaleY();
+            var scaleX = egret.resolution.StageDelegate.getInstance().getScaleX();
+            var scaleY = egret.resolution.StageDelegate.getInstance().getScaleY();
 
             var div = egret.Browser.getInstance().$new("div");
             div.position.x = 0;
@@ -108,7 +108,7 @@ module egret {
                 stageDelegateDiv = egret.Browser.getInstance().$new("div");
                 stageDelegateDiv.id = "StageDelegateDiv";
 //                stageDelegateDiv.style.position = "absolute";
-                var container = document.getElementById(egret.StageDelegate.canvas_div_name);
+                var container = document.getElementById(egret.resolution.StageDelegate.canvas_div_name);
                 container.appendChild(stageDelegateDiv);
                 stageDelegateDiv.transforms();
             }
@@ -207,8 +207,8 @@ module egret {
         public _setScale(x:number, y:number):void {
             super._setScale(x, y);
 
-            var scaleX = egret.StageDelegate.getInstance().getScaleX();
-            var scaleY = egret.StageDelegate.getInstance().getScaleY();
+            var scaleX = egret.resolution.StageDelegate.getInstance().getScaleX();
+            var scaleY = egret.resolution.StageDelegate.getInstance().getScaleY();
             this.div.scale.x = scaleX * x;
             this.div.scale.y = scaleY * y;
             this.div.transforms();
@@ -216,8 +216,8 @@ module egret {
 
         public changePosition(x:number, y:number):void {
 //            if (this._isShow) {
-            var scaleX = egret.StageDelegate.getInstance().getScaleX();
-            var scaleY = egret.StageDelegate.getInstance().getScaleY();
+            var scaleX = egret.resolution.StageDelegate.getInstance().getScaleX();
+            var scaleY = egret.resolution.StageDelegate.getInstance().getScaleY();
 
             this.div.position.x = x * scaleX;
             this.div.position.y = y * scaleY;

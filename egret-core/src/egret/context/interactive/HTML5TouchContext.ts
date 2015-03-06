@@ -41,7 +41,7 @@ module egret {
         constructor() {
             super();
 
-            this.rootDiv = document.getElementById(egret.StageDelegate.canvas_div_name);
+            this.rootDiv = document.getElementById(egret.resolution.StageDelegate.canvas_div_name);
         }
 
         private prevent(event):void {
@@ -215,8 +215,8 @@ module egret {
                 ty = event.clientY;
             }
             var result = Point.identity;
-            result.x = (tx - left) / StageDelegate.getInstance().getScaleX();
-            result.y = (ty - top) / StageDelegate.getInstance().getScaleY();
+            result.x = (tx - left) / resolution.StageDelegate.getInstance().getScaleX();
+            result.y = (ty - top) / resolution.StageDelegate.getInstance().getScaleY();
             return result;
 
         }

@@ -211,23 +211,23 @@ module egret_native_localStorage {
 
 egret_native_localStorage.init();
 
-egret.ContainerStrategy.prototype._setupContainer = function () {
+egret.resolution.ContainerStrategy.prototype._setupContainer = function () {
 
 };
 
-egret.ContentStrategy.prototype._getClientWidth = function () {
+egret.resolution.ContentStrategy.prototype._getClientWidth = function () {
     var result = egret_native.EGTView.getFrameWidth();
     return result;
 };
 
-egret.ContentStrategy.prototype._getClientHeight = function () {
+egret.resolution.ContentStrategy.prototype._getClientHeight = function () {
     var result = egret_native.EGTView.getFrameHeight();
     return result;
 };
 
-egret.ContentStrategy.prototype.setEgretSize = function (w:number, h:number, styleW:number, styleH:number, left:number = 0, top:number = 0) {
-    egret.StageDelegate.getInstance()._stageWidth = w;
-    egret.StageDelegate.getInstance()._stageHeight = h;
+egret.resolution.ContentStrategy.prototype.setEgretSize = function (w:number, h:number, styleW:number, styleH:number, left:number = 0, top:number = 0) {
+    egret.resolution.StageDelegate.getInstance()._stageWidth = w;
+    egret.resolution.StageDelegate.getInstance()._stageHeight = h;
 
 //    console.log("setVisibleRect:" + left + "|" + top + "|" + styleW + "|" + styleH);
     egret_native.EGTView.setVisibleRect(left, top, styleW, styleH);

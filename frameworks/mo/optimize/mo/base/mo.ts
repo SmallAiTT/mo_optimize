@@ -9,9 +9,9 @@ module mo{
 
         static EXACT_FIT: string = "ExactFit";
 
-        static FIXED_WIDTH: string = "FixedWidth";
+        static FIXED_WIDTH: string = "resolution.FixedWidth";
 
-        static FIXED_HEIGHT: string = "FixedHeight";
+        static FIXED_HEIGHT: string = "resolution.FixedHeight";
     }
 
     //框架相关的初始化操作
