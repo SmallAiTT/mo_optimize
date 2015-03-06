@@ -19,6 +19,8 @@ egret_string_code 已改
 
         "egret/display/ScrollView.ts",
         "egret/display/Sprite.ts",
+
+        "egret/utils/getTimer.ts",  合并到Ticker.ts中，并且把__START_TIME改成私有
 ```
 
 # 将不用的类挪出来

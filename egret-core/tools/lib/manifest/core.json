@@ -7,7 +7,6 @@
         "egret/utils/IHashObject.ts",
         "egret/utils/HashObject.ts",
         "egret/utils/Recycler.ts",
-        "egret/utils/getTimer.ts",
         "egret/utils/callLater.ts",
         "egret/utils/RenderCommand.ts",
         "egret/events/Event.ts",

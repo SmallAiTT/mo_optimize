@@ -27,6 +27,17 @@
 
 
 module egret {
+
+    var __START_TIME:number;
+    /**
+     * 用于计算相对时间。此方法返回自启动 Egret 引擎以来经过的毫秒数。
+     * @method egret.getTimer
+     * @returns {number} 启动 Egret 引擎以来经过的毫秒数。
+     */
+    export function getTimer():number {
+        return Date.now() - __START_TIME;
+    }
+
     /**
      * Ticker是egret引擎的心跳控制器，是游戏唯一的时间处理入口。开发者务必不要使用Ticker,应该使用egret.Timer。
      */
