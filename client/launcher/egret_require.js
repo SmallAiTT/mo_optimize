@@ -25,45 +25,56 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-module egret.consts {
+var egret_h5 = egret_h5 || {};
 
-	/**
-	 * @class egret.consts.HorizontalAlign
-	 * @classdesc 水平对齐方式
-	 * @link http://docs.egret-labs.org/post/manual/text/textlayout.html 文本布局
-	 */
-	export class HorizontalAlign{
-        /**
-         * 左对齐
-		 * @constant egret.consts.HorizontalAlign.LEFT
-         */
-        public static LEFT:string = "left";
+egret_h5.prefix = "";
 
-        /**
-         * 右对齐
-		 * @constant egret.consts.HorizontalAlign.RIGHT
-         */
-        public static RIGHT:string = "right";
+egret_h5.loadScript = function (list, callback) {
+    var loaded = 0;
+    var loadNext = function () {
+        egret_h5.loadSingleScript(egret_h5.prefix + list[loaded], function () {
+            loaded++;
+            if (loaded >= list.length) {
+                callback();
+            }
+            else {
+                loadNext();
+            }
+        })
+    };
+    loadNext();
+};
+egret_h5._jsCache = {};
+egret_h5.loadSingleScript = function (jsPath, cb) {
+    var d = document, s = d.createElement('script');
+    s.async = false;
+    s.src = jsPath;
+    egret_h5._jsCache[jsPath] = true;
+    s.addEventListener('load',function(){
+        this.removeEventListener('load', arguments.callee, false);
+        cb();
+    },false);
+    s.addEventListener('error',function(){
+        cb("Load " + jsPath + " failed!");
+    },false);
+    d.body.appendChild(s);
+};
 
-        /**
-         * 水平居中对齐
-		 * @constant egret.consts.HorizontalAlign.CENTER
-         */
-        public static CENTER:string = "center";
+egret_h5.preloadScript = function (list, prefix) {
+    if (!egret_h5.preloadList) {
+        egret_h5.preloadList = [];
+    }
+    egret_h5.preloadList = egret_h5.preloadList.concat(list.map(function (item) {
+        return prefix + item;
+    }))
+};
 
-		/**
-		 * 水平两端对齐
-         * 注意：TextFiled不支持此对齐方式。
-		 * @constant egret.consts.HorizontalAlign.JUSTIFY
-		 */
-		public static JUSTIFY:string = "justify";
-
-		/**
-		 * 相对于容器对子项进行内容对齐。这会将所有子项的大小统一调整为容器的"内容宽度"。
-		 * 容器的"内容宽度"是最大子项的大小,如果所有子项都小于容器的宽度，则会将所有子项的大小调整为容器的宽度。
-         * 注意：TextFiled不支持此对齐方式。
-		 * @constant egret.consts.HorizontalAlign.CONTENT_JUSTIFY
-		 */
-		public static CONTENT_JUSTIFY:string = "contentJustify";
-	}
-}
+egret_h5.startLoading = function () {
+    var list = egret_h5.preloadList;
+    async.map(list, function(item, index, cb1){
+        egret_h5.loadSingleScript(item, cb1);
+    }, function(err){
+        if(err) console.error(err);
+        else egret_h5.startGame();
+    });
+};

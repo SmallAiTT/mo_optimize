@@ -624,7 +624,7 @@ module egret.gui {
 			if(!this.layout){
 				var _layout:VerticalLayout = new VerticalLayout();
 				_layout.gap = 0;
-				_layout.horizontalAlign = HorizontalAlign.CONTENT_JUSTIFY;
+				_layout.horizontalAlign = consts.HorizontalAlign.CONTENT_JUSTIFY;
 				this.layout = _layout;
 			}
 			super.createChildren();

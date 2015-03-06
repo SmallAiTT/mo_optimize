@@ -286,12 +286,12 @@ module egret.gui {
 		}    
 		
 		
-		private _horizontalAlign:string = HorizontalAlign.JUSTIFY;
+		private _horizontalAlign:string = consts.HorizontalAlign.JUSTIFY;
 		/**
 		 * 指定如何在水平方向上对齐单元格内的元素。
-		 * 支持的值有 HorizontalAlign.LEFT、HorizontalAlign.CENTER、
-		 * HorizontalAlign.RIGHT、HorizontalAlign.JUSTIFY。
-		 * 默认值：HorizontalAlign.JUSTIFY
+		 * 支持的值有 consts.HorizontalAlign.LEFT、consts.HorizontalAlign.CENTER、
+		 * consts.HorizontalAlign.RIGHT、consts.HorizontalAlign.JUSTIFY。
+		 * 默认值：consts.HorizontalAlign.JUSTIFY
 		 * @member egret.gui.TileLayout#horizontalAlign
 		 */		
 		public get horizontalAlign():string{
@@ -306,13 +306,13 @@ module egret.gui {
 			this.invalidateTargetSizeAndDisplayList();
 		}
 		
-		private _verticalAlign:string = VerticalAlign.JUSTIFY;
+		private _verticalAlign:string = consts.VerticalAlign.JUSTIFY;
 		
 		/**
 		 * 指定如何在垂直方向上对齐单元格内的元素。
-		 * 支持的值有 VerticalAlign.TOP、VerticalAlign.MIDDLE、
-		 * VerticalAlign.BOTTOM、VerticalAlign.JUSTIFY。 
-		 * 默认值：VerticalAlign.JUSTIFY。
+		 * 支持的值有 consts.VerticalAlign.TOP、consts.VerticalAlign.MIDDLE、
+		 * consts.VerticalAlign.BOTTOM、consts.VerticalAlign.JUSTIFY。
+		 * 默认值：consts.VerticalAlign.JUSTIFY。
 		 * @member egret.gui.TileLayout#verticalAlign
 		 */		
 		public get verticalAlign():string{
@@ -794,12 +794,12 @@ module egret.gui {
 			var elementWidth:number = NaN;
 			var elementHeight:number = NaN;
 			
-			if (this.horizontalAlign == HorizontalAlign.JUSTIFY)
+			if (this.horizontalAlign == consts.HorizontalAlign.JUSTIFY)
 				elementWidth = cellWidth;
 			else if (!isNaN(element.percentWidth))
 				elementWidth = cellWidth * element.percentWidth * 0.01;
 			
-			if (this.verticalAlign == VerticalAlign.JUSTIFY)
+			if (this.verticalAlign == consts.VerticalAlign.JUSTIFY)
 				elementHeight = cellHeight;
 			else if (!isNaN(element.percentHeight))
 				elementHeight = cellHeight * element.percentHeight * 0.01;
@@ -809,20 +809,20 @@ module egret.gui {
 			
 			var x:number = cellX;
 			switch (this.horizontalAlign){
-				case HorizontalAlign.RIGHT:
+				case consts.HorizontalAlign.RIGHT:
 					x += cellWidth - element.layoutBoundsWidth;
 					break;
-				case HorizontalAlign.CENTER:
+				case consts.HorizontalAlign.CENTER:
 					x = cellX + (cellWidth - element.layoutBoundsWidth) / 2;
 					break;
 			}
 			
 			var y:number = cellY;
 			switch (this.verticalAlign){
-				case VerticalAlign.BOTTOM:
+				case consts.VerticalAlign.BOTTOM:
 					y += cellHeight - element.layoutBoundsHeight;
 					break;
-				case VerticalAlign.MIDDLE:
+				case consts.VerticalAlign.MIDDLE:
 					y += (cellHeight - element.layoutBoundsHeight) / 2;
 					break;
 			}

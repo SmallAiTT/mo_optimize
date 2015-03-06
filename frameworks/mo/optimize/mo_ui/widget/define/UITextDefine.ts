@@ -1,11 +1,11 @@
 module mo_ui.consts {
-    export var ALIGN_H_LEFT:string = egret.HorizontalAlign.LEFT;
-    export var ALIGN_H_CENTER:string = egret.HorizontalAlign.CENTER;
-    export var ALIGN_H_RIGHT:string = egret.HorizontalAlign.RIGHT;
+    export var ALIGN_H_LEFT:string = egret.consts.HorizontalAlign.LEFT;
+    export var ALIGN_H_CENTER:string = egret.consts.HorizontalAlign.CENTER;
+    export var ALIGN_H_RIGHT:string = egret.consts.HorizontalAlign.RIGHT;
 
-    export var ALIGN_V_TOP:string = egret.VerticalAlign.TOP;
-    export var ALIGN_V_MIDDLE:string = egret.VerticalAlign.MIDDLE;
-    export var ALIGN_V_BOTTOM:string = egret.VerticalAlign.BOTTOM;
+    export var ALIGN_V_TOP:string = egret.consts.VerticalAlign.TOP;
+    export var ALIGN_V_MIDDLE:string = egret.consts.VerticalAlign.MIDDLE;
+    export var ALIGN_V_BOTTOM:string = egret.consts.VerticalAlign.BOTTOM;
 
 }
 module mo_opt{

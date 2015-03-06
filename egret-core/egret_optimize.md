@@ -28,4 +28,8 @@ egret_string_code 已改
 ```
 BlendMode       UIImage.ts
 
+HorizontalAlign         UITextDefine.ts
+VerticalAlign           UITextDefine.ts
+
+StageScaleMode          egret_loader.js native_require.js
 ```

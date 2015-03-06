@@ -73,11 +73,11 @@ module egret {
 
         /**
          * 屏幕适配策略，可以通过 egret.Stage.registerScaleMode 方法扩展
-         * 一个 StageScaleMode 类中指定要使用哪种缩放模式的值。以下是有效值：
-         * StageScaleMode.EXACT_FIT -- 整个应用程序在指定区域中可见，但不尝试保持原始高宽比。可能会发生扭曲，应用程序可能会拉伸或压缩显示。
-         * StageScaleMode.SHOW_ALL -- 整个应用程序在指定区域中可见，且不发生扭曲，同时保持应用程序的原始高宽比。应用程序的可能会显示边框。
-         * StageScaleMode.NO_BORDER -- 整个应用程序填满指定区域，不发生扭曲，但有可能进行一些裁切，同时保持应用程序的原始高宽比。
-         * StageScaleMode.NO_SCALE -- 整个应用程序的大小固定，因此，即使播放器窗口的大小更改，它也会保持不变。如果播放器窗口比内容小，则可能进行一些裁切。
+         * 一个 consts.StageScaleMode 类中指定要使用哪种缩放模式的值。以下是有效值：
+         * consts.StageScaleMode.EXACT_FIT -- 整个应用程序在指定区域中可见，但不尝试保持原始高宽比。可能会发生扭曲，应用程序可能会拉伸或压缩显示。
+         * consts.StageScaleMode.SHOW_ALL -- 整个应用程序在指定区域中可见，且不发生扭曲，同时保持应用程序的原始高宽比。应用程序的可能会显示边框。
+         * consts.StageScaleMode.NO_BORDER -- 整个应用程序填满指定区域，不发生扭曲，但有可能进行一些裁切，同时保持应用程序的原始高宽比。
+         * consts.StageScaleMode.NO_SCALE -- 整个应用程序的大小固定，因此，即使播放器窗口的大小更改，它也会保持不变。如果播放器窗口比内容小，则可能进行一些裁切。
          * @member {number} egret.Stage#scaleMode
          */
         public get scaleMode():string{
@@ -219,9 +219,9 @@ module egret {
     }
 }
 
-egret.Stage.SCALE_MODE_ENUM[egret.StageScaleMode.NO_SCALE] = new egret.NoScale();
-egret.Stage.SCALE_MODE_ENUM[egret.StageScaleMode.SHOW_ALL] = new egret.ShowAll();
-egret.Stage.SCALE_MODE_ENUM[egret.StageScaleMode.NO_BORDER] = new egret.FixedWidth();
-egret.Stage.SCALE_MODE_ENUM[egret.StageScaleMode.EXACT_FIT] = new egret.FullScreen();
+egret.Stage.SCALE_MODE_ENUM[egret.consts.StageScaleMode.NO_SCALE] = new egret.NoScale();
+egret.Stage.SCALE_MODE_ENUM[egret.consts.StageScaleMode.SHOW_ALL] = new egret.ShowAll();
+egret.Stage.SCALE_MODE_ENUM[egret.consts.StageScaleMode.NO_BORDER] = new egret.FixedWidth();
+egret.Stage.SCALE_MODE_ENUM[egret.consts.StageScaleMode.EXACT_FIT] = new egret.FullScreen();
 
 

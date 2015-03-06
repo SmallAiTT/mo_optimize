@@ -54,7 +54,7 @@ module egret {
             var tf:egret.TextField = this.tf;
             tf.textColor = 0;
             tf.text = "";
-            tf.textAlign = egret.HorizontalAlign.LEFT;
+            tf.textAlign = egret.consts.HorizontalAlign.LEFT;
             this.container = new egret.DisplayObjectContainer();
 
             this.textValue = "";

@@ -25,10 +25,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-module egret {
+module egret.consts {
 
 	/**
-	 * @class egret.VerticalAlign
+	 * @class egret.consts.VerticalAlign
 	 * @classdesc 垂直对齐方式
 	 * @link http://docs.egret-labs.org/post/manual/text/textlayout.html 文本布局
 	 */
@@ -36,26 +36,26 @@ module egret {
 
         /**
          * 顶对齐
-		 * @constant egret.VerticalAlign.TOP
+		 * @constant egret.consts.VerticalAlign.TOP
          */
         public static TOP:string = "top";
 
         /**
          * 底对齐
-		 * @constant egret.VerticalAlign.BOTTOM
+		 * @constant egret.consts.VerticalAlign.BOTTOM
          */
         public static BOTTOM:string = "bottom";
 
         /**
          * 垂直居中对齐
-		 * @constant egret.VerticalAlign.MIDDLE
+		 * @constant egret.consts.VerticalAlign.MIDDLE
          */
         public static MIDDLE:string = "middle";
 
 		/**
 		 * 垂直两端对齐
          * 注意：TextFiled不支持此对齐方式。
-		 * @constant egret.VerticalAlign.JUSTIFY
+		 * @constant egret.consts.VerticalAlign.JUSTIFY
 		 */
 		public static JUSTIFY:string = "justify";
 
@@ -63,7 +63,7 @@ module egret {
 		 * 相对于容器对子项进行内容对齐。这会将所有子项的大小统一调整为容器的"内容高度"。
 		 * 容器的"内容高度"是最大子项的大小,如果所有子项都小于容器的高度，则会将所有子项的大小调整为容器的高度。
          * 注意：TextFiled不支持此对齐方式。
-		 * @constant egret.VerticalAlign.CONTENT_JUSTIFY
+		 * @constant egret.consts.VerticalAlign.CONTENT_JUSTIFY
 		 */
 		public static CONTENT_JUSTIFY:string = "contentJustify";
 	}

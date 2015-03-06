@@ -42,7 +42,7 @@ module egret.gui {
 			super();
 		}
 		
-		private _horizontalAlign:string = HorizontalAlign.LEFT;
+		private _horizontalAlign:string = consts.HorizontalAlign.LEFT;
 		/**
 		 * 布局元素的水平对齐策略。参考HorizontalAlign定义的常量。
 		 * 注意：此属性设置为CONTENT_JUSTIFY始终无效。当useVirtualLayout为true时，设置JUSTIFY也无效。
@@ -60,7 +60,7 @@ module egret.gui {
 				this.target.invalidateDisplayList();
 		}
 		
-		private _verticalAlign:string = VerticalAlign.TOP;
+		private _verticalAlign:string = consts.VerticalAlign.TOP;
 		/**
 		 * 布局元素的竖直对齐策略。参考VerticalAlign定义的常量。
 		 * @member egret.gui.HorizontalLayout#verticalAlign
@@ -508,14 +508,14 @@ module egret.gui {
 			}
 			this.target.setVirtualElementIndicesInView(this.startIndex,this.endIndex);
 			//获取垂直布局参数
-			var justify:boolean = this._verticalAlign==VerticalAlign.JUSTIFY||this._verticalAlign==VerticalAlign.CONTENT_JUSTIFY;
-			var contentJustify:boolean = this._verticalAlign==VerticalAlign.CONTENT_JUSTIFY;
+			var justify:boolean = this._verticalAlign==consts.VerticalAlign.JUSTIFY||this._verticalAlign==consts.VerticalAlign.CONTENT_JUSTIFY;
+			var contentJustify:boolean = this._verticalAlign==consts.VerticalAlign.CONTENT_JUSTIFY;
 			var vAlign:number = 0;
 			if(!justify){
-				if(this._verticalAlign==VerticalAlign.MIDDLE){
+				if(this._verticalAlign==consts.VerticalAlign.MIDDLE){
 					vAlign = 0.5;
 				}
-				else if(this._verticalAlign==VerticalAlign.BOTTOM){
+				else if(this._verticalAlign==consts.VerticalAlign.BOTTOM){
 					vAlign = 1;
 				}
 			}
@@ -600,14 +600,14 @@ module egret.gui {
 			var targetWidth:number = Math.max(0, width - paddingL - paddingR);
 			var targetHeight:number = Math.max(0, height - paddingT - paddingB);
 			
-			var hJustify:boolean = this._horizontalAlign==HorizontalAlign.JUSTIFY;
-			var vJustify:boolean = this._verticalAlign==VerticalAlign.JUSTIFY||this._verticalAlign==VerticalAlign.CONTENT_JUSTIFY;
+			var hJustify:boolean = this._horizontalAlign==consts.HorizontalAlign.JUSTIFY;
+			var vJustify:boolean = this._verticalAlign==consts.VerticalAlign.JUSTIFY||this._verticalAlign==consts.VerticalAlign.CONTENT_JUSTIFY;
 			var vAlign:number = 0;
 			if(!vJustify){
-				if(this._verticalAlign==VerticalAlign.MIDDLE){
+				if(this._verticalAlign==consts.VerticalAlign.MIDDLE){
 					vAlign = 0.5;
 				}
-				else if(this._verticalAlign==VerticalAlign.BOTTOM){
+				else if(this._verticalAlign==consts.VerticalAlign.BOTTOM){
 					vAlign = 1;
 				}
 			}
@@ -694,10 +694,10 @@ module egret.gui {
 				}
 			}
 			
-			if(this._horizontalAlign==HorizontalAlign.CENTER){
+			if(this._horizontalAlign==consts.HorizontalAlign.CENTER){
 				x = paddingL+widthToDistribute*0.5;
 			}
-			else if(this._horizontalAlign==HorizontalAlign.RIGHT){
+			else if(this._horizontalAlign==consts.HorizontalAlign.RIGHT){
 				x = paddingL+widthToDistribute;
 			}
 			
@@ -706,7 +706,7 @@ module egret.gui {
 			var dx:number = 0;
 			var dy:number = 0;
 			var justifyHeight:number = Math.ceil(targetHeight);
-			if(this._verticalAlign==VerticalAlign.CONTENT_JUSTIFY)
+			if(this._verticalAlign==consts.VerticalAlign.CONTENT_JUSTIFY)
 				justifyHeight = Math.ceil(Math.max(targetHeight,this.maxElementHeight));
 			roundOff = 0;
 			var layoutElementWidth:number;

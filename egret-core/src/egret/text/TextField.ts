@@ -368,7 +368,7 @@ module egret {
         /**
          * 文本水平对齐方式
          * 使用HorizontalAlign定义的常量。
-         * 默认值为 HorizontalAlign.LEFT。
+         * 默认值为 consts.HorizontalAlign.LEFT。
          * @member {string} egret.TextField#textAlign
          */
         public set textAlign(value:string) {
@@ -391,7 +391,7 @@ module egret {
         /**
          * 文本垂直对齐方式。
          * 使用VerticalAlign定义的常量。
-         * 默认值为 VerticalAlign.TOP。
+         * 默认值为 consts.VerticalAlign.TOP。
          * @member {string} egret.TextField#verticalAlign
          */
         public set verticalAlign(value:string) {
@@ -818,9 +818,9 @@ module egret {
             if (self._hasHeightSet) {//
                 if (textHeight < self._explicitHeight) {//最大高度比需要显示的高度小
                     var valign:number = 0;
-                    if (self._verticalAlign == VerticalAlign.MIDDLE)
+                    if (self._verticalAlign == consts.VerticalAlign.MIDDLE)
                         valign = 0.5;
-                    else if (self._verticalAlign == VerticalAlign.BOTTOM)
+                    else if (self._verticalAlign == consts.VerticalAlign.BOTTOM)
                         valign = 1;
                     drawY += valign * (self._explicitHeight - textHeight);
                 }
@@ -832,10 +832,10 @@ module egret {
 
             drawY = Math.round(drawY);
             var halign:number = 0;
-            if (self._textAlign == HorizontalAlign.CENTER) {
+            if (self._textAlign == consts.HorizontalAlign.CENTER) {
                 halign = 0.5;
             }
-            else if (self._textAlign == HorizontalAlign.RIGHT) {
+            else if (self._textAlign == consts.HorizontalAlign.RIGHT) {
                 halign = 1;
             }
 

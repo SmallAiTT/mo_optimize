@@ -201,10 +201,10 @@ module egret.gui {
 		}
 
 		private textAlignChanged:boolean = false;
-		private _textAlign:string = HorizontalAlign.LEFT;
+		private _textAlign:string = consts.HorizontalAlign.LEFT;
 		/**
 		 * 文字的水平对齐方式 ,请使用HorizontalAlign中定义的常量。
-		 * 默认值：HorizontalAlign.LEFT。
+		 * 默认值：consts.HorizontalAlign.LEFT。
 		 * @member egret.gui.TextBase#textAlign
 		 */
 		public get textAlign():string{
@@ -220,10 +220,10 @@ module egret.gui {
 		}
 
 		private verticalAlignChanged:boolean = false;
-		private _verticalAlign:string = VerticalAlign.TOP;
+		private _verticalAlign:string = consts.VerticalAlign.TOP;
 		/**
 		 * 文字的垂直对齐方式 ,请使用VerticalAlign中定义的常量。
-		 * 默认值：VerticalAlign.TOP。
+		 * 默认值：consts.VerticalAlign.TOP。
 		 * @member egret.gui.TextBase#verticalAlign
 		 */
 		public get verticalAlign():string{
