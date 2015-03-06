@@ -106,14 +106,4 @@ module mo{
         return stage;
     }
 
-    var _actionMag:egret.action.Manager;
-    export function runAction(action:egret.action.Action, target:any, paused?:boolean){
-        if(!_actionMag){
-            _actionMag = new egret.action.Manager();
-            tick(function (dt) {
-                _actionMag.update(dt / 1000);
-            })
-        }
-        _actionMag.addAction(action, target, paused);
-    }
 }

@@ -99,4 +99,15 @@ module mo_act{
     export function track(trackTarget:any, trackSpeed:number, callback:any,callTarget:any):Track{
         return Track.create.apply(Track, arguments);
     }
+
+    var _actionMag:egret.action.Manager;
+    export function runAction(action:egret.action.Action, target:any, paused?:boolean){
+        if(!_actionMag){
+            _actionMag = new egret.action.Manager();
+            mo.tick(function (dt) {
+                _actionMag.update(dt / 1000);
+            })
+        }
+        _actionMag.addAction(action, target, paused);
+    }
 }
