@@ -80,38 +80,38 @@ module egret {
             return egret_sin_map[value - 270];
         }
     }
-}
 
-var egret_sin_map = {};
-var egret_cos_map = {};
+    var egret_sin_map = {};
+    var egret_cos_map = {};
 
-for (var i = 0; i <= 90; i++) {
-    egret_sin_map[i] = Math.sin(i * egret.Matrix.DEG_TO_RAD);
-    egret_cos_map[i] = Math.cos(i * egret.Matrix.DEG_TO_RAD);
-}
+    for (var i = 0; i <= 90; i++) {
+        egret_sin_map[i] = Math.sin(i * egret.Matrix.DEG_TO_RAD);
+        egret_cos_map[i] = Math.cos(i * egret.Matrix.DEG_TO_RAD);
+    }
 
 //对未提供bind的浏览器实现bind机制
-if (!Function.prototype.bind) {
-    Function.prototype.bind = function (oThis) {
-        if (typeof this !== "function") {
-            // closest thing possible to the ECMAScript 5 internal IsCallable function
-            throw new TypeError(egret.Logger.getString(1029));
-        }
+    if (!Function.prototype.bind) {
+        Function.prototype.bind = function (oThis) {
+            if (typeof this !== "function") {
+                // closest thing possible to the ECMAScript 5 internal IsCallable function
+                throw new TypeError(egret.Logger.getString(1029));
+            }
 
-        var aArgs = Array.prototype.slice.call(arguments, 1),
-            fToBind = this,
-            fNOP = function () {
-            },
-            fBound = function () {
-                return fToBind.apply(this instanceof fNOP && oThis
-                        ? this
-                        : oThis,
-                    aArgs.concat(Array.prototype.slice.call(arguments)));
-            };
+            var aArgs = Array.prototype.slice.call(arguments, 1),
+                fToBind = this,
+                fNOP = function () {
+                },
+                fBound = function () {
+                    return fToBind.apply(this instanceof fNOP && oThis
+                            ? this
+                            : oThis,
+                        aArgs.concat(Array.prototype.slice.call(arguments)));
+                };
 
-        fNOP.prototype = this.prototype;
-        fBound.prototype = new fNOP();
+            fNOP.prototype = this.prototype;
+            fBound.prototype = new fNOP();
 
-        return fBound;
-    };
+            return fBound;
+        };
+    }
 }

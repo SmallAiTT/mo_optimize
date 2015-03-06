@@ -81,3 +81,5 @@ StageDelegate.ts
 ```
 其中，ByteArray.ts路径没改，但是空间名先改成egret_socket了。
 ```
+
+# 修改egret_sin_map、egret_cos_map
