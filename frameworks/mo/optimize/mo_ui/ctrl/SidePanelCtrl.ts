@@ -52,8 +52,8 @@ module mo_ui {
         runRight (cb, target?){
             var self = this;
             var pos = self.isRightBack ? self._rightDesignPos : self._center;
-            var act = mo.moveTo(0.25, pos).setEase(mo.Ease.backOut);
-            act = mo.sequence(act, mo.callFunc(function(){
+            var act = mo_act.moveTo(0.25, pos).setEase(mo_act.Ease.backOut);
+            act = mo_act.sequence(act, mo_act.callFunc(function(){
                 self.isRightBack = !self.isRightBack;
                 if(cb){
                     cb.apply(target);
@@ -66,8 +66,8 @@ module mo_ui {
             var self = this;
             var panel = self._leftPanel;
             panel.setVisible(true);
-            var act = mo.moveTo(0.25, self._leftDesignPos).setEase(mo.Ease.backOut);
-            act = mo.sequence(act, mo.callFunc(function(){
+            var act = mo_act.moveTo(0.25, self._leftDesignPos).setEase(mo_act.Ease.backOut);
+            act = mo_act.sequence(act, mo_act.callFunc(function(){
                 mo_evt.dispatchEvent([[mo_evt.actionDispatcher, self.actionEventType]], function(){
                     if(cb){
                         cb.apply(target);
@@ -80,8 +80,8 @@ module mo_ui {
         leftOut (cb, target){
             var self = this;
             var panel = self._leftPanel;
-            var act = mo.moveTo(0.25, self._hiddenPos).setEase(mo.Ease.sineInOut);
-            act = mo.sequence(act, mo.callFunc(function(){
+            var act = mo_act.moveTo(0.25, self._hiddenPos).setEase(mo_act.Ease.sineInOut);
+            act = mo_act.sequence(act, mo_act.callFunc(function(){
                 panel.setVisible(false);
                 if(cb){
                     cb.apply(target);

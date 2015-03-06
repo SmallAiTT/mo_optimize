@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2014/12/29.
  */
-module mo.action {
+module mo_act {
     export class Shake extends egret.action.ActionInterval {
         __className:string = "Shake";
         _initialX:number;

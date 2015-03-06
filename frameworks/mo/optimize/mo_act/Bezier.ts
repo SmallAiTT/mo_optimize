@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2014/12/29.
  */
-module mo.action {
+module mo_act {
     export class BezierBy extends egret.action.ActionInterval {
         __className:string = "BezierBy";
         _config:any;

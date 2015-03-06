@@ -111,8 +111,8 @@ module mo{
             var scaleTime = self.getScale();
             self.setScale(scaleTime * 0.85);
 
-            var scaleTo = mo.scaleTo(0.4, scaleTime).setEase(mo.Ease.backOut);
-            return mo.sequence(scaleTo, mo.callFunc(cb));
+            var scaleTo = mo_act.scaleTo(0.4, scaleTime).setEase(mo_act.Ease.backOut);
+            return mo_act.sequence(scaleTo, mo_act.callFunc(cb));
         }
         _onShowReady(){
             //子类在此处理显示完毕的操作

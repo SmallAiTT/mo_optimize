@@ -73,4 +73,45 @@ module mo_base{
         }
         return tempStr.replace(_tempStrRegExp, change);
     }
+
+
+    export var __ipCfgName:string = "";
+    export var __areaId:string = "";
+    export function _getLocalStorageKeyPre(key, withoutAreaPrefix){
+        withoutAreaPrefix = withoutAreaPrefix || false;
+        return formatStr("%s_%s_%s", __ipCfgName, (withoutAreaPrefix ? "" : __areaId), key)
+    }
+    /**
+     * localStorage api的进一步封装。
+     * @param key
+     * @param value
+     */
+    export function setLocalStorageItem(key, value, withoutAreaPrefix?:boolean){
+        var realKey = _getLocalStorageKeyPre(key, withoutAreaPrefix);
+        value = JSON.stringify(value);
+        egret.localStorage.setItem(realKey, value);
+    }
+    /**
+     * localStorage api的进一步封装。
+     * @param key
+     * @returns {*}
+     */
+    export function getLocalStorageItem(key, withoutAreaPrefix?:boolean):any{
+        var realKey = _getLocalStorageKeyPre(key, withoutAreaPrefix);
+        var value = egret.localStorage.getItem(realKey);
+        try{
+            return JSON.parse(value);
+        }catch(e){
+            return value;
+        }
+    }
+    /**
+     * localStorage api的进一步封装。
+     * @param key
+     * @returns {*}
+     */
+    export function removeLocalStorageItem(key, withoutAreaPrefix){
+        var realKey = _getLocalStorageKeyPre(key, withoutAreaPrefix);
+        egret.localStorage.removeItem(realKey);
+    }
 }

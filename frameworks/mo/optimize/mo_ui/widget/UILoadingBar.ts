@@ -345,10 +345,10 @@ module mo_ui {
         _beginShakeLight(){
             var self = this, barOption = self._barOption, lightWidget = barOption.lightWidget;
             if(lightWidget){
-                var seq = mo.repeatForever(
-                    mo.sequence(
-                        mo.fadeTo(0.3, 255),
-                        mo.fadeTo(0.3, 200)
+                var seq = mo_act.repeatForever(
+                    mo_act.sequence(
+                        mo_act.fadeTo(0.3, 255),
+                        mo_act.fadeTo(0.3, 200)
                     )
                 );
                 lightWidget.setVisible(true);
@@ -562,7 +562,7 @@ module mo_ui {
          */
         runProgressBy(duration, diffPercent){
             var percent = diffPercent + this.getPercent();
-            var progress = mo.action.ProgressTo.create(duration, percent);
+            var progress = mo_act.ProgressTo.create(duration, percent);
             this.runAction(progress);
         }
 
@@ -572,7 +572,7 @@ module mo_ui {
          * @param percent
          */
         runProgressTo(duration, percent){
-            var progress = mo.action.ProgressTo.create.apply(null, arguments);
+            var progress = mo_act.ProgressTo.create.apply(null, arguments);
             this.runAction(progress);
         }
 
@@ -583,7 +583,7 @@ module mo_ui {
          * @param toPercentage
          */
         runProgressFromTo(duration, fromPercentage, toPercentage){
-            var progress = mo.action.ProgressFromTo.create.apply(null, arguments);
+            var progress = mo_act.ProgressFromTo.create.apply(null, arguments);
             this.runAction(progress);
         }
 

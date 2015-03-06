@@ -321,6 +321,16 @@ module mo {
             _DataControllerApi.prototype.unregisterAll.apply(this, arguments);
         }
 
+        public static registerTargetByKey(key:any, listener:Function, target:any){
+            var clazz = this;
+            var eventStoreForClass = target._eventStoreForClass = target._eventStoreForClass || [];
+            for(var i = 0, li = eventStoreForClass.length; i < li; i++){
+                var info = eventStoreForClass[i];
+                if(clazz == info[0] && key == info[1] && listener == info[2]) return;
+            }
+            eventStoreForClass.push([clazz, key, listener]);
+            clazz.registerByKey(key, listener, target);
+        }
 
 
         static _registerQueue:any[] = [];
@@ -340,10 +350,10 @@ module mo {
         }
     }
 
-    export var _isScheduler4DataControllerStarted:boolean = false;
-    export function _startScheduler4DataController(){
-        if(mo._isScheduler4DataControllerStarted) return;
-        mo._isScheduler4DataControllerStarted = true;//这个一定要放在前面
+    var _isScheduler4DataControllerStarted:boolean = false;
+    var _startScheduler4DataController = function(){
+        if(_isScheduler4DataControllerStarted) return;
+        _isScheduler4DataControllerStarted = true;//这个一定要放在前面
         mo.tick(function(){
             var resetList = mo.DataController._resetList;
             while(resetList.length){
@@ -366,23 +376,6 @@ module mo {
             }
         }, mo.DataController);
 
-    }
+    };
 
-    export function registerClassByKey(target:any, clazz:any, key:string, listener:Function){
-        var eventStoreForClass = target._eventStoreForClass = target._eventStoreForClass || [];
-        for(var i = 0, li = eventStoreForClass.length; i < li; i++){
-            var info = eventStoreForClass[i];
-            if(clazz == info[0] && key == info[1] && listener == info[2]) return;
-        }
-        eventStoreForClass.push([clazz, key, listener]);
-        clazz.registerByKey(key, listener, target);
-    }
-
-    export function unregisterClass(target:any){
-        var eventStoreForClass:any[] = target._eventStoreForClass;
-        while(eventStoreForClass && eventStoreForClass.length > 0){
-            var info = eventStoreForClass.pop();
-            info[0].unregisterByKey(info[1], info[2], target);
-        }
-    }
 }

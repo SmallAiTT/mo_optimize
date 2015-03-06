@@ -1,6 +1,6 @@
 module mo_ui {
 
-    export class WidgetCtrl extends mo_base.Class{
+    export class WidgetCtrl extends mo_evt.EventDispatcher{
         static __className:string = "WidgetCtrl";
 
         _jsonPath:string;
@@ -72,25 +72,19 @@ module mo_ui {
         }
 
         _eventStoreForClass:any[];
-        resModuleName:string;
         dtor(){
             super.dtor();
             var self = this;
-            var eventStoreForClass:any[] = self._eventStoreForClass;
-            if(eventStoreForClass){
-                var l = eventStoreForClass.length;
-                for(var i = l - 1; i >= 0; --i){
-                    var info = eventStoreForClass[i];
-                    info[0].unregisterByKey(info[1], info[2], self);
-                }
-                eventStoreForClass.length = 0;
-            }
+            self.unregisterClass();
             self._setWidget(null);
         }
 
         registerClassByKey(clazz:any, key:string, listener:Function){
-            mo.registerClassByKey(this, clazz, key, listener);
+            mo.Node.prototype.registerClassByKey.apply(this, arguments);
         }
+        unregisterClass(){
+            mo.Node.prototype.unregisterClass.call(this);
+       }
 
 
         init(...args:any[]){

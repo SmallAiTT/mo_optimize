@@ -1,4 +1,4 @@
-module mo{
+module mo_act{
     export function callFunc(selector: Function, selectorTarget?: any, data?: any):egret.action.CallFunc{
         return egret.action.CallFunc.create.apply(egret.action.CallFunc, arguments);
     }
@@ -19,11 +19,11 @@ module mo{
         return egret.action.RepeatForever.create.apply(egret.action.RepeatForever, arguments);
     }
 
-    export function moveBy(duration: number, pos:Point):egret.action.MoveBy{
+    export function moveBy(duration: number, pos:mo.Point):egret.action.MoveBy{
         return egret.action.MoveBy.create(duration, pos.x, pos.y);
     }
 
-    export function moveTo(duration: number, pos:Point):egret.action.MoveTo{
+    export function moveTo(duration: number, pos:mo.Point):egret.action.MoveTo{
         return egret.action.MoveTo.create(duration, pos.x, pos.y);
     }
 
@@ -51,11 +51,11 @@ module mo{
         return egret.action.RotateTo.create.apply(egret.action.RotateTo, arguments);
     }
 
-    export function jumpBy(duration: number, pos:Point, height: any, jumps: any):egret.action.JumpBy{
+    export function jumpBy(duration: number, pos:mo.Point, height: any, jumps: any):egret.action.JumpBy{
         return egret.action.JumpBy.create(duration, pos.x, pos.y, height, jumps);
     }
 
-    export function jumpTo(duration: number, pos:Point, height: any, jumps: any):egret.action.JumpTo{
+    export function jumpTo(duration: number, pos:mo.Point, height: any, jumps: any):egret.action.JumpTo{
         return egret.action.JumpTo.create(duration, pos.x, pos.y, height, jumps);
     }
 
@@ -76,27 +76,27 @@ module mo{
     }
 
     //椭圆滚动
-    export function ellipse(duration:number, centerPosition:Point, aLength:number, cLength:number):mo.action.Ellipse{
-        return mo.action.Ellipse.create.apply(mo.action.Ellipse, arguments);
+    export function ellipse(duration:number, centerPosition:mo.Point, aLength:number, cLength:number):Ellipse{
+        return Ellipse.create.apply(Ellipse, arguments);
     }
 
     //晃动
-    export function shake(duration:number, strengthX:number, strengthY:number):mo.action.Shake{
-        return mo.action.Shake.create.apply(mo.action.Shake, arguments);
+    export function shake(duration:number, strengthX:number, strengthY:number):Shake{
+        return Shake.create.apply(Shake, arguments);
     }
 
     //bezier
-    export function bezierBy(t, c):mo.action.BezierBy{
-        return mo.action.BezierBy.create.apply(mo.action.BezierBy, arguments);
+    export function bezierBy(t, c):BezierBy{
+        return BezierBy.create.apply(BezierBy, arguments);
     }
 
     //bezier
-    export function bezierTo(t, c):mo.action.BezierTo{
-        return mo.action.BezierTo.create.apply(mo.action.BezierTo, arguments);
+    export function bezierTo(t, c):BezierTo{
+        return BezierTo.create.apply(BezierTo, arguments);
     }
 
     //bezier
-    export function track(trackTarget:any, trackSpeed:number, callback:any,callTarget:any):mo.action.Track{
-        return mo.action.Track.create.apply(mo.action.Track, arguments);
+    export function track(trackTarget:any, trackSpeed:number, callback:any,callTarget:any):Track{
+        return Track.create.apply(Track, arguments);
     }
 }

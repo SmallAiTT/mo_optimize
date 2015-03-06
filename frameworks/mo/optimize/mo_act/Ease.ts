@@ -1,4 +1,4 @@
-module mo{
+module mo_act{
     export class Ease extends egret.Ease{
         //get
         //getPowIn

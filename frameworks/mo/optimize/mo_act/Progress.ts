@@ -1,4 +1,4 @@
-module mo.action {
+module mo_act {
     export class ProgressTo extends egret.action.ActionInterval {
         __className:string = "ProgressTo";
         _to = 0;

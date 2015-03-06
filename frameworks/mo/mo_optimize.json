@@ -18,6 +18,8 @@
 
         "mo_arr/mo_arr.ts",
 
+        "mo_audio/mo_audio.ts",
+
 
         "mo_evt/Event.ts",
         "mo_evt/TouchEvent.ts",
@@ -37,6 +39,11 @@
 
         "mo/mvc/DataController.ts",
 
+        "mo_utils/mo_utils.ts",
+
+        "mo/net/Pomelo.ts",
+        "mo/net/Net.ts",
+
         "mo_act/Action.ts",
         "mo_act/Progress.ts",
         "mo_act/Ellipse.ts",
@@ -50,6 +57,21 @@
 
         "mo/layer/Layer.ts",
 
+        "mo/tray/Tray.ts",
+        "mo/tray/DisplayTray.ts",
+        "mo/tray/DlgTray.ts",
+        "mo/tray/ModuleTray.ts",
+        "mo/tray/MenuTray.ts",
+        "mo/tray/MsgTray.ts",
+        "mo/tray/TipTray.ts",
+        "mo/tray/GuideTray.ts",
+        "mo/tray/LoadingTray.ts",
+        "mo/tray/TopTray.ts",
+
+        "mo/layer/BlurMaskLayer.ts",
+
+        "mo/scene/Scene.ts",
+        "mo/scene/SceneMgr.ts",
 
         "mo_ui/widget/define/UIWidgetDefine.ts",
         "mo_ui/widget/define/UITextDefine.ts",

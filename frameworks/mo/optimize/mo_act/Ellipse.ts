@@ -1,7 +1,7 @@
-module mo.action {
+module mo_act {
     export class Ellipse extends egret.action.ActionInterval{
         static __className:string = "Ellipse";
-        _centerPosition:Point;
+        _centerPosition:mo.Point;
         _aLength:number;
         _cLength:number;
 
@@ -26,7 +26,7 @@ module mo.action {
                 var c = this._cLength;
                 var x = this._ellipseX(a, bx, c, dt);//调用之前的坐标计算函数来计算出坐标值
                 var y = this._ellipseY(a, by, c, dt);
-                this.target.setPosition(mo.Point.pAdd(startPosition, p(x - a, y)));//由于我们画计算出的椭圆你做值是以原点为中心的，所以需要加上我们设定的中心点坐标
+                this.target.setPosition(mo.Point.pAdd(startPosition, mo.p(x - a, y)));//由于我们画计算出的椭圆你做值是以原点为中心的，所以需要加上我们设定的中心点坐标
             }
         }
 

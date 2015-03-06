@@ -116,11 +116,11 @@ module mo_ui {
                 var seq:egret.action.Action;
                 if(index == 0){
                     var oldScale = buttonOption.oldScale || mo.p(1, 1);
-                    var scaleToAct = mo.scaleTo(0.03, oldScale.x, oldScale.y);
-                    var callFunc = mo.callFunc(function(){
+                    var scaleToAct = mo_act.scaleTo(0.03, oldScale.x, oldScale.y);
+                    var callFunc = mo_act.callFunc(function(){
                         buttonOption.oldScale = null;
                     });
-                    seq = buttonOption.act = mo.sequence(scaleToAct, callFunc);
+                    seq = buttonOption.act = mo_act.sequence(scaleToAct, callFunc);
                     self.runAction(seq);
                 }else if(index == 1){
                     var oldScale = buttonOption.oldScale;
@@ -136,7 +136,7 @@ module mo_ui {
                         oldScale.x = self.scaleX;
                         oldScale.y = self.scaleY;
                     }
-                    seq = buttonOption.act = mo.scaleTo(0.03, 1.1*self.scaleX, 1.1*self.scaleY);
+                    seq = buttonOption.act = mo_act.scaleTo(0.03, 1.1*self.scaleX, 1.1*self.scaleY);
                     self.runAction(seq);
                 }
             }

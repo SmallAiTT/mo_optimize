@@ -845,7 +845,7 @@ module mo {
             var self = this;
             self._removeTouchEvents();
             mo_evt.removeEventListeners(self);//是否所有注册在本身的监听
-            mo.unregisterClass(self);
+            self.unregisterClass();
 
             var eventType = "dtor";
             if(self.willTrigger(eventType)){
@@ -863,7 +863,22 @@ module mo {
         }
 
         registerClassByKey(clazz:any, key:any, listener:Function){
-            mo.registerClassByKey(this, clazz, key, listener);
+            var self:any = this;
+            var eventStoreForClass = self._eventStoreForClass = self._eventStoreForClass || [];
+            for(var i = 0, li = eventStoreForClass.length; i < li; i++){
+                var info = eventStoreForClass[i];
+                if(clazz == info[0] && key == info[1] && listener == info[2]) return;
+            }
+            eventStoreForClass.push([clazz, key, listener]);
+            clazz.registerByKey(key, listener, self);
+        }
+        unregisterClass(){
+            var self:any = this;
+            var eventStoreForClass:any[] = self._eventStoreForClass;
+            while(eventStoreForClass && eventStoreForClass.length > 0){
+                var info = eventStoreForClass.pop();
+                info[0].unregisterByKey(info[1], info[2], self);
+            }
         }
 
         getFactory():any{

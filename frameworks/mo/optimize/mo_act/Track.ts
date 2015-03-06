@@ -2,7 +2,7 @@
  * Created by Administrator on 2015/1/28.
  */
 
-module mo.action {
+module mo_act {
     export class Track extends egret.action.ActionInterval {
         __className:string = "Track";
         _omega:number = 500;

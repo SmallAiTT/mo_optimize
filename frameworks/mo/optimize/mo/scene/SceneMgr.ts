@@ -1,5 +1,4 @@
 module mo {
-    export var __resCfg:any = {};
     export var runningScene:any;
 
     export class SceneMgr extends mo_base.Class {
