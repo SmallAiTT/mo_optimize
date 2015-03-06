@@ -14,6 +14,8 @@ egret_string_code 已改
 ```
         "egret/utils/SAXParser.ts",
         "egret/utils/XML.ts",
+
+        "egret/events/EventPhase.ts",
 ```
 
 # 将不用的类挪出来
