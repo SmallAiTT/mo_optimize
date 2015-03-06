@@ -6,7 +6,7 @@ module mo_evt{
         ctx:any;
     }
 
-    export function removeEventListeners(dispatcher:egret.EventDispatcher, eventType?:string, useCapture?:boolean):void{
+    export function removeEventListeners(dispatcher:egret.evt.EventDispatcher, eventType?:string, useCapture?:boolean):void{
         var eventsMap:any = (<any>dispatcher)._eventsMap, captureEventsMap:any = (<any>dispatcher)._captureEventsMap;
         if(arguments.length == 0){//没有传参表示移除所有
             if(eventsMap){
@@ -44,7 +44,7 @@ module mo_evt{
     }
 
     //添加只执行一次的监听，监听响应之后就会被立即移除，注意，这种监听没办法重复添加，后续添加的会将之前添加的覆盖掉
-    export function addEventListenerOnce(dispatcher:egret.EventDispatcher, eventType:string, listener:Function, ctx?:any){
+    export function addEventListenerOnce(dispatcher:egret.evt.EventDispatcher, eventType:string, listener:Function, ctx?:any){
         removeEventListenerOnce.apply(mo_evt, arguments);//如果之前已经有注册了，就先移除掉
 
         var map = (<any>dispatcher)._eventsMap4Once;//
@@ -52,7 +52,7 @@ module mo_evt{
             map = (<any>dispatcher)._eventsMap4Once = {};//动态赋值
         }
 
-        var tempListener = function(event:egret.Event){
+        var tempListener = function(event:egret.evt.Event){
             removeEventListenerOnce(dispatcher, eventType, listener, ctx);
 
             listener.apply(ctx, arguments);
@@ -74,7 +74,7 @@ module mo_evt{
     }
 
     //移除只执行一次的监听
-    export function removeEventListenerOnce(dispatcher:egret.EventDispatcher, eventType:string, listener:Function, ctx?:any){
+    export function removeEventListenerOnce(dispatcher:egret.evt.EventDispatcher, eventType:string, listener:Function, ctx?:any){
         var map = (<any>dispatcher)._eventsMap4Once;//
         if(!map){
             map = (<any>dispatcher)._eventsMap4Once = {};//动态赋值
@@ -95,25 +95,25 @@ module mo_evt{
 
 
 
-    export function addBeforeEventListener(dispatcher:egret.EventDispatcher, eventType:string, listener:Function, ctx:any, useCapture?: boolean, priority?: number): void{
+    export function addBeforeEventListener(dispatcher:egret.evt.EventDispatcher, eventType:string, listener:Function, ctx:any, useCapture?: boolean, priority?: number): void{
         var args = Array.prototype.slice.call(arguments, 1);
         args[0] = Event.getBeforeEventType(eventType);
         dispatcher.addEventListener.apply(dispatcher, args);
     }
 
-    export function addAfterEventListener(dispatcher:egret.EventDispatcher, eventType:string, listener:Function, ctx:any, useCapture?: boolean, priority?: number): void{
+    export function addAfterEventListener(dispatcher:egret.evt.EventDispatcher, eventType:string, listener:Function, ctx:any, useCapture?: boolean, priority?: number): void{
         var args = Array.prototype.slice.call(arguments, 1);
         args[0] = Event.getAfterEventType(eventType);
         dispatcher.addEventListener.apply(dispatcher, args);
     }
 
-    export function removeBeforeEventListener(dispatcher:egret.EventDispatcher, eventType:string, listener:Function, ctx:any, useCapture?: boolean): void{
+    export function removeBeforeEventListener(dispatcher:egret.evt.EventDispatcher, eventType:string, listener:Function, ctx:any, useCapture?: boolean): void{
         var args = Array.prototype.slice.call(arguments, 1);
         args[0] = Event.getBeforeEventType(eventType);
         dispatcher.removeEventListener.apply(dispatcher, args);
     }
 
-    export function removeAfterEventListener(dispatcher:egret.EventDispatcher, eventType:string, listener:Function, ctx:any, useCapture?: boolean): void{
+    export function removeAfterEventListener(dispatcher:egret.evt.EventDispatcher, eventType:string, listener:Function, ctx:any, useCapture?: boolean): void{
         var args = Array.prototype.slice.call(arguments, 1);
         args[0] = Event.getAfterEventType(eventType);
         dispatcher.removeEventListener.apply(dispatcher, args);
@@ -123,7 +123,7 @@ module mo_evt{
         var length = dispatcherInfoArr.length;
         for(var i = 0; i < length; ++i){
             var info = dispatcherInfoArr[i];
-            var dispatcher:egret.EventDispatcher = info[0];
+            var dispatcher:egret.evt.EventDispatcher = info[0];
             var eventType = info[1];
             var beforeType = Event.getBeforeEventType(eventType);
             if(dispatcher.willTrigger(beforeType)){
@@ -136,7 +136,7 @@ module mo_evt{
         var result = dstFunc.apply(sender, args);
         for(var i = length - 1; i >= 0; --i){
             var info = dispatcherInfoArr[i];
-            var dispatcher:egret.EventDispatcher = info[0];
+            var dispatcher:egret.evt.EventDispatcher = info[0];
             var eventType = info[1];
             var afterType = Event.getAfterEventType(eventType);
             if(dispatcher.willTrigger(afterType)){
@@ -153,7 +153,7 @@ module mo_evt{
         var length = dispatcherInfoArr.length;
         for(var i = 0; i < length; ++i){
             var info = dispatcherInfoArr[i];
-            var dispatcher:egret.EventDispatcher = info[0];
+            var dispatcher:egret.evt.EventDispatcher = info[0];
             var eventType = info[1];
             var beforeType = Event.getBeforeEventType(eventType);
             if(dispatcher.willTrigger(beforeType)){
@@ -165,7 +165,7 @@ module mo_evt{
         args.push(function(){
             for(var i = length - 1; i >= 0; --i){
                 var info = dispatcherInfoArr[i];
-                var dispatcher:egret.EventDispatcher = info[0];
+                var dispatcher:egret.evt.EventDispatcher = info[0];
                 var eventType = info[1];
                 var afterType = Event.getAfterEventType(eventType);
                 if(dispatcher.willTrigger(afterType)){

@@ -33,9 +33,9 @@ module egret.gui {
 	 * @interface
 	 * @classdesc
 	 * 列表的集合类数据源对象接口
-	 * @extends egret.IEventDispatcher
+	 * @extends egret.evt.IEventDispatcher
 	 */
-	export interface ICollection extends IEventDispatcher{
+	export interface ICollection extends evt.IEventDispatcher{
 		/**
 		 * 此集合中的项目数。0 表示不包含项目，而 -1 表示长度未知。
 		 * @member egret.gui.ICollection#length

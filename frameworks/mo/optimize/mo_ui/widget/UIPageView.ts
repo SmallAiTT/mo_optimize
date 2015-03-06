@@ -328,12 +328,12 @@ module mo_ui {
             }
         }
 
-        onTouchBegan(event:egret.TouchEvent) {
+        onTouchBegan(event:egret.evt.TouchEvent) {
             var beganPos = mo.p(event.localX, event.localY);
             this.handlePressLogic(beganPos);
         }
 
-        onTouchMoved(event:egret.TouchEvent) {
+        onTouchMoved(event:egret.evt.TouchEvent) {
             this._touchMovePos.x = event.localX;
             this._touchMovePos.y = event.localY;
             this.handleMoveLogic(this._touchMovePos);
@@ -344,11 +344,11 @@ module mo_ui {
             }
         }
 
-        onTouchEnded(event:egret.TouchEvent) {
+        onTouchEnded(event:egret.evt.TouchEvent) {
             this.handleReleaseLogic();
         }
 
-        onTouchCancelled(event:egret.TouchEvent) {
+        onTouchCancelled(event:egret.evt.TouchEvent) {
             this.handleReleaseLogic();
         }
 

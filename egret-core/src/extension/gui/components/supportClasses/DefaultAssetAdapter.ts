@@ -62,7 +62,7 @@ module egret.gui {
                 var url:string = <string>source;
                 var loader:net.URLLoader = new net.URLLoader();
                 loader.dataFormat = net.URLLoaderDataFormat.TEXTURE;
-                loader.addEventListener(Event.COMPLETE, function(event:Event){
+                loader.addEventListener(evt.Event.COMPLETE, function(event:evt.Event){
                     content = loader.data;
                     compFunc.call(thisObject,content,source);
                 }, this);

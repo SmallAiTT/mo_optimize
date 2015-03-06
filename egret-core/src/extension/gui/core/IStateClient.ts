@@ -33,9 +33,9 @@ module egret.gui {
 	 * @interface
 	 * @classdesc
 	 * 具有视图状态的组件接口
-	 * @extends egret.IEventDispatcher
+	 * @extends egret.evt.IEventDispatcher
 	 */
-	export interface IStateClient extends IEventDispatcher{
+	export interface IStateClient extends evt.IEventDispatcher{
 		/**
 		 * 组件的当前视图状态。将其设置为 "" 或 null 可将组件重置回其基本状态。 
 		 * @member egret.gui.IStateClient#currentState

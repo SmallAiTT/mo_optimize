@@ -66,7 +66,7 @@ module mo_base{
 
     export var project:Project;
 
-    var _projectHandler = new egret.EventDispatcher();
+    var _projectHandler = new egret.evt.EventDispatcher();
     export function onProjectJsonOnce(listener:Function, ctx?:any){
         var func = function(){
             _projectHandler.removeEventListener("projectJson", func, null);
@@ -91,7 +91,7 @@ module mo_base{
             }
 
             if(_projectHandler.willTrigger("projectJson")){
-                var event = new egret.Event("projectJson");
+                var event = new egret.evt.Event("projectJson");
                 _projectHandler.dispatchEvent(event);
             }
             logger.resetByMode(project.debugMode)

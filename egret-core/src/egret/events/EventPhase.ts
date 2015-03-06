@@ -25,29 +25,29 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-module egret {
+module egret.evt {
 
     /**
-	 * @class egret.EventPhase
+	 * @class egret.evt.EventPhase
 	 * @classdesc
-     * EventPhase 类可为 Event 类的 eventPhase 属性提供值。
+     * evt.EventPhase 类可为 evt.Event 类的 eventPhase 属性提供值。
      * @link http://docs.egret-labs.org/post/manual/event/eventflow.html 事件的执行流程
      */
     export class EventPhase{
 
         /**
          * 捕获阶段，是事件流的第一个阶段。
-		 * @constant {number} egret.EventPhase.CAPTURING_PHASE
+		 * @constant {number} egret.evt.EventPhase.CAPTURING_PHASE
          */
         public static CAPTURING_PHASE:number = 1;
         /**
          * 目标阶段，是事件流的第二个阶段。
-		 * @constant {number} egret.EventPhase.AT_TARGET
+		 * @constant {number} egret.evt.EventPhase.AT_TARGET
          */
         public static AT_TARGET:number = 2;
         /**
          * 冒泡阶段，是事件流的第三个阶段。
-		 * @constant {number} egret.EventPhase.BUBBLING_PHASE
+		 * @constant {number} egret.evt.EventPhase.BUBBLING_PHASE
          */
         public static BUBBLING_PHASE:number = 3;
     }

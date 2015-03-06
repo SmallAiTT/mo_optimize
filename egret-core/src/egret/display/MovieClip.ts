@@ -29,7 +29,7 @@ module egret {
 
     /**
      * @class egret.MovieClip
-     * @classdesc 影片剪辑，可以通过影片剪辑播放序列帧动画。MovieClip 类从以下类继承而来：DisplayObject 和 EventDispatcher。不同于 DisplayObject 对象，MovieClip 对象拥有一个时间轴。
+     * @classdesc 影片剪辑，可以通过影片剪辑播放序列帧动画。MovieClip 类从以下类继承而来：DisplayObject 和 evt.EventDispatcher。不同于 DisplayObject 对象，MovieClip 对象拥有一个时间轴。
      * @extends egret.DisplayObject
      * @link http://docs.egret-labs.org/post/manual/displaycon/movieclip.html  MovieClip序列帧动画
      */
@@ -320,18 +320,18 @@ module egret {
                 this._nextFrameNum++;
                 if(this._nextFrameNum > this._totalFrames){
                     if(this._playTimes == -1){
-                        this._eventPool.push(Event.LOOP_COMPLETE);
+                        this._eventPool.push(evt.Event.LOOP_COMPLETE);
                         this._nextFrameNum = 1;
                     }
                     else{
                         this._playTimes--;
                         if(this._playTimes > 0){
-                            this._eventPool.push(Event.LOOP_COMPLETE);
+                            this._eventPool.push(evt.Event.LOOP_COMPLETE);
                             this._nextFrameNum = 1;
                         }
                         else{
                             this._nextFrameNum = this._totalFrames;
-                            this._eventPool.push(Event.COMPLETE);
+                            this._eventPool.push(evt.Event.COMPLETE);
                             this.stop();
                             break;
                         }
@@ -366,9 +366,9 @@ module egret {
 
                 for (var i = 0; i < length; i++) {
                     var event:string = eventPool.pop();
-                    if(event == Event.LOOP_COMPLETE){
+                    if(event == evt.Event.LOOP_COMPLETE){
                         isLoopComplete = true;
-                    }else if(event == Event.COMPLETE){
+                    }else if(event == evt.Event.COMPLETE){
                         isComplete = true;
                     }else{
                         this.dispatchEventWith(event);
@@ -376,10 +376,10 @@ module egret {
                 }
 
                 if(isLoopComplete){
-                    this.dispatchEventWith(Event.LOOP_COMPLETE);
+                    this.dispatchEventWith(evt.Event.LOOP_COMPLETE);
                 }
                 if(isComplete){
-                    this.dispatchEventWith(Event.COMPLETE);
+                    this.dispatchEventWith(evt.Event.COMPLETE);
                 }
             }
         }

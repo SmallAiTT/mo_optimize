@@ -26,18 +26,18 @@
  */
 
 
-module egret {
+module egret.evt {
 
     /**
-     * 用户在富文本中单击超链接时，对象将调度 TextEvent 对象。文本事件类型：TextEvent.LINK。
+     * 用户在富文本中单击超链接时，对象将调度 evt.TextEvent 对象。文本事件类型：evt.TextEvent.LINK。
      */
-    export class TextEvent extends Event {
+    export class TextEvent extends evt.Event {
 
         /**
-         * 创建一个 TextEvent 对象，其中包含有关文本事件的信息。
-         * @param type 事件的类型，可以作为 TextEvent.type 访问。
-         * @param bubbles 确定 Event 对象是否参与事件流的冒泡阶段。默认值为 false。
-         * @param cancelable 确定是否可以取消 Event 对象。默认值为 false。
+         * 创建一个 evt.TextEvent 对象，其中包含有关文本事件的信息。
+         * @param type 事件的类型，可以作为 evt.TextEvent.type 访问。
+         * @param bubbles 确定 evt.Event 对象是否参与事件流的冒泡阶段。默认值为 false。
+         * @param cancelable 确定是否可以取消 evt.Event 对象。默认值为 false。
          * @param text 用户输入的一个或多个文本字符。事件侦听器可以通过 text 属性访问此信息。
          */
         public constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, text:string = "") {
@@ -62,11 +62,11 @@ module egret {
          * @param type  事件类型
          * @param text  TextEvent对象的text赋值
          */
-        public static dispatchTextEvent(target:IEventDispatcher, type:string, text:string):void {
-            var eventClass:any = TextEvent;
-            var props:any = Event._getPropertyData(eventClass);
+        public static dispatchTextEvent(target:evt.IEventDispatcher, type:string, text:string):void {
+            var eventClass:any = evt.TextEvent;
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.text = text;
-            Event._dispatchByTarget(eventClass, target, type, props);
+            evt.Event._dispatchByTarget(eventClass, target, type, props);
         }
     }
 }

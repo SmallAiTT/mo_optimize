@@ -82,12 +82,12 @@ module egret {
                 {// 4 = "loaded"
                     if (xhr.status != loader._status) {
                         loader._status = xhr.status;
-                        HTTPStatusEvent.dispatchHTTPStatusEvent(loader, xhr.status);
+                        evt.HTTPStatusEvent.dispatchHTTPStatusEvent(loader, xhr.status);
                     }
 
                     if (xhr.status >= 400 || xhr.status == 0)
                     {//请求错误
-                        IOErrorEvent.dispatchIOErrorEvent(loader);
+                        evt.IOErrorEvent.dispatchIOErrorEvent(loader);
                     }
                     else {
                         onLoadComplete();
@@ -112,7 +112,7 @@ module egret {
                         loader.data = xhr.responseText;
                         break;
                 }
-                MainContext.__callAsync(Event.dispatchEvent, Event, loader, Event.COMPLETE);
+                MainContext.__callAsync(evt.Event.dispatchEvent, evt.Event, loader, evt.Event.COMPLETE);
             }
         }
 
@@ -131,14 +131,14 @@ module egret {
                 var sound = new Sound();
                 sound._setAudio(audio);
                 loader.data = sound;
-                MainContext.__callAsync(Event.dispatchEvent, Event, loader, Event.COMPLETE);
+                MainContext.__callAsync(evt.Event.dispatchEvent, evt.Event, loader, evt.Event.COMPLETE);
             };
 
             function soundPreloadErrorHandler(event) {
                 egret.clearTimeout(audio["__timeoutId"]);
                 audio.removeEventListener('canplaythrough', soundPreloadCanplayHandler, false);
                 audio.removeEventListener("error", soundPreloadErrorHandler, false);
-                IOErrorEvent.dispatchIOErrorEvent(loader);
+                evt.IOErrorEvent.dispatchIOErrorEvent(loader);
             };
         }
 
@@ -160,11 +160,11 @@ module egret {
 //                var sound = new Sound();
 //                sound._setAudio(audio);
 //                loader.data = sound;
-//                MainContext.__callAsync(Event.dispatchEvent, Event, loader, Event.COMPLETE);
+//                MainContext.__callAsync(evt.Event.dispatchEvent, evt.Event, loader, evt.Event.COMPLETE);
 //            }
 //
 //            function onErrorHandler() {
-//                IOErrorEvent.dispatchIOErrorEvent(loader);
+//                evt.IOErrorEvent.dispatchIOErrorEvent(loader);
 //            }
 //        }
 
@@ -208,13 +208,13 @@ module egret {
                 var texture:Texture = new Texture();
                 texture._setBitmapData(image);
                 loader.data = texture;
-                MainContext.__callAsync(Event.dispatchEvent, Event, loader, Event.COMPLETE);
+                MainContext.__callAsync(evt.Event.dispatchEvent, evt.Event, loader, evt.Event.COMPLETE);
             }
 
             function onLoadError(event) {
                 image.onerror = null;
                 image.onload = null;
-                IOErrorEvent.dispatchIOErrorEvent(loader);
+                evt.IOErrorEvent.dispatchIOErrorEvent(loader);
             }
         }
     }

@@ -1,6 +1,6 @@
 module res{
     var _ = res;
-    export class ResParser extends egret.EventDispatcher{
+    export class ResParser extends egret.evt.EventDispatcher{
         static TYPE:string = "base";
         /**
          * 加载项字典
@@ -21,8 +21,8 @@ module res{
             var loader:egret.net.URLLoader = self._recycler.pop();
             if(!loader){
                 loader = new egret.net.URLLoader();
-                loader.addEventListener(egret.Event.COMPLETE, self._onLoadFinish, self);
-                loader.addEventListener(egret.IOErrorEvent.IO_ERROR, self._onLoadFinish, self);
+                loader.addEventListener(egret.evt.Event.COMPLETE, self._onLoadFinish, self);
+                loader.addEventListener(egret.evt.IOErrorEvent.IO_ERROR, self._onLoadFinish, self);
             }
             loader.dataFormat = self._dataFormat;
             return loader;
@@ -86,7 +86,7 @@ module res{
         /**
          * 一项加载结束
          */
-        public _onLoadFinish(event:egret.Event):void{
+        public _onLoadFinish(event:egret.evt.Event):void{
             var self = this;
             var loader:egret.net.URLLoader = <egret.net.URLLoader> (event.target);
             var itemInfo:any = self._itemInfoDic[loader.hashCode];
@@ -96,7 +96,7 @@ module res{
             var resCfgItem:ResCfgItem = itemInfo.item;
             var compFunc:Function = itemInfo.cb;
             var result:any;
-            if(event.type==egret.Event.COMPLETE){
+            if(event.type==egret.evt.Event.COMPLETE){
                 result = self._cache(resCfgItem, self._parse(resCfgItem, data));
             }else{
                 self._handleError(event, resCfgItem);
@@ -104,7 +104,7 @@ module res{
             compFunc.call(itemInfo.ctx, result, resCfgItem);
         }
 
-        public _handleError(event:egret.IOErrorEvent, resCfgItem:ResCfgItem):void{
+        public _handleError(event:egret.evt.IOErrorEvent, resCfgItem:ResCfgItem):void{
             //在此处理异常信息
             if(resCfgItem.logEnabled) console.error(event);
         }

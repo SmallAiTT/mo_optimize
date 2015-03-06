@@ -34,10 +34,10 @@ module egret {
      * 使用 start() 方法来启动计时器。为 timer 事件添加事件侦听器，以便将代码设置为按计时器间隔运行。
      * 可以创建 Timer 对象以运行一次或按指定间隔重复运行，从而按计划执行代码。
      * 根据 Egret 的帧速率或运行时环境（可用内存和其他因素），运行时调度事件的间隔可能稍有不同。
-	 * @extends egret.EventDispatcher
+	 * @extends egret.evt.EventDispatcher
      * @link http://docs.egret-labs.org/post/manual/timer/timer.html Timer计时器
 	 */
-    export class Timer extends EventDispatcher {
+    export class Timer extends evt.EventDispatcher {
 
         /**
          * 创建一个 egret.Timer 对象
@@ -124,10 +124,10 @@ module egret {
             if(passTime>this.delay){
                 this.lastTime = now;
                 this._currentCount++;
-                TimerEvent.dispatchTimerEvent(this,TimerEvent.TIMER);
+                evt.TimerEvent.dispatchTimerEvent(this,evt.TimerEvent.TIMER);
                 if (this.repeatCount > 0 && this._currentCount >= this.repeatCount) {
                     this.stop();
-                    TimerEvent.dispatchTimerEvent(this,TimerEvent.TIMER_COMPLETE);
+                    evt.TimerEvent.dispatchTimerEvent(this,evt.TimerEvent.TIMER_COMPLETE);
                 }
             }
         }

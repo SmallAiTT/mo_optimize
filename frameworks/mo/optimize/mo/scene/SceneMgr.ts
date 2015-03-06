@@ -63,7 +63,7 @@ module mo {
                         var preScene = runningScene;
                         var scene = sceneClass.create();//创建scene
 
-                        var eventType = egret.Event.ADDED_TO_STAGE;
+                        var eventType = egret.evt.Event.ADDED_TO_STAGE;
                         var releaseModuleFunc = function(){
                             scene.removeEventListener(eventType, releaseModuleFunc, self);//记得移除监听
                             res.mgr.releaseModule();
@@ -199,7 +199,7 @@ module mo {
             }
 
             if(preScene){
-                var eventType = egret.Event.ADDED_TO_STAGE;
+                var eventType = egret.evt.Event.ADDED_TO_STAGE;
                 var releaseModuleFunc = function(){
                     preScene.removeEventListener(eventType, releaseModuleFunc, self);//记得移除监听
                     res.mgr.releaseModule();

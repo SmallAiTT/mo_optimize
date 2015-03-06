@@ -49,8 +49,8 @@ module egret.gui {
 		public constructor(){
 			super();
 			this.touchEnabled = true;
-			this.addEventListener(Event.ADDED_TO_STAGE,this.onAddedToStage,this);
-			this.addEventListener(Event.ADDED_TO_STAGE,this.checkInvalidateFlag,this);
+			this.addEventListener(evt.Event.ADDED_TO_STAGE,this.onAddedToStage,this);
+			this.addEventListener(evt.Event.ADDED_TO_STAGE,this.checkInvalidateFlag,this);
 			if(UIComponent.prototypeCanSet===undefined){
 				var chain:any = {};
 				UIComponent.prototypeCanSet = (chain.__proto__!==undefined);
@@ -63,8 +63,8 @@ module egret.gui {
 		/**
 		 * 添加到舞台
 		 */
-		private onAddedToStage(e:Event):void{
-			this.removeEventListener(Event.ADDED_TO_STAGE,this.onAddedToStage,this);
+		private onAddedToStage(e:evt.Event):void{
+			this.removeEventListener(evt.Event.ADDED_TO_STAGE,this.onAddedToStage,this);
 			this._initialize();
 			UIGlobals._initlize(this.stage);
 			if(this._nestLevel>0)
@@ -151,7 +151,7 @@ module egret.gui {
 			if(this.initializeCalled)
 				return;
 			if(UIGlobals.stage){
-				this.removeEventListener(Event.ADDED_TO_STAGE,this.onAddedToStage,this);
+				this.removeEventListener(evt.Event.ADDED_TO_STAGE,this.onAddedToStage,this);
 			}
 			this.initializeCalled = true;
 			UIEvent.dispatchUIEvent(this,UIEvent.INITIALIZE);
@@ -191,9 +191,9 @@ module egret.gui {
 			this._nestLevel = value;
 
 			if(this._nestLevel==0)
-				this.addEventListener(Event.ADDED_TO_STAGE,this.checkInvalidateFlag,this);
+				this.addEventListener(evt.Event.ADDED_TO_STAGE,this.checkInvalidateFlag,this);
 			else
-				this.removeEventListener(Event.ADDED_TO_STAGE,this.checkInvalidateFlag,this);
+				this.removeEventListener(evt.Event.ADDED_TO_STAGE,this.checkInvalidateFlag,this);
 			this._updateChildrenNestLevel();
 		}
 		/**
@@ -523,7 +523,7 @@ module egret.gui {
 		/**
 		 * 检查属性失效标记并应用
 		 */
-		private checkInvalidateFlag(event:Event=null):void{
+		private checkInvalidateFlag(event:evt.Event=null):void{
 			if(!UIGlobals._layoutManager)
 				return;
 			if(this._invalidatePropertiesFlag){

@@ -59,9 +59,9 @@ module egret {
             this.stageText.addEventListener("blur", this.onBlurHandler, this);
             this.stageText.addEventListener("focus", this.onFocusHandler, this);
             this.stageText.addEventListener("updateText", this.updateTextHandler, this);
-            this._text.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onMouseDownHandler, this);
-            egret.MainContext.instance.stage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onStageDownHandler, this);
-            egret.MainContext.instance.stage.addEventListener(egret.Event.RESIZE, this.onResize, this);
+            this._text.addEventListener(egret.evt.TouchEvent.TOUCH_TAP, this.onMouseDownHandler, this);
+            egret.MainContext.instance.stage.addEventListener(egret.evt.TouchEvent.TOUCH_TAP, this.onStageDownHandler, this);
+            egret.MainContext.instance.stage.addEventListener(egret.evt.Event.RESIZE, this.onResize, this);
         }
 
         public _removeStageText():void {
@@ -75,9 +75,9 @@ module egret {
             this.stageText.removeEventListener("blur", this.onBlurHandler, this);
             this.stageText.removeEventListener("focus", this.onFocusHandler, this);
             this.stageText.removeEventListener("updateText", this.updateTextHandler, this);
-            this._text.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onMouseDownHandler, this);
-            egret.MainContext.instance.stage.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onStageDownHandler, this);
-            egret.MainContext.instance.stage.removeEventListener(egret.Event.RESIZE, this.onResize, this);
+            this._text.removeEventListener(egret.evt.TouchEvent.TOUCH_TAP, this.onMouseDownHandler, this);
+            egret.MainContext.instance.stage.removeEventListener(egret.evt.TouchEvent.TOUCH_TAP, this.onStageDownHandler, this);
+            egret.MainContext.instance.stage.removeEventListener(egret.evt.Event.RESIZE, this.onResize, this);
         }
 
         private onResize():void {
@@ -102,7 +102,7 @@ module egret {
         }
 
         //点中文本
-        private onMouseDownHandler(event:TouchEvent) {
+        private onMouseDownHandler(event:evt.TouchEvent) {
             event.stopPropagation();
 
             if (!this._text._visible) {
@@ -115,7 +115,7 @@ module egret {
         }
 
         //未点中文本
-        private onStageDownHandler(event:TouchEvent) {
+        private onStageDownHandler(event:evt.TouchEvent) {
             this.stageText._hide();
 
             this.showText();
@@ -139,7 +139,7 @@ module egret {
         private updateTextHandler(event):void {
             this.resetText();
             //抛出change事件
-            this._text.dispatchEvent(new egret.Event(egret.Event.CHANGE));
+            this._text.dispatchEvent(new egret.evt.Event(egret.evt.Event.CHANGE));
         }
 
         private resetText():void {

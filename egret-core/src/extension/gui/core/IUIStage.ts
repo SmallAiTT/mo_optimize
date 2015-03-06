@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.IUIStage
 	 * @interface
 	 * @classdesc
-	 * @extends egret.IEventDispatcher
+	 * @extends egret.evt.IEventDispatcher
 	 */
-	export interface IUIStage extends IEventDispatcher{
+	export interface IUIStage extends evt.IEventDispatcher{
 		/**
 		 * 弹出窗口层容器。
 		 * @member egret.gui.IUIStage#popUpContainer

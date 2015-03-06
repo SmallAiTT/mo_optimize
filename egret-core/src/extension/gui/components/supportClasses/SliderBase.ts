@@ -118,7 +118,7 @@ module egret.gui {
 		private animationEndHandler(animation:Animation):void{
 			this.setValue(this.slideToValue);
 			
-			this.dispatchEventWith(Event.CHANGE);
+			this.dispatchEventWith(evt.Event.CHANGE);
             UIEvent.dispatchUIEvent(this,UIEvent.CHANGE_END);
 		}
 		/**
@@ -129,15 +129,15 @@ module egret.gui {
 			
 			this.setValue(this.nearestValidValue(this.pendingValue, this.snapInterval));
 			
-			this.dispatchEventWith(Event.CHANGE);
+			this.dispatchEventWith(evt.Event.CHANGE);
             UIEvent.dispatchUIEvent(this,UIEvent.CHANGE_END);
 		}
 		
 		/**
 		 * @method egret.gui.SliderBase#thumb_mouseDownHandler
-		 * @param event {TouchEvent} 
+		 * @param event {evt.TouchEvent}
 		 */
-		public thumb_mouseDownHandler(event:TouchEvent):void{
+		public thumb_mouseDownHandler(event:evt.TouchEvent):void{
 			if (this.animator && this.animator.isPlaying)
 				this.stopAnimation();
 			
@@ -172,7 +172,7 @@ module egret.gui {
                 TrackBaseEvent.dispatchTrackBaseEvent(this,TrackBaseEvent.THUMB_DRAG);
 				if (this.liveDragging == true){
 					this.setValue(newValue);
-					this.dispatchEventWith(Event.CHANGE);
+					this.dispatchEventWith(evt.Event.CHANGE);
 				}
 				else{
 					this.pendingValue = newValue;
@@ -182,21 +182,21 @@ module egret.gui {
 		
 		/**
 		 * @method egret.gui.SliderBase#stage_mouseUpHandler
-		 * @param event {Event} 
+		 * @param event {evt.Event}
 		 */
-		public stage_mouseUpHandler(event:Event):void{
+		public stage_mouseUpHandler(event:evt.Event):void{
 			super.stage_mouseUpHandler(event);
 			if ((this.liveDragging == false) && (this.value != this.pendingValue)){
 				this.setValue(this.pendingValue);
-				this.dispatchEventWith(Event.CHANGE);
+				this.dispatchEventWith(evt.Event.CHANGE);
 			}
 		}
 		
 		/**
 		 * @method egret.gui.SliderBase#track_mouseDownHandler
-		 * @param event {TouchEvent} 
+		 * @param event {evt.TouchEvent}
 		 */
-		public track_mouseDownHandler(event:TouchEvent):void{
+		public track_mouseDownHandler(event:evt.TouchEvent):void{
 			if (!this.enabled)
 				return;
 			var thumbW:number = (this.thumb) ? this.thumb.width : 0;
@@ -225,7 +225,7 @@ module egret.gui {
 				}
 				else{
 					this.setValue(newValue);
-					this.dispatchEventWith(Event.CHANGE);
+					this.dispatchEventWith(evt.Event.CHANGE);
 				}
 			}
 

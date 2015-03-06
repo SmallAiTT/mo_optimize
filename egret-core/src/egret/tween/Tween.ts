@@ -31,10 +31,10 @@ module egret {
 	 * @class egret.Tween
 	 * @classdesc
      * Tween是Egret的动画缓动类
-	 * @extends egret.EventDispatcher
+	 * @extends egret.evt.EventDispatcher
      * @link http://docs.egret-labs.org/post/manual/anim/tween.html Tween缓动动画
 	 */
-    export class Tween extends EventDispatcher {
+    export class Tween extends evt.EventDispatcher {
 		/**
          * 不做特殊处理
 		 * @constant {number} egret.Tween.NONE

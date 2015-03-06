@@ -33,7 +33,7 @@ module egret {
      * @classdesc
      * * Stage 类代表主绘图区，表示显示 Egret 内容的整个区域。
      * 可以以全局方式访问 Stage 对象(egret.MainContext.instance.stage)。也可以利用 DisplayObject 实例的 stage 属性进行访问。
-     * Stage 类具有多个祖代类 -- DisplayObjectContainer、DisplayObject 和 EventDispatcher，属性和方法便是从这些类继承而来的。从这些继承的许多属性和方法不适用于 Stage 对象。
+     * Stage 类具有多个祖代类 -- DisplayObjectContainer、DisplayObject 和 evt.EventDispatcher，属性和方法便是从这些类继承而来的。从这些继承的许多属性和方法不适用于 Stage 对象。
      * @link http://docs.egret-labs.org/jksubj/scalemode.html 理解Egret中的各种屏幕适配策略并做出选择
      */
     export class Stage extends DisplayObjectContainer {
@@ -102,7 +102,7 @@ module egret {
             //重新设置屏幕适配策略
             this.setResolutionPolicy();
             //触发Event.RESIZE事件
-            this.dispatchEventWith(Event.RESIZE);
+            this.dispatchEventWith(evt.Event.RESIZE);
         }
 
         /**

@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.StateChangeEvent
 	 * @classdesc
 	 * 视图状态改变事件
-	 * @extends egret.Event
+	 * @extends egret.evt.Event
 	 */	
-	export class StateChangeEvent extends Event{
+	export class StateChangeEvent extends evt.Event{
 		/**
 		 * 当前视图状态已经改变 
 		 * @constant egret.gui.StateChangeEvent.CURRENT_STATE_CHANGE
@@ -79,13 +79,13 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.StateChangeEvent.dispatchStateChangeEvent
          */
-        public static dispatchStateChangeEvent(target:IEventDispatcher,type:string,
+        public static dispatchStateChangeEvent(target:evt.IEventDispatcher,type:string,
                                                oldState:string = null,newState:string = null):void{
             var eventClass:any = StateChangeEvent;
-            var props:any = Event._getPropertyData(eventClass);
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.oldState = oldState;
             props.newState = newState;
-            Event._dispatchByTarget(eventClass,target,type,props);
+            evt.Event._dispatchByTarget(eventClass,target,type,props);
         }
 	}
 	

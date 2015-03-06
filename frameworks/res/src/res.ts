@@ -51,11 +51,11 @@ module res{
 
     export var root:string = "";//资源根路径
 
-    export class ResEvent extends egret.Event{
+    export class ResEvent extends egret.evt.Event{
         static RES_LOADED = "resLoaded";
         resCfgItem:ResCfgItem;
     }
-    export var dispatcher = new egret.EventDispatcher();
+    export var dispatcher = new egret.evt.EventDispatcher();
 
     export  function setAlias(alias:string, realName:string):void{
         _aliasCfg[alias] = realName;

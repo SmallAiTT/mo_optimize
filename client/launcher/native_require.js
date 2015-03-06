@@ -73,21 +73,21 @@ egret_native.egretInit = function () {
 
 egret_native.loadVersion = function (completeCall) {
     var ctr = egret.MainContext.instance.netContext._versionCtr;
-    ctr.addEventListener(egret.IOErrorEvent.IO_ERROR, loadError, this);
-    ctr.addEventListener(egret.Event.COMPLETE, loadComplete, this);
+    ctr.addEventListener(egret.evt.IOErrorEvent.IO_ERROR, loadError, this);
+    ctr.addEventListener(egret.evt.Event.COMPLETE, loadComplete, this);
     ctr.fetchVersion();
 
     function loadError(e) {
-        ctr.removeEventListener(egret.IOErrorEvent.IO_ERROR, loadError, this);
-        ctr.removeEventListener(egret.Event.COMPLETE, loadComplete, this);
+        ctr.removeEventListener(egret.evt.IOErrorEvent.IO_ERROR, loadError, this);
+        ctr.removeEventListener(egret.evt.Event.COMPLETE, loadComplete, this);
 
         console.log("版本控制文件加载失败，请检查");
         completeCall();
     }
 
     function loadComplete(e) {
-        ctr.removeEventListener(egret.IOErrorEvent.IO_ERROR, loadError, this);
-        ctr.removeEventListener(egret.Event.COMPLETE, loadComplete, this);
+        ctr.removeEventListener(egret.evt.IOErrorEvent.IO_ERROR, loadError, this);
+        ctr.removeEventListener(egret.evt.Event.COMPLETE, loadComplete, this);
 
         completeCall();
     }

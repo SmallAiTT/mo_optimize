@@ -110,7 +110,7 @@ module egret {
                 canvas.id = "egretCanvas";
                 container.appendChild(canvas);
             }
-            egret.MainContext.instance.stage.addEventListener(egret.Event.RESIZE, this.onResize, this);
+            egret.MainContext.instance.stage.addEventListener(egret.evt.Event.RESIZE, this.onResize, this);
             return canvas;
         }
 

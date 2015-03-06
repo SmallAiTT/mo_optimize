@@ -301,10 +301,10 @@ module egret.gui {
 			if (renderer == null)
 				return;
 
-			renderer.addEventListener(TouchEvent.TOUCH_BEGIN, this._item_touchBeginHandler, this);
+			renderer.addEventListener(evt.TouchEvent.TOUCH_BEGIN, this._item_touchBeginHandler, this);
 			//由于ItemRenderer.mouseChildren有可能不为false，在鼠标按下时会出现切换素材的情况，
 			//导致target变化而无法抛出原生的click事件,所以此处监听MouseUp来抛出ItemClick事件。
-			renderer.addEventListener(TouchEvent.TOUCH_END, this._item_touchEndHandler, this);
+			renderer.addEventListener(evt.TouchEvent.TOUCH_END, this._item_touchEndHandler, this);
 		}
 		/**
 		 * 数据源发生刷新
@@ -322,8 +322,8 @@ module egret.gui {
 			if (renderer == null)
 				return;
 
-			renderer.removeEventListener(TouchEvent.TOUCH_BEGIN, this._item_touchBeginHandler, this);
-			renderer.removeEventListener(TouchEvent.TOUCH_END, this._item_touchEndHandler, this);
+			renderer.removeEventListener(evt.TouchEvent.TOUCH_BEGIN, this._item_touchBeginHandler, this);
+			renderer.removeEventListener(evt.TouchEvent.TOUCH_END, this._item_touchEndHandler, this);
 		}
 		/**
 		 * 是否捕获ItemRenderer以便在MouseUp时抛出ItemClick事件
@@ -334,16 +334,16 @@ module egret.gui {
 		/**
 		 * 鼠标在项呈示器上按下
 		 * @method egret.gui.List#item_mouseDownHandler
-		 * @param event {TouchEvent} 
+		 * @param event {evt.TouchEvent}
 		 */
-		public _item_touchBeginHandler(event:TouchEvent):void{
+		public _item_touchBeginHandler(event:evt.TouchEvent):void{
 			if (event._isDefaultPrevented)
 				return;
 
 			var itemRenderer:IItemRenderer = <IItemRenderer> (event.currentTarget);
 			this._mouseDownItemRenderer = itemRenderer;
-			UIGlobals.stage.addEventListener(TouchEvent.TOUCH_END,this.stage_touchEndHandler,this);
-			UIGlobals.stage.addEventListener(Event.LEAVE_STAGE,this.stage_touchEndHandler,this);
+			UIGlobals.stage.addEventListener(evt.TouchEvent.TOUCH_END,this.stage_touchEndHandler,this);
+			UIGlobals.stage.addEventListener(evt.Event.LEAVE_STAGE,this.stage_touchEndHandler,this);
 		}
 		/**
 		 * 计算当前的选中项列表
@@ -405,7 +405,7 @@ module egret.gui {
 		/**
 		 * 鼠标在项呈示器上弹起，抛出ItemClick事件。
 		 */	
-		public _item_touchEndHandler(event:TouchEvent):void{
+		public _item_touchEndHandler(event:evt.TouchEvent):void{
 			var itemRenderer:IItemRenderer = <IItemRenderer> (event.currentTarget);
 			if(itemRenderer!=this._mouseDownItemRenderer)
                 return;
@@ -430,9 +430,9 @@ module egret.gui {
 		/**
 		 * 鼠标在舞台上弹起
 		 */		
-		private stage_touchEndHandler(event:Event):void{
-			UIGlobals.stage.removeEventListener(TouchEvent.TOUCH_END,this.stage_touchEndHandler,this);
-			UIGlobals.stage.removeEventListener(Event.LEAVE_STAGE,this.stage_touchEndHandler,this);
+		private stage_touchEndHandler(event:evt.Event):void{
+			UIGlobals.stage.removeEventListener(evt.TouchEvent.TOUCH_END,this.stage_touchEndHandler,this);
+			UIGlobals.stage.removeEventListener(evt.Event.LEAVE_STAGE,this.stage_touchEndHandler,this);
 			this._mouseDownItemRenderer = null;
 		}
 	}

@@ -24,39 +24,39 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-module egret {
+module egret.evt {
     /**
-     * @class egret.ProgressEvent
+     * @class egret.evt.ProgressEvent
      * @classdesc
-     * 当加载操作已开始或套接字已接收到数据时，将调度 ProgressEvent 对象。
-     * 有两种类型的进程事件：ProgressEvent.PROGRESS 和 ProgressEvent.SOCKET_DATA。
+     * 当加载操作已开始或套接字已接收到数据时，将调度 evt.ProgressEvent 对象。
+     * 有两种类型的进程事件：evt.ProgressEvent.PROGRESS 和 evt.ProgressEvent.SOCKET_DATA。
      */
-    export class ProgressEvent extends egret.Event {
+    export class ProgressEvent extends egret.evt.Event {
 
         /**
-         * @constant {string} egret.ProgressEvent.PROGRESS
+         * @constant {string} egret.evt.ProgressEvent.PROGRESS
          */
         public static PROGRESS:string = "progress";
 
         /**
-         * @constant {string} egret.ProgressEvent.SOCKET_DATA
+         * @constant {string} egret.evt.ProgressEvent.SOCKET_DATA
          */
         public static SOCKET_DATA:string = "socketData";
 
         /**
          * 在侦听器处理事件时加载的项数或字节数。
-         * @member {number} egret.ProgressEvent#bytesLoaded
+         * @member {number} egret.evt.ProgressEvent#bytesLoaded
          */
         public bytesLoaded:number = 0;
         /**
          * 如果加载过程成功，将加载的总项数或总字节数。
-         * @member {number} egret.ProgressEvent#bytesTotal
+         * @member {number} egret.evt.ProgressEvent#bytesTotal
          */
         public bytesTotal:number = 0;
 
         /**
-         * 创建一个 egret.ProgressEvent 对象
-         * @method egret.ProgressEvent#constructor
+         * 创建一个 egret.evt.ProgressEvent 对象
+         * @method egret.evt.ProgressEvent#constructor
          * @param type {string} 事件类型
          * @param bubbles {boolean}
          * @param cancelable {boolean}
@@ -72,14 +72,14 @@ module egret {
 
         /**
          * 使用指定的EventDispatcher对象来抛出Event事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
-         * @method egret.ProgressEvent.dispatchIOErrorEvent
-         * @param target {egret.IEventDispatcher} 派发事件目标
+         * @method egret.evt.ProgressEvent.dispatchIOErrorEvent
+         * @param target {egret.evt.IEventDispatcher} 派发事件目标
          * @param type {string} 事件类型
          * @param bytesLoaded {number} 加载的项数或字节数
          * @param bytesTotal {number} 加载的总项数或总字节数
          */
-        public static dispatchProgressEvent(target:IEventDispatcher, type:string, bytesLoaded:number = 0, bytesTotal:number = 0):void {
-            Event._dispatchByTarget(ProgressEvent, target, type, {"bytesLoaded":bytesLoaded, "bytesTotal":bytesTotal});
+        public static dispatchProgressEvent(target:evt.IEventDispatcher, type:string, bytesLoaded:number = 0, bytesTotal:number = 0):void {
+            evt.Event._dispatchByTarget(evt.ProgressEvent, target, type, {"bytesLoaded":bytesLoaded, "bytesTotal":bytesTotal});
         }
     }
 }

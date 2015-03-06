@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.PropertyChangeEvent
 	 * @classdesc
 	 * 对象的一个属性发生更改时传递到事件侦听器的事件
-	 * @extends egret.Event
+	 * @extends egret.evt.Event
 	 */
-	export class PropertyChangeEvent extends Event{
+	export class PropertyChangeEvent extends evt.Event{
 		/**
 		 * 属性改变 
 		 * @constant egret.gui.PropertyChangeEvent.PROPERTY_CHANGE
@@ -103,17 +103,17 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.PropertyChangeEvent.dispatchPropertyChangeEvent
          */
-        public static dispatchPropertyChangeEvent(target:IEventDispatcher,kind:string = null,
+        public static dispatchPropertyChangeEvent(target:evt.IEventDispatcher,kind:string = null,
                                                   property:any = null,oldValue:any = null,
                                                   newValue:any = null,source:any = null):void{
             var eventClass:any = PropertyChangeEvent;
-            var props:any = Event._getPropertyData(eventClass);
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.kind = kind;
             props.property = property;
             props.oldValue = oldValue;
             props.newValue = newValue;
             props.source = source;
-            Event._dispatchByTarget(eventClass,target,PropertyChangeEvent.PROPERTY_CHANGE,props);
+            evt.Event._dispatchByTarget(eventClass,target,PropertyChangeEvent.PROPERTY_CHANGE,props);
         }
 	}
 }

@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.ListEvent
 	 * @classdesc
 	 * 列表事件
-	 * @extends egret.TouchEvent
+	 * @extends egret.evt.TouchEvent
 	 */	
-	export class ListEvent extends TouchEvent{
+	export class ListEvent extends evt.TouchEvent{
 		/**
 		 * 指示用户执行了将鼠标指针从控件中某个项呈示器上移开的操作 
 		 * @constant egret.gui.ListEvent.ITEM_ROLL_OUT
@@ -104,10 +104,10 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.ListEvent.dispatchListEvent
          */
-        public static dispatchListEvent(target:IEventDispatcher,type:string,touchEvent:TouchEvent=null,
+        public static dispatchListEvent(target:evt.IEventDispatcher,type:string,touchEvent:evt.TouchEvent=null,
                                         itemIndex:number = -1,item:any = null,itemRenderer:IItemRenderer = null):void{
             var eventClass:any = ListEvent;
-            var props:any = Event._getPropertyData(eventClass);
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.touchPointID = touchEvent.touchPointID;
             props._stageX = touchEvent.stageX;
             props._stageY = touchEvent.stageY;
@@ -118,7 +118,7 @@ module egret.gui {
             props.itemIndex = itemIndex;
             props.item = item;
             props.itemRenderer = itemRenderer;
-            Event._dispatchByTarget(eventClass,target,type,props);
+            evt.Event._dispatchByTarget(eventClass,target,type,props);
         }
 	}
 }

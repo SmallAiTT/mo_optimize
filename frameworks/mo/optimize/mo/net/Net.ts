@@ -155,12 +155,12 @@ module mo{
             var urlRequest = new egret.net.URLRequest(httpUrl + params);
             urlLoader.dataFormat = egret.net.URLLoaderDataFormat.TEXT;
             urlLoader.load(urlRequest);
-            urlLoader.addEventListener(egret.Event.COMPLETE, function(event){
+            urlLoader.addEventListener(egret.evt.Event.COMPLETE, function(event){
                 if(needToStopWaiting) mo_utils.stopWaiting();
                 logger.debug(route, "--->", event.type, urlLoader.data);
                 self._handlerRouteResult(route, JSON.parse(urlLoader.data), cb, ctx);
             }, null);
-            urlLoader.addEventListener(egret.IOErrorEvent.IO_ERROR, function(event){
+            urlLoader.addEventListener(egret.evt.IOErrorEvent.IO_ERROR, function(event){
                 if(needToStopWaiting) mo_utils.stopWaiting();
                 logger.debug(route, "--->", event.type, urlLoader.data);
                 self._onClose2(event);

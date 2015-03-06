@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.DropDownController
 	 * @classdesc
 	 * 用于处理因用户交互而打开和关闭下拉列表的操作的控制器
-	 * @extends egret.EventDispatcher
+	 * @extends egret.evt.EventDispatcher
 	 */	
-	export class DropDownController extends EventDispatcher{
+	export class DropDownController extends evt.EventDispatcher{
 		/**
 		 * 构造函数
 		 * @method egret.gui.DropDownController#constructor
@@ -145,7 +145,7 @@ module egret.gui {
 				if (isNaN(this.rollOverOpenDelay))
 					this.openButton.addEventListener(UIEvent.BUTTON_DOWN, this._openButton_buttonDownHandler, this);
 				else
-					this.openButton.addEventListener(TouchEvent.TOUCH_ROLL_OVER, this._openButton_rollOverHandler, this);
+					this.openButton.addEventListener(evt.TouchEvent.TOUCH_ROLL_OVER, this._openButton_rollOverHandler, this);
 			}
 		}
 		/**
@@ -156,7 +156,7 @@ module egret.gui {
 				if (isNaN(this.rollOverOpenDelay))
 					this.openButton.removeEventListener(UIEvent.BUTTON_DOWN, this._openButton_buttonDownHandler, this);
 				else
-					this.openButton.removeEventListener(TouchEvent.TOUCH_ROLL_OVER, this._openButton_rollOverHandler, this);
+					this.openButton.removeEventListener(evt.TouchEvent.TOUCH_ROLL_OVER, this._openButton_rollOverHandler, this);
 			}
 		}
 		/**
@@ -165,11 +165,11 @@ module egret.gui {
 		private addCloseTriggers():void{
 			if (UIGlobals.stage){
 				if (isNaN(this.rollOverOpenDelay)){
-					UIGlobals.stage.addEventListener(TouchEvent.TOUCH_BEGIN, this.stage_mouseDownHandler, this);
-					UIGlobals.stage.addEventListener(TouchEvent.TOUCH_END, this.stage_mouseUpHandler_noRollOverOpenDelay, this);
+					UIGlobals.stage.addEventListener(evt.TouchEvent.TOUCH_BEGIN, this.stage_mouseDownHandler, this);
+					UIGlobals.stage.addEventListener(evt.TouchEvent.TOUCH_END, this.stage_mouseUpHandler_noRollOverOpenDelay, this);
 				}
 				else{
-					UIGlobals.stage.addEventListener(TouchEvent.TOUCH_MOVE, this.stage_mouseMoveHandler, this);
+					UIGlobals.stage.addEventListener(evt.TouchEvent.TOUCH_MOVE, this.stage_mouseMoveHandler, this);
 				}
 				
 				this.addCloseOnResizeTrigger();
@@ -182,13 +182,13 @@ module egret.gui {
 		private removeCloseTriggers():void{
 			if (UIGlobals.stage){
 				if (isNaN(this.rollOverOpenDelay)){
-					UIGlobals.stage.removeEventListener(TouchEvent.TOUCH_BEGIN, this.stage_mouseDownHandler, this);
-					UIGlobals.stage.removeEventListener(TouchEvent.TOUCH_END, this.stage_mouseUpHandler_noRollOverOpenDelay, this);
+					UIGlobals.stage.removeEventListener(evt.TouchEvent.TOUCH_BEGIN, this.stage_mouseDownHandler, this);
+					UIGlobals.stage.removeEventListener(evt.TouchEvent.TOUCH_END, this.stage_mouseUpHandler_noRollOverOpenDelay, this);
 				}
 				else{
-					UIGlobals.stage.removeEventListener(TouchEvent.TOUCH_MOVE, this.stage_mouseMoveHandler, this);
-					UIGlobals.stage.removeEventListener(TouchEvent.TOUCH_END, this.stage_mouseUpHandler, this);
-					UIGlobals.stage.removeEventListener(Event.LEAVE_STAGE, this.stage_mouseUpHandler, this);
+					UIGlobals.stage.removeEventListener(evt.TouchEvent.TOUCH_MOVE, this.stage_mouseMoveHandler, this);
+					UIGlobals.stage.removeEventListener(evt.TouchEvent.TOUCH_END, this.stage_mouseUpHandler, this);
+					UIGlobals.stage.removeEventListener(evt.Event.LEAVE_STAGE, this.stage_mouseUpHandler, this);
 				}
 				
 				this.removeCloseOnResizeTrigger();
@@ -200,14 +200,14 @@ module egret.gui {
 		 */	
 		private addCloseOnResizeTrigger():void{
 			if (this.closeOnResize)
-				UIGlobals.stage.addEventListener(Event.RESIZE, this.stage_resizeHandler, this);
+				UIGlobals.stage.addEventListener(evt.Event.RESIZE, this.stage_resizeHandler, this);
 		}
 		/**
 		 * 移除舞台尺寸改变的事件监听
 		 */
 		private removeCloseOnResizeTrigger():void{
 			if (this.closeOnResize)
-				UIGlobals.stage.removeEventListener(Event.RESIZE, this.stage_resizeHandler, this);
+				UIGlobals.stage.removeEventListener(evt.Event.RESIZE, this.stage_resizeHandler, this);
 		}
 		/**
 		 * 检查鼠标是否在DropDown或者openButton区域内。
@@ -281,9 +281,9 @@ module egret.gui {
 		/**
 		 * openButton上按下鼠标事件
 		 * @method egret.gui.DropDownController#_openButton_buttonDownHandler
-		 * @param event {Event} 
+		 * @param event {evt.Event}
 		 */		
-		public _openButton_buttonDownHandler(event:Event):void{
+		public _openButton_buttonDownHandler(event:evt.Event):void{
 			if (this.isOpen)
 				this.closeDropDown(true);
 			else{
@@ -294,34 +294,34 @@ module egret.gui {
 		/**
 		 * openButton上鼠标经过事件
 		 * @method egret.gui.DropDownController#_openButton_rollOverHandler
-		 * @param event {TouchEvent} 
+		 * @param event {evt.TouchEvent}
 		 */		
-		public _openButton_rollOverHandler(event:TouchEvent):void{
+		public _openButton_rollOverHandler(event:evt.TouchEvent):void{
 			if (this.rollOverOpenDelay == 0)
 				this.openDropDownHelper();
 			else{
-				this.openButton.addEventListener(TouchEvent.TOUCH_ROLL_OUT, this.openButton_rollOutHandler, this);
+				this.openButton.addEventListener(evt.TouchEvent.TOUCH_ROLL_OUT, this.openButton_rollOutHandler, this);
 				this.rollOverOpenDelayTimer = new Timer(this.rollOverOpenDelay, 1);
-				this.rollOverOpenDelayTimer.addEventListener(TimerEvent.TIMER_COMPLETE, this.rollOverDelay_timerCompleteHandler, this);
+				this.rollOverOpenDelayTimer.addEventListener(evt.TimerEvent.TIMER_COMPLETE, this.rollOverDelay_timerCompleteHandler, this);
 				this.rollOverOpenDelayTimer.start();
 			}
 		}
 		/**
 		 * openButton上鼠标移出事件
 		 */	
-		private openButton_rollOutHandler(event:TouchEvent):void{
+		private openButton_rollOutHandler(event:evt.TouchEvent):void{
 			if (this.rollOverOpenDelayTimer && this.rollOverOpenDelayTimer.running){
 				this.rollOverOpenDelayTimer.stop();
 				this.rollOverOpenDelayTimer = null;
 			}
 			
-			this.openButton.removeEventListener(TouchEvent.TOUCH_ROLL_OUT, this.openButton_rollOutHandler, this);
+			this.openButton.removeEventListener(evt.TouchEvent.TOUCH_ROLL_OUT, this.openButton_rollOutHandler, this);
 		}
 		/**
 		 * 到达鼠标移入等待延迟打开的时间。
 		 */		
-		private rollOverDelay_timerCompleteHandler(event:TimerEvent):void{
-			this.openButton.removeEventListener(TouchEvent.TOUCH_ROLL_OUT, this.openButton_rollOutHandler, this);
+		private rollOverDelay_timerCompleteHandler(event:evt.TimerEvent):void{
+			this.openButton.removeEventListener(evt.TouchEvent.TOUCH_ROLL_OUT, this.openButton_rollOutHandler, this);
 			this.rollOverOpenDelayTimer = null;
 			
 			this.openDropDownHelper();
@@ -329,9 +329,9 @@ module egret.gui {
 		/**
 		 * 舞台上鼠标按下事件
 		 * @method egret.gui.DropDownController#stage_mouseDownHandler
-		 * @param event {Event} 
+		 * @param event {evt.Event}
 		 */		
-		public stage_mouseDownHandler(event:Event):void{
+		public stage_mouseDownHandler(event:evt.Event):void{
 			
 			if (this.mouseIsDown){
 				this.mouseIsDown = false;
@@ -362,17 +362,17 @@ module egret.gui {
 		/**
 		 * 舞台上鼠标移动事件
 		 * @method egret.gui.DropDownController#stage_mouseMoveHandler
-		 * @param event {Event} 
+		 * @param event {evt.Event}
 		 */		
-		public stage_mouseMoveHandler(event:Event):void{
+		public stage_mouseMoveHandler(event:evt.Event):void{
 			var target:DisplayObject = <DisplayObject><any> (event.target);
 			var containedTarget:boolean = this.isTargetOverDropDownOrOpenButton(target);
 			
 			if (containedTarget)
 				return;
-			if (event instanceof TouchEvent && (<TouchEvent><any> event).touchDown){
-				UIGlobals.stage.addEventListener(TouchEvent.TOUCH_END,this.stage_mouseUpHandler,this);
-				UIGlobals.stage.addEventListener(Event.LEAVE_STAGE,this.stage_mouseUpHandler,this);
+			if (event instanceof evt.TouchEvent && (<evt.TouchEvent><any> event).touchDown){
+				UIGlobals.stage.addEventListener(evt.TouchEvent.TOUCH_END,this.stage_mouseUpHandler,this);
+				UIGlobals.stage.addEventListener(evt.Event.LEAVE_STAGE,this.stage_mouseUpHandler,this);
 				return;
 			}
 			this.closeDropDown(true);
@@ -380,9 +380,9 @@ module egret.gui {
 		/**
 		 * 舞台上鼠标弹起事件
 		 * @method egret.gui.DropDownController#stage_mouseUpHandler_noRollOverOpenDelay
-		 * @param event {Event} 
+		 * @param event {evt.Event}
 		 */		
-		public stage_mouseUpHandler_noRollOverOpenDelay(event:Event):void{
+		public stage_mouseUpHandler_noRollOverOpenDelay(event:evt.Event):void{
 			
 			if (this.mouseIsDown){
 				this.mouseIsDown = false;
@@ -392,14 +392,14 @@ module egret.gui {
 		/**
 		 * 舞台上鼠标弹起事件
 		 * @method egret.gui.DropDownController#stage_mouseUpHandler
-		 * @param event {Event} 
+		 * @param event {evt.Event}
 		 */	
-		public stage_mouseUpHandler(event:Event):void{
+		public stage_mouseUpHandler(event:evt.Event):void{
 			var target:DisplayObject = <DisplayObject><any> (event.target);
 			var containedTarget:boolean = this.isTargetOverDropDownOrOpenButton(target);
 			if (containedTarget){
-				UIGlobals.stage.removeEventListener(TouchEvent.TOUCH_END, this.stage_mouseUpHandler, this);
-				UIGlobals.stage.removeEventListener(Event.LEAVE_STAGE, this.stage_mouseUpHandler, this);
+				UIGlobals.stage.removeEventListener(evt.TouchEvent.TOUCH_END, this.stage_mouseUpHandler, this);
+				UIGlobals.stage.removeEventListener(evt.Event.LEAVE_STAGE, this.stage_mouseUpHandler, this);
 				return;
 			}
 			
@@ -408,15 +408,15 @@ module egret.gui {
 		/**
 		 * 舞台尺寸改变事件
 		 * @method egret.gui.DropDownController#stage_resizeHandler
-		 * @param event {Event} 
+		 * @param event {evt.Event}
 		 */		
-		public stage_resizeHandler(event:Event):void{
+		public stage_resizeHandler(event:evt.Event):void{
 			this.closeDropDown(true);
 		}    
 		/**
 		 * 舞台上鼠标滚轮事件
 		 */		
-		private stage_mouseWheelHandler(event:TouchEvent):void{
+		private stage_mouseWheelHandler(event:evt.TouchEvent):void{
 			
 			if (this.dropDown && !((<DisplayObjectContainer><any> (this.dropDown)).contains(<DisplayObject><any> (event.target)) && event.isDefaultPrevented()))
 				this.closeDropDown(false);

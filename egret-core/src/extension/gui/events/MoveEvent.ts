@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.MoveEvent
 	 * @classdesc
 	 * 移动事件
-	 * @extends egret.Event
+	 * @extends egret.evt.Event
 	 */
-	export class MoveEvent extends Event{
+	export class MoveEvent extends evt.Event{
 		/**
 		 * @constant egret.gui.MoveEvent.MOVE
 		 */
@@ -73,12 +73,12 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.MoveEvent.dispatchMoveEvent
          */
-        public static dispatchMoveEvent(target:IEventDispatcher,oldX:number = NaN, oldY:number = NaN):void{
+        public static dispatchMoveEvent(target:evt.IEventDispatcher,oldX:number = NaN, oldY:number = NaN):void{
             var eventClass:any = MoveEvent;
-            var props:any = Event._getPropertyData(eventClass);
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.oldX = oldX;
             props.oldY = oldY;
-            Event._dispatchByTarget(eventClass,target,MoveEvent.MOVE,props);
+            evt.Event._dispatchByTarget(eventClass,target,MoveEvent.MOVE,props);
         }
 	}
 }

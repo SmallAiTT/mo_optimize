@@ -53,7 +53,7 @@ module egret.gui {
 
         public _setText(value: string) {
             super._setText(value);
-            this.dispatchEvent(new Event(Event.CHANGE));
+            this.dispatchEvent(new evt.Event(evt.Event.CHANGE));
         }
 		
 		/**

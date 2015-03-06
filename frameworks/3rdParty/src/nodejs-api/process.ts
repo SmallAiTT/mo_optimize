@@ -9,8 +9,8 @@ module process{
      * @param ctx
      */
     export function nextTick(cb:(...args)=>void, ctx?:any, ...args:any[]):void{
-        egret.MainContext.instance.addEventListener(egret.Event.FINISH_RENDER, function(){
-            egret.MainContext.instance.removeEventListener(egret.Event.FINISH_RENDER, arguments.callee, null);
+        egret.MainContext.instance.addEventListener(egret.evt.Event.FINISH_RENDER, function(){
+            egret.MainContext.instance.removeEventListener(egret.evt.Event.FINISH_RENDER, arguments.callee, null);
             cb.apply(ctx, args);
         }, null);
     }

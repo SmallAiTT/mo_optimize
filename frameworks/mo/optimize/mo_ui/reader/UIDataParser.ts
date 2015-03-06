@@ -5,7 +5,7 @@ module mo_ui._parser{
         static TYPE:string = "ui";
 
         //@override
-        public _onLoadFinish(event:egret.Event):void{
+        public _onLoadFinish(event:egret.evt.Event):void{
             var self = this;
             var loader:egret.net.URLLoader = <egret.net.URLLoader> (event.target);
             var itemInfo:any = self._itemInfoDic[loader.hashCode];
@@ -14,7 +14,7 @@ module mo_ui._parser{
             self._recycler.push(loader);
             var resCfgItem:res.ResCfgItem = itemInfo.item;
             var compFunc:Function = itemInfo.cb;
-            if(event.type==egret.Event.COMPLETE){
+            if(event.type==egret.evt.Event.COMPLETE){
                 var uiRootData:UIRootData = self._parse(resCfgItem, data);
                 var dirPath = path.dirname(resCfgItem.url);
                 var resArr = [];

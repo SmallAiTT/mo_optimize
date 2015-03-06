@@ -2,7 +2,7 @@
  * Created by SmallAiTT on 2015/3/4.
  */
 module mo_evt{
-    export class EventDispatcher extends egret.EventDispatcher{
+    export class EventDispatcher extends egret.evt.EventDispatcher{
         public static __className:string = "EventDispatcher";//通过className，可以方便程序许多操作
 
         __className:string;//通过create方法进行赋值

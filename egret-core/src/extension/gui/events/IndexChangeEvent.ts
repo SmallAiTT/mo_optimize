@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.IndexChangeEvent
 	 * @classdesc
 	 * 索引改变事件
-	 * @extends egret.Event
+	 * @extends egret.evt.Event
 	 */	
-	export class IndexChangeEvent extends Event{
+	export class IndexChangeEvent extends evt.Event{
 		/**
 		 * 指示索引已更改 
 		 * @constant egret.gui.IndexChangeEvent.CHANGE
@@ -81,13 +81,13 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.IndexChangeEvent.dispatchIndexChangeEvent
          */
-        public static dispatchIndexChangeEvent(target:IEventDispatcher,type:string,
+        public static dispatchIndexChangeEvent(target:evt.IEventDispatcher,type:string,
                                                oldIndex:number = -1,newIndex:number = -1,cancelable:boolean = false):boolean{
             var eventClass:any = IndexChangeEvent;
-            var props:any = Event._getPropertyData(eventClass);
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.oldIndex = oldIndex;
             props.newIndex = newIndex;
-            return Event._dispatchByTarget(eventClass,target,type,props,false,cancelable);
+            return evt.Event._dispatchByTarget(eventClass,target,type,props,false,cancelable);
         }
 	}
 }

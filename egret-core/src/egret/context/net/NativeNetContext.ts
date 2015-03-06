@@ -81,11 +81,11 @@ module egret {
                 var promise = PromiseObject.create();
                 promise.onSuccessFunc = function (getted_str) {
                     loader.data = getted_str;
-                    callLater(Event.dispatchEvent, Event, loader, Event.COMPLETE);
+                    callLater(evt.Event.dispatchEvent, evt.Event, loader, evt.Event.COMPLETE);
                 };
                 promise.onErrorFunc = function (error_code) {
                     egret.Logger.infoWithErrorId(1019, error_code);
-                    IOErrorEvent.dispatchIOErrorEvent(loader);
+                    evt.IOErrorEvent.dispatchIOErrorEvent(loader);
                 };
                 egret_native.requireHttp(url, this.urlData, promise);
             }
@@ -103,7 +103,7 @@ module egret {
                 var promise = PromiseObject.create();
                 promise.onSuccessFunc = onLoadComplete;
                 promise.onErrorFunc = function () {
-                    egret.IOErrorEvent.dispatchIOErrorEvent(loader);
+                    egret.evt.IOErrorEvent.dispatchIOErrorEvent(loader);
                 };
                 egret_native.download(url, url, promise);
             }
@@ -112,7 +112,7 @@ module egret {
                 self.saveVersion(url);
                 var content = egret_native.readFileSync(url);
                 loader.data = content;
-                Event.dispatchEvent(loader, Event.COMPLETE);
+                evt.Event.dispatchEvent(loader, evt.Event.COMPLETE);
             }
         }
 
@@ -148,7 +148,7 @@ module egret {
                 var promise = PromiseObject.create();
                 promise.onSuccessFunc = onLoadComplete;
                 promise.onErrorFunc = function () {
-                    egret.IOErrorEvent.dispatchIOErrorEvent(loader);
+                    egret.evt.IOErrorEvent.dispatchIOErrorEvent(loader);
                 };
                 egret_native.download(url, url, promise);
             }
@@ -158,7 +158,7 @@ module egret {
                 var sound = new egret.Sound();
                 sound.path = url;
                 loader.data = sound;
-                Event.dispatchEvent(loader, Event.COMPLETE);
+                evt.Event.dispatchEvent(loader, evt.Event.COMPLETE);
             }
         }
 
@@ -188,7 +188,7 @@ module egret {
                 var promise = egret.PromiseObject.create();
                 promise.onSuccessFunc = onLoadComplete;
                 promise.onErrorFunc = function () {
-                    egret.IOErrorEvent.dispatchIOErrorEvent(loader);
+                    egret.evt.IOErrorEvent.dispatchIOErrorEvent(loader);
                 };
                 egret_native.download(url, url, promise);
             }
@@ -202,10 +202,10 @@ module egret {
                         var texture = new egret.Texture();
                         texture._setBitmapData(bitmapData);
                         loader.data = texture;
-                        egret.Event.dispatchEvent(loader, egret.Event.COMPLETE);
+                        egret.evt.Event.dispatchEvent(loader, egret.evt.Event.COMPLETE);
                     };
                     promise.onErrorFunc = function () {
-                        egret.IOErrorEvent.dispatchIOErrorEvent(loader);
+                        egret.evt.IOErrorEvent.dispatchIOErrorEvent(loader);
                     };
                     egret_native.Texture.addTextureUnsyn(url, promise);
                 }
@@ -214,7 +214,7 @@ module egret {
                     var texture = new egret.Texture();
                     texture._setBitmapData(bitmapData);
                     loader.data = texture;
-                    egret.Event.dispatchEvent(loader, egret.Event.COMPLETE);
+                    egret.evt.Event.dispatchEvent(loader, egret.evt.Event.COMPLETE);
                 }
             }
         }

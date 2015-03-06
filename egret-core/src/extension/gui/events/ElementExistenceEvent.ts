@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.ElementExistenceEvent
 	 * @classdesc
 	 * Group添加或移除元素时分派的事件。
-	 * @extends egret.Event
+	 * @extends egret.evt.Event
 	 */	
-	export class ElementExistenceEvent extends Event{
+	export class ElementExistenceEvent extends evt.Event{
 		/**
 		 * 元素添加 
 		 * @constant egret.gui.ElementExistenceEvent.ELEMENT_ADD
@@ -76,13 +76,13 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.ElementExistenceEvent.dispatchElementExistenceEvent
          */
-        public static dispatchElementExistenceEvent(target:IEventDispatcher,type:string,
+        public static dispatchElementExistenceEvent(target:evt.IEventDispatcher,type:string,
                                                     element:IVisualElement = null,index:number = -1):void{
             var eventClass:any = ElementExistenceEvent;
-            var props:any = Event._getPropertyData(eventClass);
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.element = element;
             props.index = index;
-            Event._dispatchByTarget(eventClass,target,type,props);
+            evt.Event._dispatchByTarget(eventClass,target,type,props);
         }
 	}
 	

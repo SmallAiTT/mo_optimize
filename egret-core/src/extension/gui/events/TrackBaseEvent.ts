@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.TrackBaseEvent
 	 * @classdesc
 	 * 从TrackBase组件分派的事件。
-	 * @extends egret.Event
+	 * @extends egret.evt.Event
 	 */	
-	export class TrackBaseEvent extends Event{
+	export class TrackBaseEvent extends evt.Event{
 		/**
 		 * 正在拖拽滑块
 		 * @constant egret.gui.TrackBaseEvent.THUMB_DRAG
@@ -68,9 +68,9 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.TrackBaseEvent.dispatchTrackBaseEvent
          */
-        public static dispatchTrackBaseEvent(target:IEventDispatcher,type:string):void{
+        public static dispatchTrackBaseEvent(target:evt.IEventDispatcher,type:string):void{
             var eventClass:any = TrackBaseEvent;
-            Event._dispatchByTarget(eventClass,target,type);
+            evt.Event._dispatchByTarget(eventClass,target,type);
         }
 	}
 	

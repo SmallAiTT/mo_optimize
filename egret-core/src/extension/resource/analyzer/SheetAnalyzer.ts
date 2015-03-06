@@ -49,13 +49,13 @@ module RES {
         /**
          * 一项加载结束
          */
-        public onLoadFinish(event:egret.Event):void{
+        public onLoadFinish(event:egret.evt.Event):void{
             var loader:egret.net.URLLoader = <egret.net.URLLoader> (event.target);
             var data:any = this.resItemDic[loader.hashCode];
             delete this.resItemDic[loader.hashCode];
             var resItem:ResourceItem = data.item;
             var compFunc:Function = data.func;
-            resItem.loaded = (event.type==egret.Event.COMPLETE);
+            resItem.loaded = (event.type==egret.evt.Event.COMPLETE);
             if(resItem.loaded){
                 if(typeof(loader.data)=="string"){
                     resItem.loaded = false;

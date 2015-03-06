@@ -422,7 +422,7 @@ module mo_ui {
 
 
         //@override
-        public onTouchLongClicked(event:egret.TouchEvent) {
+        public onTouchLongClicked(event:egret.evt.TouchEvent) {
             this.longClickEvent();
         }
 
@@ -630,7 +630,7 @@ module mo_ui {
             return null;
         }
 
-        onTouchBegan(event:egret.TouchEvent){
+        onTouchBegan(event:egret.evt.TouchEvent){
             this.setFocused(true);
             event.stopPropagation();
         }
@@ -638,7 +638,7 @@ module mo_ui {
             this.setFocused(true);
             super._moving();
         }
-        _end(event:egret.TouchEvent){
+        _end(event:egret.evt.TouchEvent){
             var self = this, touchOption = self._touchOption;
             self.setFocused(false);
             if(touchOption.isIn && touchOption.canTap) {

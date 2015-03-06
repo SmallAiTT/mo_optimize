@@ -45,36 +45,36 @@ module egret.gui {
 		public constructor(){
 			super();
             this.touchEnabled = false;
-			this.addEventListener(Event.ADDED_TO_STAGE,this.onAddToStage,this);
-			this.addEventListener(Event.REMOVED_FROM_STAGE,this.onRemoveFromStage,this);
+			this.addEventListener(evt.Event.ADDED_TO_STAGE,this.onAddToStage,this);
+			this.addEventListener(evt.Event.REMOVED_FROM_STAGE,this.onRemoveFromStage,this);
 		}
 		/**
 		 * 添加到舞台
 		 */		
-		private onAddToStage(event:Event=null):void{
+		private onAddToStage(event:evt.Event=null):void{
             if(UIGlobals._uiStage){
                 throw new Error(Logger.getString(3013));
             }
             UIGlobals._uiStage = this;
             if(this._autoResize){
-                this.stage.addEventListener(Event.RESIZE,this.onResize,this);
+                this.stage.addEventListener(evt.Event.RESIZE,this.onResize,this);
                 this.onResize();
             }
 		}
 		/**
 		 * 从舞台移除
 		 */		
-		private onRemoveFromStage(event:Event):void{
+		private onRemoveFromStage(event:evt.Event):void{
             UIGlobals._uiStage = null;
             if(this._autoResize){
-                this.stage.removeEventListener(Event.RESIZE,this.onResize,this);
+                this.stage.removeEventListener(evt.Event.RESIZE,this.onResize,this);
             }
 		}
 		
 		/**
 		 * 舞台尺寸改变
 		 */		
-		private onResize(event:Event=null):void{
+		private onResize(event:evt.Event=null):void{
 			this._setWidth(this.stage.stageWidth);
 			this._setHeight(this.stage.stageHeight);
 		}
@@ -96,11 +96,11 @@ module egret.gui {
             if(!this.stage)
                 return;
             if(this._autoResize){
-                this.stage.addEventListener(Event.RESIZE,this.onResize,this);
+                this.stage.addEventListener(evt.Event.RESIZE,this.onResize,this);
                 this.onResize();
             }
             else{
-                this.stage.removeEventListener(Event.RESIZE,this.onResize,this);
+                this.stage.removeEventListener(evt.Event.RESIZE,this.onResize,this);
             }
         }
 
@@ -414,7 +414,7 @@ module egret.gui {
 		public _elementRemoved(element:IVisualElement, index:number, notifyListeners:boolean=true):void{
 			if(notifyListeners){
 				//PopUpManager需要监听这个事件
-                Event.dispatchEvent(element,"removeFromUIStage")
+                evt.Event.dispatchEvent(element,"removeFromUIStage")
 			}
 			super._elementRemoved(element,index,notifyListeners);
 		}

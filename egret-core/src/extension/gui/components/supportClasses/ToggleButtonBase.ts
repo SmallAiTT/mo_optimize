@@ -108,7 +108,7 @@ module egret.gui {
 			if(!this._autoSelected||!this.enabled)
 				return;
 			this.selected = !this.selected;
-			this.dispatchEventWith(Event.CHANGE);
+			this.dispatchEventWith(evt.Event.CHANGE);
 		}
 	}
 	

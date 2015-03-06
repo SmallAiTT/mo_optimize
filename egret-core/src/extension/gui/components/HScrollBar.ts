@@ -98,7 +98,7 @@ module egret.gui {
         public _animationUpdateHandler(animation: Animation): void {
             this.pendingValue = animation.currentValue["value"];
             this.value = animation.currentValue["value"];
-            this.dispatchEventWith(Event.CHANGE);
+            this.dispatchEventWith(evt.Event.CHANGE);
         }
 
         /**

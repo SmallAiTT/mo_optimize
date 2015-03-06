@@ -29,7 +29,7 @@
 module egret {
     /**
      * @class egret.DisplayObject
-     * @extends egret.EventDispatcher
+     * @extends egret.evt.EventDispatcher
      * @classdesc DisplayObject 类是可放在显示列表中的所有对象的基类。该显示列表管理运行时显示的所有对象。使用 DisplayObjectContainer 类排列显示列表中的显示对象。
      * DisplayObjectContainer 对象可以有子显示对象，而其他显示对象是“叶”节点，只有父级和同级，没有子级。
      * DisplayObject 类支持基本功能（如对象的 x 和 y 位置），也支持更高级的对象属性（如它的转换矩阵），所有显示对象都继承自 DisplayObject 类。
@@ -43,7 +43,7 @@ module egret {
      * getBounds();
      * @link http://docs.egret-labs.org/post/manual/displayobj/aboutdisplayobj.html 显示对象的基本概念
      */
-    export class DisplayObject extends EventDispatcher implements RenderData {
+    export class DisplayObject extends evt.EventDispatcher implements RenderData {
 
         public __hack_local_matrix:any = null;
 
@@ -1045,8 +1045,8 @@ module egret {
 
         public addEventListener(type:string, listener:Function, thisObject:any, useCapture:boolean = false, priority:number = 0):void {
             super.addEventListener(type, listener, thisObject, useCapture, priority);
-            var isEnterFrame:boolean = (type == Event.ENTER_FRAME);
-            if (isEnterFrame || type == Event.RENDER) {
+            var isEnterFrame:boolean = (type == evt.Event.ENTER_FRAME);
+            if (isEnterFrame || type == evt.Event.RENDER) {
                 var list:Array<any> = isEnterFrame ? DisplayObject._enterFrameCallBackList : DisplayObject._renderCallBackList;
                 this._insertEventBin(list, listener, thisObject, priority, this);
             }
@@ -1054,14 +1054,14 @@ module egret {
 
         public removeEventListener(type:string, listener:Function, thisObject:any, useCapture:boolean = false):void {
             super.removeEventListener(type, listener, thisObject, useCapture);
-            var isEnterFrame:boolean = (type == Event.ENTER_FRAME);
-            if (isEnterFrame || type == Event.RENDER) {
+            var isEnterFrame:boolean = (type == evt.Event.ENTER_FRAME);
+            if (isEnterFrame || type == evt.Event.RENDER) {
                 var list:Array<any> = isEnterFrame ? DisplayObject._enterFrameCallBackList : DisplayObject._renderCallBackList;
                 this._removeEventBin(list, listener, thisObject, this);
             }
         }
 
-        public dispatchEvent(event:Event):boolean {
+        public dispatchEvent(event:evt.Event):boolean {
             if (!event._bubbles) {
                 return super.dispatchEvent(event);
             }
@@ -1077,7 +1077,7 @@ module egret {
             return !event._isDefaultPrevented;
         }
 
-        public _dispatchPropagationEvent(event:Event, list:Array<DisplayObject>, targetIndex?:number):void {
+        public _dispatchPropagationEvent(event:evt.Event, list:Array<DisplayObject>, targetIndex?:number):void {
             var length:number = list.length;
             var eventPhase:number = 1;
             for (var i:number = length - 1; i >= 0; i--) {

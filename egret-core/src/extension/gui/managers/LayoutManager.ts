@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.LayoutManager
 	 * @classdesc
 	 * 布局管理器
-	 * @extends egret.EventDispatcher
+	 * @extends egret.evt.EventDispatcher
 	 */
-	export class LayoutManager extends EventDispatcher{
+	export class LayoutManager extends evt.EventDispatcher{
 		/**
 		 * @method egret.gui.LayoutManager#constructor
 		 */
@@ -170,8 +170,8 @@ module egret.gui {
 		 * 添加事件监听
 		 */		
 		private attachListeners():void{
-			UIGlobals.stage.addEventListener(Event.ENTER_FRAME,this.doPhasedInstantiationCallBack,this);
-			UIGlobals.stage.addEventListener(Event.RENDER, this.doPhasedInstantiationCallBack,this);
+			UIGlobals.stage.addEventListener(evt.Event.ENTER_FRAME,this.doPhasedInstantiationCallBack,this);
+			UIGlobals.stage.addEventListener(evt.Event.RENDER, this.doPhasedInstantiationCallBack,this);
 			UIGlobals.stage.invalidate();
 			this.listenersAttached = true;
 		}
@@ -179,9 +179,9 @@ module egret.gui {
 		/**
 		 * 执行属性应用
 		 */		
-		private doPhasedInstantiationCallBack(event:Event=null):void{
-			UIGlobals.stage.removeEventListener(Event.ENTER_FRAME,this.doPhasedInstantiationCallBack,this);
-			UIGlobals.stage.removeEventListener(Event.RENDER, this.doPhasedInstantiationCallBack,this);
+		private doPhasedInstantiationCallBack(event:evt.Event=null):void{
+			UIGlobals.stage.removeEventListener(evt.Event.ENTER_FRAME,this.doPhasedInstantiationCallBack,this);
+			UIGlobals.stage.removeEventListener(evt.Event.RENDER, this.doPhasedInstantiationCallBack,this);
 			this.doPhasedInstantiation();
 		}
 		

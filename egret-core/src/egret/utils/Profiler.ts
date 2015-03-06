@@ -74,10 +74,10 @@ module egret {
             Ticker.getInstance().unregister(this.update, this);
 
             var context = MainContext.instance;
-            context.removeEventListener(Event.ENTER_FRAME, this.onEnterFrame, this);
-            context.removeEventListener(Event.RENDER, this.onStartRender, this);
-            context.removeEventListener(Event.FINISH_RENDER, this.onFinishRender, this);
-            context.removeEventListener(Event.FINISH_UPDATE_TRANSFORM, this.onFinishUpdateTransform, this);
+            context.removeEventListener(evt.Event.ENTER_FRAME, this.onEnterFrame, this);
+            context.removeEventListener(evt.Event.RENDER, this.onStartRender, this);
+            context.removeEventListener(evt.Event.FINISH_RENDER, this.onFinishRender, this);
+            context.removeEventListener(evt.Event.FINISH_UPDATE_TRANSFORM, this.onFinishUpdateTransform, this);
         }
 
         /**
@@ -101,10 +101,10 @@ module egret {
             Ticker.getInstance().register(this.update, this);
 
             var context = MainContext.instance;
-            context.addEventListener(Event.ENTER_FRAME, this.onEnterFrame, this);
-            context.addEventListener(Event.RENDER, this.onStartRender, this);
-            context.addEventListener(Event.FINISH_RENDER, this.onFinishRender, this);
-            context.addEventListener(Event.FINISH_UPDATE_TRANSFORM, this.onFinishUpdateTransform, this);
+            context.addEventListener(evt.Event.ENTER_FRAME, this.onEnterFrame, this);
+            context.addEventListener(evt.Event.RENDER, this.onStartRender, this);
+            context.addEventListener(evt.Event.FINISH_RENDER, this.onFinishRender, this);
+            context.addEventListener(evt.Event.FINISH_UPDATE_TRANSFORM, this.onFinishUpdateTransform, this);
         }
 
         public _drawProfiler():void {
@@ -119,20 +119,20 @@ module egret {
         /**
          * @private
          */
-        private onEnterFrame(event:Event) {
+        private onEnterFrame(event:evt.Event) {
             this._lastTime = getTimer();
         }
 
         /**
          * @private
          */
-        private onStartRender(event:Event) {
+        private onStartRender(event:evt.Event) {
             var now:number = getTimer();
             this._logicPerformanceCost = now - this._lastTime;
             this._lastTime = now;
         }
 
-        private onFinishUpdateTransform(event:Event) {
+        private onFinishUpdateTransform(event:evt.Event) {
             var now:number = getTimer();
             this._updateTransformPerformanceCost = now - this._lastTime;
             this._lastTime = now;
@@ -141,7 +141,7 @@ module egret {
         /**
          * @private
          */
-        private onFinishRender(event:Event) {
+        private onFinishRender(event:evt.Event) {
             var now:number = getTimer();
             this._renderPerformanceCost = now - this._lastTime;
             this._lastTime = now;

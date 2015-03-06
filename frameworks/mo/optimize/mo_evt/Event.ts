@@ -1,5 +1,5 @@
 module mo_evt {
-    export class Event extends egret.Event {
+    export class Event extends egret.evt.Event {
 
         public static getBeforeEventType(eventType):string{
             return "before_" + eventType;

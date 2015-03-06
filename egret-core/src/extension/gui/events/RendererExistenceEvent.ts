@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.RendererExistenceEvent
 	 * @classdesc
 	 * 在DataGroup添加或删除项呈示器时分派的事件。
-	 * @extends egret.Event
+	 * @extends egret.evt.Event
 	 */	
-	export class RendererExistenceEvent extends Event{
+	export class RendererExistenceEvent extends evt.Event{
 		/**
 		 * 添加了项呈示器 
 		 * @constant egret.gui.RendererExistenceEvent.RENDERER_ADD
@@ -87,14 +87,14 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.RendererExistenceEvent.dispatchRendererExistenceEvent
          */
-        public static dispatchRendererExistenceEvent(target:IEventDispatcher,type:string,renderer:IItemRenderer = null,
+        public static dispatchRendererExistenceEvent(target:evt.IEventDispatcher,type:string,renderer:IItemRenderer = null,
                                              index:number = -1, data:any = null):void{
             var eventClass:any = RendererExistenceEvent;
-            var props:any = Event._getPropertyData(eventClass);
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.renderer = renderer;
             props.index = index;
             props.data = data;
-            Event._dispatchByTarget(eventClass,target,type,props);
+            evt.Event._dispatchByTarget(eventClass,target,type,props);
         }
 	}
 }

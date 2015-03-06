@@ -48,7 +48,7 @@ module egret.gui {
 		/**
 		 * 焦点移入
 		 */		
-		private focusInHandler(event:Event):void{
+		private focusInHandler(event:evt.Event):void{
 			if (event.target == this){
 				this.setFocus();
 				return;
@@ -58,7 +58,7 @@ module egret.gui {
 		/**
 		 * 焦点移出
 		 */		
-		private focusOutHandler(event:Event):void{
+		private focusOutHandler(event:evt.Event):void{
 			if (event.target == this)
 				return;
 			this.invalidateSkinState();
@@ -432,7 +432,7 @@ module egret.gui {
 					this.textDisplay_changingHandler,
 					this);
 				
-				this.textDisplay.addEventListener(Event.CHANGE,
+				this.textDisplay.addEventListener(evt.Event.CHANGE,
 					this.textDisplay_changeHandler,
 					this);
 			}
@@ -456,7 +456,7 @@ module egret.gui {
 					this.textDisplay_changingHandler,
 					this);
 				
-				this.textDisplay.removeEventListener(Event.CHANGE,
+				this.textDisplay.removeEventListener(evt.Event.CHANGE,
 					this.textDisplay_changeHandler,
 					this);
 			}
@@ -615,16 +615,16 @@ module egret.gui {
 		/**
 		 * textDisplay文字改变事件
 		 */
-		private textDisplay_changeHandler(event:Event):void{        
+		private textDisplay_changeHandler(event:evt.Event):void{
 			this.invalidateDisplayList();
 			this.dispatchEvent(event);
 		}
 		/**
 		 * textDisplay文字即将改变事件
 		 */		
-		private textDisplay_changingHandler(event:Event):void{
-            var newEvent: Event =
-                new Event(event.type, false, true);
+		private textDisplay_changingHandler(event:evt.Event):void{
+            var newEvent: evt.Event =
+                new evt.Event(event.type, false, true);
             newEvent.data = event.data;
             this.dispatchEvent(newEvent);
 

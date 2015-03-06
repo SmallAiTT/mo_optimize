@@ -22,9 +22,9 @@ module RES {
 	/**
 	 * @class RES.ResourceLoader
 	 * @classdesc
-	 * @extends egret.EventDispatcher
+	 * @extends egret.evt.EventDispatcher
 	 */
-	export class ResourceLoader extends egret.EventDispatcher{
+	export class ResourceLoader extends egret.evt.EventDispatcher{
 		/**
 		 * 构造函数
 		 * @method RES.ResourceLoader#constructor

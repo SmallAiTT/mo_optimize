@@ -228,29 +228,29 @@ module egret.gui {
 		 * @method egret.gui.ButtonBase#addHandlers
 		 */
 		public addHandlers():void{
-			this.addEventListener(TouchEvent.TOUCH_ROLL_OVER, this.mouseEventHandler, this);
-			this.addEventListener(TouchEvent.TOUCH_ROLL_OUT, this.mouseEventHandler, this);
-			this.addEventListener(TouchEvent.TOUCH_BEGIN, this.mouseEventHandler, this);
-			this.addEventListener(TouchEvent.TOUCH_END, this.mouseEventHandler, this);
-			this.addEventListener(TouchEvent.TOUCH_TAP, this.mouseEventHandler, this);
+			this.addEventListener(evt.TouchEvent.TOUCH_ROLL_OVER, this.mouseEventHandler, this);
+			this.addEventListener(evt.TouchEvent.TOUCH_ROLL_OUT, this.mouseEventHandler, this);
+			this.addEventListener(evt.TouchEvent.TOUCH_BEGIN, this.mouseEventHandler, this);
+			this.addEventListener(evt.TouchEvent.TOUCH_END, this.mouseEventHandler, this);
+			this.addEventListener(evt.TouchEvent.TOUCH_TAP, this.mouseEventHandler, this);
 		}
 
 		/**
 		 * 添加舞台鼠标弹起事件监听
 		 */
 		private addStageMouseHandlers():void{
-			UIGlobals.stage.addEventListener(TouchEvent.TOUCH_END,this.stage_mouseUpHandler,this);
+			UIGlobals.stage.addEventListener(evt.TouchEvent.TOUCH_END,this.stage_mouseUpHandler,this);
 
-			UIGlobals.stage.addEventListener(Event.LEAVE_STAGE,this.stage_mouseUpHandler,this);
+			UIGlobals.stage.addEventListener(evt.Event.LEAVE_STAGE,this.stage_mouseUpHandler,this);
 		}
 
 		/**
 		 * 移除舞台鼠标弹起事件监听
 		 */
 		private removeStageMouseHandlers():void{
-			UIGlobals.stage.removeEventListener(TouchEvent.TOUCH_END,this.stage_mouseUpHandler,this);
+			UIGlobals.stage.removeEventListener(evt.TouchEvent.TOUCH_END,this.stage_mouseUpHandler,this);
 
-			UIGlobals.stage.removeEventListener(Event.LEAVE_STAGE,this.stage_mouseUpHandler,this);
+			UIGlobals.stage.removeEventListener(evt.Event.LEAVE_STAGE,this.stage_mouseUpHandler,this);
 		}
 
 		/**
@@ -288,7 +288,7 @@ module egret.gui {
 		private startTimer():void{
 			this.autoRepeatTimer = new Timer(1);
 			this.autoRepeatTimer.delay = this._repeatDelay;
-			this.autoRepeatTimer.addEventListener(TimerEvent.TIMER, this.autoRepeat_timerDelayHandler, this);
+			this.autoRepeatTimer.addEventListener(evt.TimerEvent.TIMER, this.autoRepeat_timerDelayHandler, this);
 			this.autoRepeatTimer.start();
 		}
 
@@ -304,24 +304,24 @@ module egret.gui {
 		/**
 		 * 鼠标事件处理
 		 * @method egret.gui.ButtonBase#mouseEventHandler
-		 * @param event {Event}
+		 * @param event {evt.Event}
 		 */
-		public mouseEventHandler(event:Event):void{
-			var touchEvent:TouchEvent = <TouchEvent> event;
+		public mouseEventHandler(event:evt.Event):void{
+			var touchEvent:evt.TouchEvent = <evt.TouchEvent> event;
 			switch (event.type){
-				case TouchEvent.TOUCH_ROLL_OVER:{
+				case evt.TouchEvent.TOUCH_ROLL_OVER:{
 					if (touchEvent.touchDown && !this.mouseCaptured)
 						return;
 					this.hovered = true;
 					break;
 				}
 
-				case TouchEvent.TOUCH_ROLL_OUT:{
+				case evt.TouchEvent.TOUCH_ROLL_OUT:{
 					this.hovered = false;
 					break;
 				}
 
-				case TouchEvent.TOUCH_BEGIN:{
+				case evt.TouchEvent.TOUCH_BEGIN:{
 					this.addStageMouseHandlers();
                     if(consts.InteractionMode.mode==consts.InteractionMode.TOUCH)
                         this.hovered = true;
@@ -329,7 +329,7 @@ module egret.gui {
 					break;
 				}
 
-				case TouchEvent.TOUCH_END:{
+				case evt.TouchEvent.TOUCH_END:{
 					if (event.target == this){
 						this.hovered = true;
 
@@ -340,11 +340,11 @@ module egret.gui {
 					}
 					break;
 				}
-				case TouchEvent.TOUCH_TAP:{
+				case evt.TouchEvent.TOUCH_TAP:{
 					if (!this.enabled)
 						event.stopImmediatePropagation();
 					else
-						this.clickHandler(<TouchEvent> event);
+						this.clickHandler(<evt.TouchEvent> event);
 					return;
 				}
 			}
@@ -360,15 +360,15 @@ module egret.gui {
 		/**
 		 * 按钮点击事件
 		 * @method egret.gui.ButtonBase#clickHandler
-		 * @param event {TouchEvent}
+		 * @param event {evt.TouchEvent}
 		 */
-		public clickHandler(event:TouchEvent):void{
+		public clickHandler(event:evt.TouchEvent):void{
 		}
 
 		/**
 		 * 舞台上鼠标弹起事件
 		 */
-		private stage_mouseUpHandler(event:Event):void{
+		private stage_mouseUpHandler(event:evt.Event):void{
 			if (event.target == this)
 				return;
 
@@ -378,19 +378,19 @@ module egret.gui {
 		/**
 		 * 自动重发计时器首次延迟结束事件
 		 */
-		private autoRepeat_timerDelayHandler(event:TimerEvent):void{
+		private autoRepeat_timerDelayHandler(event:evt.TimerEvent):void{
 			this.autoRepeatTimer.reset();
-			this.autoRepeatTimer.removeEventListener( TimerEvent.TIMER, this.autoRepeat_timerDelayHandler, this);
+			this.autoRepeatTimer.removeEventListener( evt.TimerEvent.TIMER, this.autoRepeat_timerDelayHandler, this);
 
 			this.autoRepeatTimer.delay = this._repeatInterval;
-			this.autoRepeatTimer.addEventListener( TimerEvent.TIMER, this.autoRepeat_timerHandler, this);
+			this.autoRepeatTimer.addEventListener( evt.TimerEvent.TIMER, this.autoRepeat_timerHandler, this);
 			this.autoRepeatTimer.start();
 		}
 
 		/**
 		 * 自动重发buttonDown事件
 		 */
-		private autoRepeat_timerHandler(event:TimerEvent):void{
+		private autoRepeat_timerHandler(event:evt.TimerEvent):void{
             UIEvent.dispatchUIEvent(this,UIEvent.BUTTON_DOWN);
 		}
 

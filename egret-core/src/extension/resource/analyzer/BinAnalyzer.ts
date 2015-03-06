@@ -60,8 +60,8 @@ module RES {
 			var loader:egret.net.URLLoader = this.recycler.pop();
 			if(!loader){
 				loader = new egret.net.URLLoader();
-				loader.addEventListener(egret.Event.COMPLETE,this.onLoadFinish,this);
-				loader.addEventListener(egret.IOErrorEvent.IO_ERROR,this.onLoadFinish,this);
+				loader.addEventListener(egret.evt.Event.COMPLETE,this.onLoadFinish,this);
+				loader.addEventListener(egret.evt.IOErrorEvent.IO_ERROR,this.onLoadFinish,this);
 			}
             loader.dataFormat = this._dataFormat;
 			return loader;
@@ -69,13 +69,13 @@ module RES {
 		/**
 		 * 一项加载结束
 		 */		
-		public onLoadFinish(event:egret.Event):void{
+		public onLoadFinish(event:egret.evt.Event):void{
 			var loader:egret.net.URLLoader = <egret.net.URLLoader> (event.target);
 			var data:any = this.resItemDic[loader.hashCode];
 			delete this.resItemDic[loader.hashCode];
 			var resItem:ResourceItem = data.item;
 			var compFunc:Function = data.func;
-			resItem.loaded = (event.type==egret.Event.COMPLETE);
+			resItem.loaded = (event.type==egret.evt.Event.COMPLETE);
 			if(resItem.loaded){
                 this.analyzeData(resItem,loader.data)
 			}

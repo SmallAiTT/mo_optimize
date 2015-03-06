@@ -257,9 +257,9 @@ module egret.gui {
 		
 		/**
 		 * @method egret.gui.DropDownListBase#item_mouseDownHandler
-		 * @param event {TouchEvent} 
+		 * @param event {evt.TouchEvent}
 		 */
-        public _item_touchEndHandler(event: TouchEvent): void {
+        public _item_touchEndHandler(event: evt.TouchEvent): void {
             super._item_touchEndHandler(event);
 
             var itemRenderer: IItemRenderer = <IItemRenderer> (event.currentTarget);

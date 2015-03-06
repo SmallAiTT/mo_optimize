@@ -262,7 +262,7 @@ module egret {
             var self = this;
             this.inputElement.oninput = function () {
                 self.textValue = self.inputElement.value;
-                self.dispatchEvent(new egret.Event("updateText"));
+                self.dispatchEvent(new egret.evt.Event("updateText"));
             };
             this.setStyles();
             this.inputElement.focus();

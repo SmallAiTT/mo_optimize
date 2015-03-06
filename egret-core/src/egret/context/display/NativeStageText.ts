@@ -185,7 +185,7 @@ module egret {
                         self.textValue = appendText;
                         self.resetText();
 
-                        self.dispatchEvent(new egret.Event("updateText"));
+                        self.dispatchEvent(new egret.evt.Event("updateText"));
                     }
                 }
                 else {//单行文本
@@ -195,7 +195,7 @@ module egret {
                     //关闭软键盘
                     egret_native.TextInputOp.setKeybordOpen(false);
 
-                    self.dispatchEvent(new egret.Event("updateText"));
+                    self.dispatchEvent(new egret.evt.Event("updateText"));
                 }
             };
 
@@ -231,7 +231,7 @@ module egret {
                 self.textValue += appendText;
 
                 self.resetText();
-                self.dispatchEvent(new egret.Event("updateText"));
+                self.dispatchEvent(new egret.evt.Event("updateText"));
             };
 
             egret_native.EGT_deleteBackward = function () {
@@ -240,7 +240,7 @@ module egret {
                 self.textValue = text;
 
                 self.resetText();
-                self.dispatchEvent(new egret.Event("updateText"));
+                self.dispatchEvent(new egret.evt.Event("updateText"));
             };
 
             //系统关闭键盘

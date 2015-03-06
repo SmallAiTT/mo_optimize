@@ -1,5 +1,5 @@
 module res{
-    export class ResMgr extends egret.EventDispatcher{
+    export class ResMgr extends egret.evt.EventDispatcher{
         public static __className:string = "ResMgr";//为了跟cocos方案保持一致所写
 
         __className:string;//通过create方法进行赋值

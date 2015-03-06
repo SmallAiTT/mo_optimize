@@ -22,7 +22,7 @@ module mo_opt{
         zOrder:number;
         tempRect:mo.Rect;
         penetrable:boolean;//是否可穿透，默认为不可穿透
-        clickCb:Function;//(sender:Node, event:egret.TouchEvent)=>void;
+        clickCb:Function;//(sender:Node, event:egret.evt.TouchEvent)=>void;
         clickCtx:any;
         factory:any;
         delegate:any;

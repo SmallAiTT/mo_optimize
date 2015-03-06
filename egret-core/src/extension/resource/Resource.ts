@@ -138,8 +138,8 @@ module RES {
      * 添加事件侦听器,参考ResourceEvent定义的常量。
 	 * @method RES.addEventListener
      * @param type {string} 事件的类型。
-     * @param listener {Function} 处理事件的侦听器函数。此函数必须接受 Event 对象作为其唯一的参数，并且不能返回任何结果，
-     * 如下面的示例所示： function(evt:Event):void 函数可以有任何名称。
+     * @param listener {Function} 处理事件的侦听器函数。此函数必须接受 evt.Event 对象作为其唯一的参数，并且不能返回任何结果，
+     * 如下面的示例所示： function(evt:evt.Event):void 函数可以有任何名称。
      * @param thisObject {any} 侦听函数绑定的this对象
      * @param useCapture {boolean} 确定侦听器是运行于捕获阶段还是运行于目标和冒泡阶段。如果将 useCapture 设置为 true，
      * 则侦听器只在捕获阶段处理事件，而不在目标或冒泡阶段处理事件。如果 useCapture 为 false，则侦听器只在目标或冒泡阶段处理事件。
@@ -164,7 +164,7 @@ module RES {
 
 
 
-    class Resource extends egret.EventDispatcher{
+    class Resource extends egret.evt.EventDispatcher{
         /**
          * 构造函数
 		 * @method RES.constructor

@@ -645,8 +645,8 @@ module egret.gui {
 			if (renderer == null)
 				return;
 			
-			renderer.addEventListener(TouchEvent.TOUCH_ROLL_OVER, this.item_mouseEventHandler, this);
-			renderer.addEventListener(TouchEvent.TOUCH_ROLL_OUT, this.item_mouseEventHandler, this);
+			renderer.addEventListener(evt.TouchEvent.TOUCH_ROLL_OVER, this.item_mouseEventHandler, this);
+			renderer.addEventListener(evt.TouchEvent.TOUCH_ROLL_OUT, this.item_mouseEventHandler, this);
 		}
 		/**
 		 * 项呈示器被移除
@@ -659,8 +659,8 @@ module egret.gui {
 			if (renderer == null)
 				return;
 			
-			renderer.removeEventListener(TouchEvent.TOUCH_ROLL_OVER, this.item_mouseEventHandler, this);
-			renderer.removeEventListener(TouchEvent.TOUCH_ROLL_OUT, this.item_mouseEventHandler, this);
+			renderer.removeEventListener(evt.TouchEvent.TOUCH_ROLL_OVER, this.item_mouseEventHandler, this);
+			renderer.removeEventListener(evt.TouchEvent.TOUCH_ROLL_OUT, this.item_mouseEventHandler, this);
 		}
 		
 		private static TYPE_MAP:any = {rollOver:"itemRollOver",
@@ -669,7 +669,7 @@ module egret.gui {
 		/**
 		 * 项呈示器鼠标事件
 		 */		
-		private item_mouseEventHandler(event:TouchEvent):void{
+		private item_mouseEventHandler(event:evt.TouchEvent):void{
 			var type:string = event.type;
 			type = ListBase.TYPE_MAP[type];
 			if (this.hasEventListener(type)){
@@ -680,11 +680,11 @@ module egret.gui {
 		/**
 		 * 抛出列表事件
 		 * @method egret.gui.ListBase#_dispatchListEvent
-		 * @param touchEvent {TouchEvent} 相关联的鼠标事件
+		 * @param touchEvent {evt.TouchEvent} 相关联的鼠标事件
 		 * @param type {string} 事件名称
 		 * @param itemRenderer {IItemRenderer} 关联的条目渲染器实例
 		 */		
-		public _dispatchListEvent(touchEvent:TouchEvent,type:string,itemRenderer:IItemRenderer):void{
+		public _dispatchListEvent(touchEvent:evt.TouchEvent,type:string,itemRenderer:IItemRenderer):void{
 			var itemIndex:number = -1;
 			if (itemRenderer)
 				itemIndex = itemRenderer.itemIndex;

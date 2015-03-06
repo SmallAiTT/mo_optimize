@@ -237,7 +237,7 @@ module egret.gui {
         /**
          * track的位置或尺寸发生改变
          */
-        private onTrackResizeOrMove(event:Event):void {
+        private onTrackResizeOrMove(event:evt.Event):void {
             this.trackResizedOrMoved = true;
             this.invalidateProperties();
         }

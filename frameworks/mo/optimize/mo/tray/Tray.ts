@@ -77,7 +77,7 @@ module mo{
             mo_evt.addAfterEventListener(layer, Layer.PHASE_CLOSE, self._onLayerInvisible, self);
         }
 
-        _onNodeInvisible(event:egret.Event){
+        _onNodeInvisible(event:egret.evt.Event){
             var self = this;
             var node = event.target;
             node.removeEventListener(event.type, self._onNodeInvisible, self);

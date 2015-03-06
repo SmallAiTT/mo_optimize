@@ -86,7 +86,7 @@ module egret.gui {
 		/**
 		 * 是否使用虚拟布局标记改变
 		 */		
-		private layout_useVirtualLayoutChangedHandler(event:Event):void{
+		private layout_useVirtualLayoutChangedHandler(event:evt.Event):void{
 			this.changeUseVirtualLayout();
 		}
 		
@@ -262,7 +262,7 @@ module egret.gui {
 				return;
 			if(!this.cleanTimer){
 				this.cleanTimer = new Timer(3000,1);
-				this.cleanTimer.addEventListener(TimerEvent.TIMER,this.cleanAllFreeRenderer,this);
+				this.cleanTimer.addEventListener(evt.TimerEvent.TIMER,this.cleanAllFreeRenderer,this);
 			}
 			//为了提高持续滚动过程中的性能，防止反复地添加移除子项，这里不直接清理而是延迟后在滚动停止时清理一次。
 			this.cleanTimer.reset();
@@ -271,7 +271,7 @@ module egret.gui {
 		/**
 		 * 延迟清理多余的在显示列表中的ItemRenderer。
 		 */		
-		private cleanAllFreeRenderer(event:TimerEvent=null):void{
+		private cleanAllFreeRenderer(event:evt.TimerEvent=null):void{
 			var renderer:IItemRenderer;
             var freeRenderers:Array<any> = this.freeRenderers;
             for(var hashCode in freeRenderers){

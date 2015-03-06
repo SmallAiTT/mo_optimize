@@ -136,7 +136,7 @@ module egret {
                     return;
                 }
                 self._isActivate = false;
-                egret.MainContext.instance.stage.dispatchEvent(new Event(Event.DEACTIVATE));
+                egret.MainContext.instance.stage.dispatchEvent(new evt.Event(evt.Event.DEACTIVATE));
             };
             //激活
             var onFocusHandler = function () {
@@ -147,7 +147,7 @@ module egret {
                 var context = HTML5DeviceContext.instance;
                 context.reset();
 
-                egret.MainContext.instance.stage.dispatchEvent(new Event(Event.ACTIVATE));
+                egret.MainContext.instance.stage.dispatchEvent(new evt.Event(evt.Event.ACTIVATE));
             };
 
             var handleVisibilityChange = function () {

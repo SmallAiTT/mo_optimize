@@ -61,20 +61,20 @@ module pomeloClient{
 
             self.socket = new egret_socket.WebSocket(host, port);
             console.log('init');
-            self.socket.addEventListener(egret.Event.CONNECT, function() {
+            self.socket.addEventListener(egret.evt.Event.CONNECT, function() {
                 console.log('CONNECT');
                 var obj = self.package.encode(Package.TYPE_HANDSHAKE, self.protocol.strencode(JSON.stringify(self.handshakeBuffer)));
                 self.send(obj);
             }, this);
-            self.socket.addEventListener(egret.Event.CLOSE, function(e) {
+            self.socket.addEventListener(egret.evt.Event.CLOSE, function(e) {
                 self.emit('close', e);
                 console.error('socket close: ');
             }, this);
-            self.socket.addEventListener(egret.IOErrorEvent.IO_ERROR, function(e) {
+            self.socket.addEventListener(egret.evt.IOErrorEvent.IO_ERROR, function(e) {
                 self.emit('io-error', e);
                 console.error('socket error: ', e);
             }, this);
-            self.socket.addEventListener(egret.ProgressEvent.SOCKET_DATA, function() {
+            self.socket.addEventListener(egret.evt.ProgressEvent.SOCKET_DATA, function() {
                 console.log('SOCKET_DATA');
                 self.processPackage(self.package.decode(self.socket.readUTF()));
                 // new package arrived, update the heartbeat timeout

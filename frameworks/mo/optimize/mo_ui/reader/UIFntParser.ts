@@ -17,8 +17,8 @@ module mo_ui._parser{
         constructor(){
             super();
             var self = this;
-            self.addEventListener(egret.Event.COMPLETE, self._onLoadFinish, self);
-            self.addEventListener(egret.IOErrorEvent.IO_ERROR, self._onLoadFinish, self);
+            self.addEventListener(egret.evt.Event.COMPLETE, self._onLoadFinish, self);
+            self.addEventListener(egret.evt.IOErrorEvent.IO_ERROR, self._onLoadFinish, self);
         }
 
         //@override
@@ -36,10 +36,10 @@ module mo_ui._parser{
             resCfgItem2.url = path2.changeExtname(resCfgItem.url, ".png");
             res.load([resCfgItem1, resCfgItem2], function(err, results){
                 if(err || results.length != 2){
-                    var event = new egret.Event(egret.IOErrorEvent.IO_ERROR);
+                    var event = new egret.evt.Event(egret.evt.IOErrorEvent.IO_ERROR);
                     self.dispatchEvent(event);
                 }else{
-                    var event = new egret.Event(egret.Event.COMPLETE);
+                    var event = new egret.evt.Event(egret.evt.Event.COMPLETE);
                     event.data = [{item:resCfgItem, cb:cb, ctx:ctx}, results];
                     self.dispatchEvent(event);
                 }
@@ -48,14 +48,14 @@ module mo_ui._parser{
         /**
          * 一项加载结束
          */
-        public _onLoadFinish(event:egret.Event):void{
+        public _onLoadFinish(event:egret.evt.Event):void{
             var self = this;
             var eventData = event.data;
             var itemInfo:any = eventData[0];
             var resCfgItem:res.ResCfgItem = itemInfo.item;
             var compFunc:Function = itemInfo.cb;
             var result:any;
-            if(event.type==egret.Event.COMPLETE){
+            if(event.type==egret.evt.Event.COMPLETE){
                 result = self._cache(resCfgItem, self._parse(resCfgItem, eventData[1]));
             }else{
                 self._handleError(event, resCfgItem);

@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.CloseEvent
 	 * @classdesc
 	 * 窗口关闭事件
-	 * @extends egret.Event
+	 * @extends egret.evt.Event
 	 */	
-	export class CloseEvent extends Event{
+	export class CloseEvent extends evt.Event{
 		/**
 		 * @constant egret.gui.CloseEvent.CLOSE
 		 */
@@ -63,11 +63,11 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.CloseEvent.dispatchCloseEvent
          */
-        public static dispatchCloseEvent(target:IEventDispatcher,type:string,detail:any = -1):void{
+        public static dispatchCloseEvent(target:evt.IEventDispatcher,type:string,detail:any = -1):void{
             var eventClass:any = CloseEvent;
-            var props:any = Event._getPropertyData(eventClass);
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.detail = detail;
-            Event._dispatchByTarget(eventClass,target,type,props);
+            evt.Event._dispatchByTarget(eventClass,target,type,props);
         }
 	}
 	

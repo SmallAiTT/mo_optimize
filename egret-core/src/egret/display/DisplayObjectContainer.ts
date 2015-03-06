@@ -154,14 +154,14 @@ module egret {
             this._children.splice(index, 0, child);
             child._parentChanged(this);
             if (notifyListeners)
-                child.dispatchEventWith(Event.ADDED, true);
+                child.dispatchEventWith(evt.Event.ADDED, true);
             if (this._stage) {//当前容器在舞台
                 child._onAddToStage();
                 var list = DisplayObjectContainer.__EVENT__ADD_TO_STAGE_LIST;
                 while (list.length > 0) {
                     var childAddToStage = list.shift();
                     if (notifyListeners){
-                        childAddToStage.dispatchEventWith(Event.ADDED_TO_STAGE);
+                        childAddToStage.dispatchEventWith(evt.Event.ADDED_TO_STAGE);
                     }
                 }
             }
@@ -208,7 +208,7 @@ module egret {
             var locChildren = this._children;
             var child:DisplayObject = locChildren[index];
             if (notifyListeners){
-                child.dispatchEventWith(Event.REMOVED, true);
+                child.dispatchEventWith(evt.Event.REMOVED, true);
             }
 
             if (this._stage) {//在舞台上
@@ -217,7 +217,7 @@ module egret {
                 while (list.length > 0) {
                     var childAddToStage = list.shift();
                     if (notifyListeners){
-                        childAddToStage.dispatchEventWith(Event.REMOVED_FROM_STAGE);
+                        childAddToStage.dispatchEventWith(evt.Event.REMOVED_FROM_STAGE);
                     }
                     childAddToStage._stage = null;
                 }

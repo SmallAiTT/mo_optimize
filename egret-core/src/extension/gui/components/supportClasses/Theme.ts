@@ -49,13 +49,13 @@ module egret.gui {
 
         private loadConfig(configURL:string):void{
             var loader:egret.net.URLLoader = new net.URLLoader();
-            loader.addEventListener(Event.COMPLETE,this.onLoadComplete,this);
-            loader.addEventListener(IOErrorEvent.IO_ERROR,this.onLoadError,this);
+            loader.addEventListener(evt.Event.COMPLETE,this.onLoadComplete,this);
+            loader.addEventListener(evt.IOErrorEvent.IO_ERROR,this.onLoadError,this);
             loader.dataFormat = net.URLLoaderDataFormat.TEXT;
             loader.load(new net.URLRequest(configURL));
         }
 
-        private onLoadComplete(event:Event):void{
+        private onLoadComplete(event:evt.Event):void{
             var loader:egret.net.URLLoader = <egret.net.URLLoader> (event.target);
             try{
                 var str:string = <string> loader.data;
@@ -68,7 +68,7 @@ module egret.gui {
             this.handleDelyList();
         }
 
-        private onLoadError(event:IOErrorEvent):void{
+        private onLoadError(event:evt.IOErrorEvent):void{
             var loader:egret.net.URLLoader = <egret.net.URLLoader> (event.target);
             egret.Logger.warningWithErrorId(3000, loader._request.url);
             this.handleDelyList();

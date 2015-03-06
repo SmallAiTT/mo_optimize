@@ -32,9 +32,9 @@ module egret.gui {
      * @class egret.gui.CollectionEvent
      * @classdesc
      * 集合类型数据改变事件
-     * @extends egret.Event
+     * @extends egret.evt.Event
      */
-    export class CollectionEvent extends Event{
+    export class CollectionEvent extends evt.Event{
         /**
          * 集合类数据发生改变
          * @constant egret.gui.CollectionEvent.COLLECTION_CHANGE
@@ -98,16 +98,16 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.CollectionEvent.dispatchCollectionEvent
          */
-        public static dispatchCollectionEvent(target:IEventDispatcher,type:string,kind:string = null, location:number = -1,
+        public static dispatchCollectionEvent(target:evt.IEventDispatcher,type:string,kind:string = null, location:number = -1,
                                              oldLocation:number = -1, items:Array<any> = null,oldItems:Array<any>=null):void{
             var eventClass:any = CollectionEvent;
-            var props:any = Event._getPropertyData(eventClass);
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.kind = kind;
             props.location = location;
             props.oldLocation = oldLocation;
             props.items = items;
             props.oldItems = oldItems;
-            Event._dispatchByTarget(eventClass,target,type,props);
+            evt.Event._dispatchByTarget(eventClass,target,type,props);
         }
     }
 }

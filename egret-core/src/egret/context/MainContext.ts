@@ -54,10 +54,10 @@ module egret {
      * @class egret.MainContext
      * @classdesc
      * MainContext是游戏的核心跨平台接口，组合了多个功能Context，并是游戏启动的主入口
-     * @extends egret.EventDispatcher
+     * @extends egret.evt.EventDispatcher
      * @private
      */
-    export class MainContext extends EventDispatcher {
+    export class MainContext extends evt.EventDispatcher {
         /**
          * 异步调用函数
          * @param method {Function} 要异步调用的函数
@@ -153,7 +153,7 @@ module egret {
 
             var stage = this.stage;
             var event = MainContext.cachedEvent;
-            event._type = Event.RENDER;
+            event._type = evt.Event.RENDER;
             this.dispatchEvent(event);
             if (Stage._invalidateRenderFlag) {
                 this.broadcastRender();
@@ -175,7 +175,7 @@ module egret {
             MainContext._renderLoopPhase = "updateTransform";
             stage._updateTransform();
             MainContext._renderLoopPhase = "draw";
-            event._type = Event.FINISH_UPDATE_TRANSFORM;
+            event._type = evt.Event.FINISH_UPDATE_TRANSFORM;
             this.dispatchEvent(event);
 
             if(MainContext.__use_new_draw){
@@ -184,7 +184,7 @@ module egret {
             else {
                 stage._draw(context);
             }
-            event._type = Event.FINISH_RENDER;
+            event._type = evt.Event.FINISH_RENDER;
             this.dispatchEvent(event);
 
             if (this._profileInstance._isRunning) {
@@ -204,15 +204,15 @@ module egret {
             }
         }
 
-        private reuseEvent:Event = new Event("")
+        private reuseEvent:evt.Event = new evt.Event("")
 
         /**
          * 广播EnterFrame事件。
          */
         private broadcastEnterFrame(frameTime:number):void {
 
-            var event:Event = this.reuseEvent;
-            event._type = Event.ENTER_FRAME;
+            var event:evt.Event = this.reuseEvent;
+            event._type = evt.Event.ENTER_FRAME;
             this.dispatchEvent(event);
             var list:Array<any> = DisplayObject._enterFrameCallBackList.concat();
             var length:number = list.length;
@@ -233,8 +233,8 @@ module egret {
          * 广播Render事件。
          */
         private broadcastRender():void {
-            var event:Event = this.reuseEvent;
-            event._type = Event.RENDER;
+            var event:evt.Event = this.reuseEvent;
+            event._type = evt.Event.RENDER;
             var list:Array<any> = DisplayObject._renderCallBackList.concat();
             var length:number = list.length;
             for (var i:number = 0; i < length; i++) {
@@ -284,7 +284,7 @@ module egret {
          */
         public static instance:egret.MainContext;
 
-        private static cachedEvent:Event = new Event("");
+        private static cachedEvent:evt.Event = new evt.Event("");
 
     }
 }

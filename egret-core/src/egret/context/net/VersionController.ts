@@ -28,7 +28,7 @@ module egret {
     /**
      * @private
      */
-    export class VersionController extends egret.EventDispatcher {
+    export class VersionController extends egret.evt.EventDispatcher {
 
         public constructor() {
             super();
@@ -71,8 +71,8 @@ module egret {
         //获取当前版本号
         private fetchVersion():void {
             this._load = new egret.NativeResourceLoader();
-            this._load.addEventListener(egret.IOErrorEvent.IO_ERROR, this.loadError, this);
-            this._load.addEventListener(egret.Event.COMPLETE, this.fileLoadComplete, this);
+            this._load.addEventListener(egret.evt.IOErrorEvent.IO_ERROR, this.loadError, this);
+            this._load.addEventListener(egret.evt.Event.COMPLETE, this.fileLoadComplete, this);
 
             this.initLocalVersionData();
         }
@@ -144,24 +144,24 @@ module egret {
             this._load.load(file, 1000);
         }
 
-        private fileLoadComplete(e:egret.Event):void {
+        private fileLoadComplete(e:egret.evt.Event):void {
             if (this._call) {
                 this._call();
             }
         }
 
-        private loadError(e:egret.IOErrorEvent):void {
-            this._load.removeEventListener(egret.IOErrorEvent.IO_ERROR, this.loadError, this);
-            this._load.removeEventListener(egret.Event.COMPLETE, this.fileLoadComplete, this);
+        private loadError(e:egret.evt.IOErrorEvent):void {
+            this._load.removeEventListener(egret.evt.IOErrorEvent.IO_ERROR, this.loadError, this);
+            this._load.removeEventListener(egret.evt.Event.COMPLETE, this.fileLoadComplete, this);
 
             this.dispatchEvent(e);
         }
 
         private loadOver():void {
-            this._load.removeEventListener(egret.IOErrorEvent.IO_ERROR, this.loadError, this);
-            this._load.removeEventListener(egret.Event.COMPLETE, this.fileLoadComplete, this);
+            this._load.removeEventListener(egret.evt.IOErrorEvent.IO_ERROR, this.loadError, this);
+            this._load.removeEventListener(egret.evt.Event.COMPLETE, this.fileLoadComplete, this);
 
-            this.dispatchEvent(new egret.Event(egret.Event.COMPLETE));
+            this.dispatchEvent(new egret.evt.Event(egret.evt.Event.COMPLETE));
         }
 
         private getLocalData(filePath):Object {

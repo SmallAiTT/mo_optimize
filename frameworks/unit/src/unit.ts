@@ -40,7 +40,7 @@ module unit{
         testButton.x = sW;
         testButton.y = sH/2;
         stage.addChild(testButton);
-        testButton.addEventListener(egret.TouchEvent.TOUCH_TAP, function(){
+        testButton.addEventListener(egret.evt.TouchEvent.TOUCH_TAP, function(){
             testContainer.visible = false;
             testMenu.visible = true;
             subTestMenu.visible = false;
@@ -89,7 +89,7 @@ module unit{
                 }else{
                     xTotal += btnW;
                 }
-                btn.addEventListener(egret.TouchEvent.TOUCH_TAP, function(){
+                btn.addEventListener(egret.evt.TouchEvent.TOUCH_TAP, function(){
                     var info:any = this;
                     self.visible = false;
                     subTestMenu.visible = true;
@@ -131,7 +131,7 @@ module unit{
                 }else{
                     xTotal += btnW;
                 }
-                btn.addEventListener(egret.TouchEvent.TOUCH_TAP, onTestBtnClick, buttonInfo);
+                btn.addEventListener(egret.evt.TouchEvent.TOUCH_TAP, onTestBtnClick, buttonInfo);
             }
         }
     }

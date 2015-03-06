@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.LayoutBase
 	 * @classdesc
 	 * 容器布局基类
-	 * @extends egret.EventDispatcher
+	 * @extends egret.evt.EventDispatcher
 	 */
-	export class LayoutBase extends EventDispatcher{
+	export class LayoutBase extends evt.EventDispatcher{
 		/**
 		 * @method egret.gui.LayoutBase#constructor
 		 */

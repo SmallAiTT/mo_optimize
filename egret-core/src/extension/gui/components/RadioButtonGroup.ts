@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.RadioButtonGroup
 	 * @classdesc
 	 * RadioButtonGroup 组件定义一组 RadioButton 组件，这些组件相互排斥；因此，用户每次只能选择一个 RadioButton 组件
-	 * @extends egret.EventDispatcher
+	 * @extends egret.evt.EventDispatcher
 	 */
-	export class RadioButtonGroup extends EventDispatcher{
+	export class RadioButtonGroup extends evt.EventDispatcher{
 		/**
 		 * 构造函数
 		 * @method egret.gui.RadioButtonGroup#constructor
@@ -142,7 +142,7 @@ module egret.gui {
 		 * @param instance {RadioButton}
 		 */
 		public _addInstance(instance:RadioButton):void{
-			instance.addEventListener(Event.REMOVED, this.radioButton_removedHandler, this);
+			instance.addEventListener(evt.Event.REMOVED, this.radioButton_removedHandler, this);
 			
 			this.radioButtons.push(instance);
 			this.radioButtons.sort(breadthOrderCompare);
@@ -215,7 +215,7 @@ module egret.gui {
 					}
 					else if (rb == instance){
 						if(addListener)
-							instance.addEventListener(Event.ADDED, this.radioButton_addedHandler, this);
+							instance.addEventListener(evt.Event.ADDED, this.radioButton_addedHandler, this);
 						if (instance == this._selection)
 							this._selection = null;
 						
@@ -245,7 +245,7 @@ module egret.gui {
 					this._selection.selected = false;
 					this._selection = null;
 					if (fireChange)
-						this.dispatchEventWith(Event.CHANGE);
+						this.dispatchEventWith(evt.Event.CHANGE);
 				}
 			}
 			else{
@@ -271,7 +271,7 @@ module egret.gui {
 				this._selection = rb;
 				this._selection.selected = true;
 				if (fireChange)
-					this.dispatchEventWith(Event.CHANGE);
+					this.dispatchEventWith(evt.Event.CHANGE);
 			}
 		}
 		
@@ -279,20 +279,20 @@ module egret.gui {
 		/**
 		 * 单选按钮添加到显示列表
 		 */		
-		private radioButton_addedHandler(event:Event):void{
+		private radioButton_addedHandler(event:evt.Event):void{
 			var rb:RadioButton = <RadioButton><any> (event.target);
 			if (rb){
-				rb.removeEventListener(Event.ADDED, this.radioButton_addedHandler, this);
+				rb.removeEventListener(evt.Event.ADDED, this.radioButton_addedHandler, this);
 				this._addInstance(rb);
 			}
 		}
 		/**
 		 * 单选按钮从显示列表移除
 		 */		
-		private radioButton_removedHandler(event:Event):void{
+		private radioButton_removedHandler(event:evt.Event):void{
 			var rb:RadioButton = <RadioButton><any> (event.target);
 			if (rb){
-				rb.removeEventListener(Event.REMOVED, this.radioButton_removedHandler, this);
+				rb.removeEventListener(evt.Event.REMOVED, this.radioButton_removedHandler, this);
 				this.doRemoveInstance(rb);
 			}
 		}

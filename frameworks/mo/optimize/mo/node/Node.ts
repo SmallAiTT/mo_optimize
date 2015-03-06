@@ -684,7 +684,7 @@ module mo {
             if(touchOption.touchEventsInited) return;//已经初始化过了就不再初始化了
             touchOption.touchEventsInited = true;
             touchOption.bePressed = false;
-            var TE = egret.TouchEvent;
+            var TE = egret.evt.TouchEvent;
             self.addEventListener(TE.TOUCH_BEGIN, self._onTouchBegin, self);
         }
 
@@ -692,7 +692,7 @@ module mo {
             var self = this, stage:egret.Stage = egret.MainContext.instance.stage;
             self._touchOption.bePressed = false;
 
-            var TE = egret.TouchEvent;
+            var TE = egret.evt.TouchEvent;
             self.addEventListener(TE.TOUCH_BEGIN, self._onTouchBegin, self);
 
             stage.removeEventListener(TE.TOUCH_MOVE, self._onTouchMoveInStage, self, true);
@@ -703,14 +703,14 @@ module mo {
         __resetOtherEvents() {
             var self = this, stage:egret.Stage = egret.MainContext.instance.stage;
             self._touchOption.bePressed = true;
-            var TE = egret.TouchEvent;
+            var TE = egret.evt.TouchEvent;
             self.removeEventListener(TE.TOUCH_BEGIN, self._onTouchBegin, self);
 
             stage.addEventListener(TE.TOUCH_MOVE, self._onTouchMoveInStage, self, true);
             stage.addEventListener(TE.TOUCH_END, self._onTouchEndInStage, self, true);
         }
 
-        _onTouchMoveInStage(event:egret.TouchEvent){
+        _onTouchMoveInStage(event:egret.evt.TouchEvent){
             var self = this, touchOption = self._touchOption;
             var touchMovingPoint = touchOption.touchMovingPoint;
             self.globalToLocal(event.localX, event.stageY, touchMovingPoint);
@@ -741,7 +741,7 @@ module mo {
         _moving(){
 
         }
-        _onTouchEndInStage(event:egret.TouchEvent){
+        _onTouchEndInStage(event:egret.evt.TouchEvent){
             var self = this, touchOption = self._touchOption;
             var touchEndedPoint = touchOption.touchEndedPoint;
             touchOption.touchEndedStagePoint.x = event.stageX;
@@ -758,7 +758,7 @@ module mo {
             }
             self.__resetDownEvent();
         }
-        _end(event:egret.TouchEvent){
+        _end(event:egret.evt.TouchEvent){
             var self = this, touchOption = self._touchOption;
             if(touchOption.isIn && touchOption.canTap) {
 
@@ -782,7 +782,7 @@ module mo {
             self._unscheduleLongTouchCheck();
             self._touchOption.touchEventsInited = false;
         }
-        _onTouchBegin(event:egret.TouchEvent){
+        _onTouchBegin(event:egret.evt.TouchEvent){
             var self = this, touchOption = self._touchOption;
             touchOption.bePressed = true;
             touchOption.isIn = true;
@@ -806,7 +806,7 @@ module mo {
             }
         }
 
-        onTouchBegan(event:egret.TouchEvent){
+        onTouchBegan(event:egret.evt.TouchEvent){
             event.stopPropagation();
         }
 
@@ -816,7 +816,7 @@ module mo {
             nodeOption.clickCtx = ctx;
             nodeOption.clickData = args[0];
         }
-        _doClick(event:egret.TouchEvent){
+        _doClick(event:egret.evt.TouchEvent){
             var self = this, nodeOption = self._nodeOption;
             nodeOption.clickCb.call(nodeOption.clickCtx, self, event, nodeOption.clickData);
         }

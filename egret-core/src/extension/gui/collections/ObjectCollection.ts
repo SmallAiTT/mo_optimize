@@ -32,11 +32,11 @@ module egret.gui {
 	 * @class egret.gui.ObjectCollection
 	 * @classdesc
 	 * Object的集合类数据结构包装器,通常作为Tree组件的数据源。
-	 * @extends egret.EventDispatcher
+	 * @extends egret.evt.EventDispatcher
 	 * @implements egret.gui.ICollection
 	 * @implements egret.gui.ITreeCollection
 	 */
-	export class ObjectCollection extends EventDispatcher 
+	export class ObjectCollection extends evt.EventDispatcher
 		implements ICollection,ITreeCollection{
 		/**
 		 * 构造函数

@@ -66,7 +66,7 @@ module egret {
 
         public dispatchEvent(type:string, data:any):void {
             var touchDown:boolean = (this.touchDownTarget[data.identifier] == true)
-            TouchEvent.dispatchTouchEvent(data.target, type, data.identifier,
+            evt.TouchEvent.dispatchTouchEvent(data.target, type, data.identifier,
                 data.stageX, data.stageY, false, false, false, touchDown);
         }
 
@@ -81,7 +81,7 @@ module egret {
                 this.touchDownTarget[identifier] = true;
                 obj.target = result;
                 obj.beginTarget = result;
-                this.dispatchEvent(TouchEvent.TOUCH_BEGIN, obj);
+                this.dispatchEvent(evt.TouchEvent.TOUCH_BEGIN, obj);
             }
             this.touchingIdentifiers.push(identifier);
         }
@@ -104,7 +104,7 @@ module egret {
             if (result) {
                 var obj = this.getTouchData(identifier, x, y);
                 obj.target = result;
-                this.dispatchEvent(TouchEvent.TOUCH_MOVE, obj);
+                this.dispatchEvent(evt.TouchEvent.TOUCH_MOVE, obj);
             }
         }
 
@@ -121,13 +121,13 @@ module egret {
                 delete this.touchDownTarget[identifier];
                 var oldTarget = obj.beginTarget;
                 obj.target = result;
-                this.dispatchEvent(TouchEvent.TOUCH_END, obj);
+                this.dispatchEvent(evt.TouchEvent.TOUCH_END, obj);
                 if (oldTarget == result) {
-                    this.dispatchEvent(TouchEvent.TOUCH_TAP, obj);
+                    this.dispatchEvent(evt.TouchEvent.TOUCH_TAP, obj);
                 }
                 else if (obj.beginTarget) {
                     obj.target = obj.beginTarget;
-                    this.dispatchEvent(TouchEvent.TOUCH_RELEASE_OUTSIDE, obj);
+                    this.dispatchEvent(evt.TouchEvent.TOUCH_RELEASE_OUTSIDE, obj);
                 }
                 delete this._currentTouchTarget[obj.identifier];
             }

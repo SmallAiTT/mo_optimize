@@ -33,7 +33,7 @@ module egret_socket {
      * 套接字以异步方式传输和接收数据。
      * @link http://docs.egret-labs.org/jkdoc/manual-net-websocket.html WebSocket
      */
-    export class WebSocket extends egret.EventDispatcher {
+    export class WebSocket extends egret.evt.EventDispatcher {
         /**
          * 以字符串格式发送和接收数据
          */
@@ -89,16 +89,16 @@ module egret_socket {
 
         private onConnect():void {
             this._connected = true;
-            this.dispatchEventWith(egret.Event.CONNECT);
+            this.dispatchEventWith(egret.evt.Event.CONNECT);
         }
 
         private onClose():void {
             this._connected = false;
-            this.dispatchEventWith(egret.Event.CLOSE);
+            this.dispatchEventWith(egret.evt.Event.CLOSE);
         }
 
         private onError():void {
-            this.dispatchEventWith(egret.IOErrorEvent.IO_ERROR);
+            this.dispatchEventWith(egret.evt.IOErrorEvent.IO_ERROR);
         }
 
         private onSocketData(message:any):void {
@@ -108,7 +108,7 @@ module egret_socket {
             else {
                 this._readByte._writeUint8Array(new Uint8Array(message));
             }
-            egret.ProgressEvent.dispatchProgressEvent(this, egret.ProgressEvent.SOCKET_DATA);
+            egret.evt.ProgressEvent.dispatchProgressEvent(this, egret.evt.ProgressEvent.SOCKET_DATA);
         }
 
         /**

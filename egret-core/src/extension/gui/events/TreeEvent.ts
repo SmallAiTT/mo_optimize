@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.TreeEvent
 	 * @classdesc
 	 * Tree事件
-	 * @extends egret.Event
+	 * @extends egret.evt.Event
 	 */
-	export class TreeEvent extends Event{
+	export class TreeEvent extends evt.Event{
 		/**
 		 * 节点关闭,注意：只有通过交互操作引起的节点关闭才会抛出此事件。
 		 * @constant egret.gui.TreeEvent.ITEM_CLOSE
@@ -94,15 +94,15 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.TreeEvent.dispatchTreeEvent
          */
-        public static dispatchTreeEvent(target:IEventDispatcher,type:string,itemIndex:number = -1,
+        public static dispatchTreeEvent(target:evt.IEventDispatcher,type:string,itemIndex:number = -1,
                                          item:any = null,itemRenderer:ITreeItemRenderer = null,opening:boolean=false):void{
             var eventClass:any = TreeEvent;
-            var props:any = Event._getPropertyData(eventClass);
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.itemIndex = itemIndex;
             props.item = item;
             props.itemRenderer = itemRenderer;
             props.opening = opening;
-            Event._dispatchByTarget(eventClass,target,type,props);
+            evt.Event._dispatchByTarget(eventClass,target,type,props);
         }
 	}
 }

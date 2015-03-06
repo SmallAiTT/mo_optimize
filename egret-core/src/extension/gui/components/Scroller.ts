@@ -77,7 +77,7 @@ module egret.gui {
             content.horizontalScrollPosition = this._scrollLeft;
             content.verticalScrollPosition = this._scrollTop;
             content.setLayoutBoundsSize(this._width, this._height);
-            this.dispatchEvent(new Event(Event.CHANGE));
+            this.dispatchEvent(new evt.Event(evt.Event.CHANGE));
         }
 
         public getMaxScrollLeft(): number {
@@ -230,7 +230,7 @@ module egret.gui {
          */
         private installViewport(): void {
             var viewport: IViewport = this.viewport;
-            this.addEventListener(egret.Event.CHANGE, this._scrollerChangedHandler, this);
+            this.addEventListener(egret.evt.Event.CHANGE, this._scrollerChangedHandler, this);
             if (this._createChildrenCalled && viewport) {
                 viewport.clipAndEnableScrolling = true;
                 this.setContent(viewport);
@@ -271,7 +271,7 @@ module egret.gui {
          * @param e
          * @private
          */
-        private _scrollerChangedHandler(e: Event) {
+        private _scrollerChangedHandler(e: evt.Event) {
             this.setViewportHScrollPosition(this._scroller.scrollLeft);
             this.setViewportVScrollPosition(this._scroller.scrollTop);
         }
@@ -598,7 +598,7 @@ module egret.gui {
             if (!this.horizontalScrollBar)
                 return;
             var bar = this.horizontalScrollBar;
-            bar.addEventListener(Event.CHANGE, this.hBarChanged, this, false);
+            bar.addEventListener(evt.Event.CHANGE, this.hBarChanged, this, false);
             bar._setViewportMetric(this._viewport.width, this._viewport.contentWidth);
             if (bar.owner && "removeElement" in bar.owner) {
                 (<IContainer>bar.owner).removeElement(bar);
@@ -620,7 +620,7 @@ module egret.gui {
             if (this.verticalScrollBar.owner == this)
                 return;
             var vbar = this.verticalScrollBar;
-            vbar.addEventListener(Event.CHANGE, this.vBarChanged, this, false);
+            vbar.addEventListener(evt.Event.CHANGE, this.vBarChanged, this, false);
             vbar._setViewportMetric(this._viewport.height, this._viewport.contentHeight);
             if (vbar.owner && "removeElement" in vbar.owner) {
                 (<IContainer>vbar.owner).removeElement(vbar);
@@ -674,19 +674,19 @@ module egret.gui {
             if (this.horizontalScrollBar == null)
                 return;
             this._removeFromDisplayList(this.horizontalScrollBar);
-            this.horizontalScrollBar.removeEventListener(Event.CHANGE, this.hBarChanged, this, false);
+            this.horizontalScrollBar.removeEventListener(evt.Event.CHANGE, this.hBarChanged, this, false);
         }
         public _uninstallVerticalScrollBar() {
             if (this.verticalScrollBar == null)
                 return;
             this._removeFromDisplayList(this.verticalScrollBar);
-            this.verticalScrollBar.removeEventListener(Event.CHANGE, this.vBarChanged, this, false);
+            this.verticalScrollBar.removeEventListener(evt.Event.CHANGE, this.vBarChanged, this, false);
         }
 
-        private hBarChanged(e: Event): void {
+        private hBarChanged(e: evt.Event): void {
             this.setViewportHScrollPosition(this.horizontalScrollBar._getValue());
         }
-        private vBarChanged(e: Event): void {
+        private vBarChanged(e: evt.Event): void {
             this.setViewportVScrollPosition(this.verticalScrollBar.getPosition());
         }
         public hitTest(x: number, y: number, ignoreTouchEnabled: boolean = false): DisplayObject {

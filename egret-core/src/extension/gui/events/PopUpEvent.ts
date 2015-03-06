@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.PopUpEvent
 	 * @classdesc
 	 * 弹出管理器事件
-	 * @extends egret.Event
+	 * @extends egret.evt.Event
 	 */
-	export class PopUpEvent extends Event{
+	export class PopUpEvent extends evt.Event{
 		/**
 		 * 添加一个弹出框，在执行完添加之后抛出。
 		 * @constant egret.gui.PopUpEvent.ADD_POPUP
@@ -81,13 +81,13 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.PopUpEvent.dispatchPopUpEvent
          */
-        public static dispatchPopUpEvent(target:IEventDispatcher,type:string,
+        public static dispatchPopUpEvent(target:evt.IEventDispatcher,type:string,
                                          popUp:IVisualElement=null,modal:boolean = false):void{
             var eventClass:any = PopUpEvent;
-            var props:any = Event._getPropertyData(eventClass);
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.popUp = popUp;
             props.modal = modal;
-            Event._dispatchByTarget(eventClass,target,type,props);
+            evt.Event._dispatchByTarget(eventClass,target,type,props);
         }
 	}
 }

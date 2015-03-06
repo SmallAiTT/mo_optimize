@@ -43,10 +43,10 @@ module egret.gui {
 		public constructor(){
 			super();
             
-			this.addEventListener(TouchEvent.TOUCH_BEGIN,this.onItemMouseDown,this,false,1000);
+			this.addEventListener(evt.TouchEvent.TOUCH_BEGIN,this.onItemMouseDown,this,false,1000);
 		}
 		
-		private onItemMouseDown(event:TouchEvent):void{
+		private onItemMouseDown(event:evt.TouchEvent):void{
 			if(event.target==this.disclosureButton){
 				event.stopImmediatePropagation();
 			}
@@ -184,7 +184,7 @@ module egret.gui {
 				this.disclosureButton.visible = this._hasChildren;
 				this.disclosureButton.selected = this._isOpen;
 				this.disclosureButton._autoSelected = false;
-				this.disclosureButton.addEventListener(TouchEvent.TOUCH_BEGIN,
+				this.disclosureButton.addEventListener(evt.TouchEvent.TOUCH_BEGIN,
 					this.disclosureButton_mouseDownHandler,
 					this);
 			}
@@ -205,7 +205,7 @@ module egret.gui {
 				this.iconDisplay.source = null;
 			}
 			else if(instance==this.disclosureButton){
-				this.disclosureButton.removeEventListener(TouchEvent.TOUCH_BEGIN,
+				this.disclosureButton.removeEventListener(evt.TouchEvent.TOUCH_BEGIN,
 					this.disclosureButton_mouseDownHandler,
 					this);
 				this.disclosureButton._autoSelected = true;
@@ -215,9 +215,9 @@ module egret.gui {
 		/**
 		 * 鼠标在disclosureButton上按下
 		 * @method egret.gui.TreeItemRenderer#disclosureButton_mouseDownHandler
-		 * @param event {TouchEvent} 
+		 * @param event {evt.TouchEvent}
 		 */		
-		public disclosureButton_mouseDownHandler(event:TouchEvent):void{
+		public disclosureButton_mouseDownHandler(event:evt.TouchEvent):void{
             TreeEvent.dispatchTreeEvent(this,
                 TreeEvent.ITEM_OPENING,this.itemIndex,this.data,this,!this._isOpen);
 		}

@@ -151,7 +151,7 @@ module egret.gui {
         /**
          * 关闭事件
          */
-        private onClose(event:TouchEvent):void{
+        private onClose(event:evt.TouchEvent):void{
             PopUpManager.removePopUp(this);
             if(this.closeHandler!=null){
                 var closeEvent:CloseEvent = new CloseEvent(CloseEvent.CLOSE);
@@ -168,9 +168,9 @@ module egret.gui {
         }
         /**
          * @method egret.gui.Alert#closeButton_clickHandler
-         * @param event {TouchEvent}
+         * @param event {evt.TouchEvent}
          */
-        public closeButton_clickHandler(event:TouchEvent):void{
+        public closeButton_clickHandler(event:evt.TouchEvent):void{
             super.closeButton_clickHandler(event);
             PopUpManager.removePopUp(this);
             var closeEvent:CloseEvent = new CloseEvent(CloseEvent.CLOSE,false,false,Alert.CLOSE_BUTTON);
@@ -206,13 +206,13 @@ module egret.gui {
             }
             else if(instance==this.firstButton){
                 this.firstButton.label = this._firstButtonLabel;
-                this.firstButton.addEventListener(TouchEvent.TOUCH_TAP,this.onClose,this);
+                this.firstButton.addEventListener(evt.TouchEvent.TOUCH_TAP,this.onClose,this);
             }
             else if(instance==this.secondButton){
                 this.secondButton.label = this._secondButtonLabel;
                 this.secondButton.includeInLayout = this.secondButton.visible
                     = (this._secondButtonLabel!=""&&this._secondButtonLabel!=null);
-                this.secondButton.addEventListener(TouchEvent.TOUCH_TAP,this.onClose,this);
+                this.secondButton.addEventListener(evt.TouchEvent.TOUCH_TAP,this.onClose,this);
             }
         }
         /**
@@ -224,10 +224,10 @@ module egret.gui {
         public partRemoved(partName:string, instance:any):void{
             super.partRemoved(partName,instance);
             if(instance==this.firstButton){
-                this.firstButton.removeEventListener(TouchEvent.TOUCH_TAP,this.onClose,this);
+                this.firstButton.removeEventListener(evt.TouchEvent.TOUCH_TAP,this.onClose,this);
             }
             else if(instance==this.secondButton){
-                this.secondButton.removeEventListener(TouchEvent.TOUCH_TAP,this.onClose,this);
+                this.secondButton.removeEventListener(evt.TouchEvent.TOUCH_TAP,this.onClose,this);
             }
         }
     }

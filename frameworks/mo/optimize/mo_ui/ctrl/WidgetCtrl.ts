@@ -13,7 +13,7 @@ module mo_ui {
         _widget:UIWidget;
         _setWidget(widget:UIWidget){
             var self = this;
-            var E = egret.Event;
+            var E = egret.evt.Event;
             var oldWidget = self._widget;
             if(oldWidget){//如果之前就有了，就进行绑定解除
                 (<any>oldWidget).controller = null;//强制赋值

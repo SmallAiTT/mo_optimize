@@ -41,8 +41,8 @@ module egret.gui {
 		 */		
 		public constructor(){
 			super();
-			this.addEventListener(Event.ADDED_TO_STAGE, this.addedToStageHandler, this);
-			this.addEventListener(Event.REMOVED_FROM_STAGE, this.removedFromStageHandler, this);
+			this.addEventListener(evt.Event.ADDED_TO_STAGE, this.addedToStageHandler, this);
+			this.addEventListener(evt.Event.REMOVED_FROM_STAGE, this.removedFromStageHandler, this);
 		}
 		/**
 		 * popUp已经弹出的标志
@@ -400,7 +400,7 @@ module egret.gui {
 		/**
 		 * 添加到舞台事件
 		 */		
-		private addedToStageHandler(event:Event):void{
+		private addedToStageHandler(event:evt.Event):void{
 			this.addedToStage = true;
 			callLater(this.checkPopUpState,this);
 		}
@@ -421,7 +421,7 @@ module egret.gui {
 		/**
 		 * 从舞台移除事件
 		 */		
-		private removedFromStageHandler(event:Event):void{
+		private removedFromStageHandler(event:evt.Event):void{
 			this.addedToStage = false;
 			callLater(this.checkPopUpState,this);
 		}

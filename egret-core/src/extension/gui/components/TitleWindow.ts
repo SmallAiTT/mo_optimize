@@ -41,12 +41,12 @@ module egret.gui {
 		public constructor(){
 			super();
             
-			this.addEventListener(TouchEvent.TOUCH_BEGIN,this.onWindowMouseDown,this,true,100);
+			this.addEventListener(evt.TouchEvent.TOUCH_BEGIN,this.onWindowMouseDown,this,true,100);
 		}
 		/**
 		 * 在窗体上按下时前置窗口
 		 */		
-		private onWindowMouseDown(event:TouchEvent):void{
+		private onWindowMouseDown(event:evt.TouchEvent):void{
 			if(this.enabled&&this.isPopUp&&event.target!=this.closeButton){
 				PopUpManager.bringToFront(this);
 			}
@@ -105,10 +105,10 @@ module egret.gui {
 			super.partAdded(partName, instance);
 			
 			if (instance == this.moveArea){
-				this.moveArea.addEventListener(TouchEvent.TOUCH_BEGIN, this.moveArea_mouseDownHandler, this);
+				this.moveArea.addEventListener(evt.TouchEvent.TOUCH_BEGIN, this.moveArea_mouseDownHandler, this);
 			}
 			else if (instance == this.closeButton){
-				this.closeButton.addEventListener(TouchEvent.TOUCH_TAP, this.closeButton_clickHandler, this);   
+				this.closeButton.addEventListener(evt.TouchEvent.TOUCH_TAP, this.closeButton_clickHandler, this);
 				this.closeButton.visible = this._showCloseButton;
 			}
 		}
@@ -123,17 +123,17 @@ module egret.gui {
 			super.partRemoved(partName, instance);
 			
 			if (instance == this.moveArea)
-				this.moveArea.removeEventListener(TouchEvent.TOUCH_BEGIN, this.moveArea_mouseDownHandler, this);
+				this.moveArea.removeEventListener(evt.TouchEvent.TOUCH_BEGIN, this.moveArea_mouseDownHandler, this);
 				
 			else if (instance == this.closeButton)
-				this.closeButton.removeEventListener(TouchEvent.TOUCH_TAP, this.closeButton_clickHandler, this);
+				this.closeButton.removeEventListener(evt.TouchEvent.TOUCH_TAP, this.closeButton_clickHandler, this);
 		}
 		
 		/**
 		 * @method egret.gui.TitleWindow#closeButton_clickHandler
-		 * @param event {TouchEvent} 
+		 * @param event {evt.TouchEvent}
 		 */
-		public closeButton_clickHandler(event:TouchEvent):void{
+		public closeButton_clickHandler(event:evt.TouchEvent):void{
             CloseEvent.dispatchCloseEvent(this,CloseEvent.CLOSE);
 		}
 		
@@ -145,28 +145,28 @@ module egret.gui {
 		/**
 		 * 鼠标在可移动区域按下
 		 * @method egret.gui.TitleWindow#moveArea_mouseDownHandler
-		 * @param event {TouchEvent} 
+		 * @param event {evt.TouchEvent}
 		 */		
-		public moveArea_mouseDownHandler(event:TouchEvent):void{
+		public moveArea_mouseDownHandler(event:evt.TouchEvent):void{
 			if (this.enabled && this.isPopUp){
 				var offsetPoint:Point = this.globalToLocal(event.stageX, event.stageY,Point.identity);
                 this._offsetPointX = offsetPoint.x;
                 this._offsetPointY = offsetPoint.y;
 				this._includeInLayout = false;
 				UIGlobals.stage.addEventListener(
-					TouchEvent.TOUCH_MOVE, this.moveArea_mouseMoveHandler, this);
+					evt.TouchEvent.TOUCH_MOVE, this.moveArea_mouseMoveHandler, this);
 				UIGlobals.stage.addEventListener(
-					TouchEvent.TOUCH_END, this.moveArea_mouseUpHandler, this);
+					evt.TouchEvent.TOUCH_END, this.moveArea_mouseUpHandler, this);
 				UIGlobals.stage.addEventListener(
-					Event.LEAVE_STAGE, this.moveArea_mouseUpHandler, this);
+					evt.Event.LEAVE_STAGE, this.moveArea_mouseUpHandler, this);
 			}
 		}
 		/**
 		 * 鼠标拖拽时的移动事件
 		 * @method egret.gui.TitleWindow#moveArea_mouseMoveHandler
-		 * @param event {TouchEvent} 
+		 * @param event {evt.TouchEvent}
 		 */		
-		public moveArea_mouseMoveHandler(event:TouchEvent):void{
+		public moveArea_mouseMoveHandler(event:evt.TouchEvent):void{
 			var pos:Point = this.globalToLocal(event.stageX,event.stageY,Point.identity);
 			this.x += pos.x - this._offsetPointX;
 			this.y += pos.y - this._offsetPointY;
@@ -174,15 +174,15 @@ module egret.gui {
 		/**
 		 * 鼠标在舞台上弹起事件
 		 * @method egret.gui.TitleWindow#moveArea_mouseUpHandler
-		 * @param event {Event} 
+		 * @param event {evt.Event}
 		 */		
-		public moveArea_mouseUpHandler(event:Event):void{
+		public moveArea_mouseUpHandler(event:evt.Event):void{
 			UIGlobals.stage.removeEventListener(
-				TouchEvent.TOUCH_MOVE, this.moveArea_mouseMoveHandler, this);
+				evt.TouchEvent.TOUCH_MOVE, this.moveArea_mouseMoveHandler, this);
 			UIGlobals.stage.removeEventListener(
-				TouchEvent.TOUCH_END, this.moveArea_mouseUpHandler, this);
+				evt.TouchEvent.TOUCH_END, this.moveArea_mouseUpHandler, this);
 			UIGlobals.stage.removeEventListener(
-				Event.LEAVE_STAGE, this.moveArea_mouseUpHandler, this);
+				evt.Event.LEAVE_STAGE, this.moveArea_mouseUpHandler, this);
 			if(this._autoBackToStage){
 				this.adjustPosForStage();
 			}

@@ -38,7 +38,7 @@ module egret {
         private _touchStartPosition: egret.Point = new Point(0, 0);
         private _scrollStarted: boolean = false;
         private _lastTouchTime: number = 0;
-        private _lastTouchEvent: TouchEvent = null;
+        private _lastTouchEvent: evt.TouchEvent = null;
         private _velocitys: Array<{ x: number; y: number }> = [];
         private _isHTweenPlaying: boolean = false;
         private _isVTweenPlaying: boolean = false;
@@ -237,7 +237,7 @@ module egret {
             var height = size.height;
             var width = size.width;
             this.scrollRect = new Rectangle(this._scrollLeft, this._scrollTop, width, height);
-            this.dispatchEvent(new Event(Event.CHANGE));
+            this.dispatchEvent(new evt.Event(evt.Event.CHANGE));
         }
         public _hCanScroll:boolean = false;
         public _vCanScroll:boolean = false;
@@ -260,18 +260,18 @@ module egret {
         
 
         public _addEvents(): void {
-            this.addEventListener(TouchEvent.TOUCH_BEGIN, this._onTouchBegin, this);
-            this.addEventListener(TouchEvent.TOUCH_BEGIN, this._onTouchBeginCapture, this, true);
-            this.addEventListener(TouchEvent.TOUCH_END, this._onTouchEndCapture, this, true);
+            this.addEventListener(evt.TouchEvent.TOUCH_BEGIN, this._onTouchBegin, this);
+            this.addEventListener(evt.TouchEvent.TOUCH_BEGIN, this._onTouchBeginCapture, this, true);
+            this.addEventListener(evt.TouchEvent.TOUCH_END, this._onTouchEndCapture, this, true);
         }
 
         public _removeEvents(): void {
-            this.removeEventListener(TouchEvent.TOUCH_BEGIN, this._onTouchBegin, this);
-            this.removeEventListener(TouchEvent.TOUCH_BEGIN, this._onTouchBeginCapture, this, true);
-            this.removeEventListener(TouchEvent.TOUCH_END, this._onTouchEndCapture, this, true);
+            this.removeEventListener(evt.TouchEvent.TOUCH_BEGIN, this._onTouchBegin, this);
+            this.removeEventListener(evt.TouchEvent.TOUCH_BEGIN, this._onTouchBeginCapture, this, true);
+            this.removeEventListener(evt.TouchEvent.TOUCH_END, this._onTouchEndCapture, this, true);
         }
 
-        public _onTouchBegin(e: TouchEvent):void {
+        public _onTouchBegin(e: evt.TouchEvent):void {
             if (e._isDefaultPrevented)
                 return;
             var canScroll: boolean = this._checkScrollPolicy();
@@ -283,17 +283,17 @@ module egret {
             if (this._isHTweenPlaying || this._isVTweenPlaying) {
                 this._onScrollFinished();
             }
-            this.stage.addEventListener(TouchEvent.TOUCH_MOVE, this._onTouchMove, this);
-            this.stage.addEventListener(TouchEvent.TOUCH_END, this._onTouchEnd, this);
-            this.stage.addEventListener(TouchEvent.LEAVE_STAGE, this._onTouchEnd, this);
-            this.addEventListener(Event.ENTER_FRAME, this._onEnterFrame, this);
+            this.stage.addEventListener(evt.TouchEvent.TOUCH_MOVE, this._onTouchMove, this);
+            this.stage.addEventListener(evt.TouchEvent.TOUCH_END, this._onTouchEnd, this);
+            this.stage.addEventListener(evt.TouchEvent.LEAVE_STAGE, this._onTouchEnd, this);
+            this.addEventListener(evt.Event.ENTER_FRAME, this._onEnterFrame, this);
 
             this._logTouchEvent(e);
             e.preventDefault();
         }
-        private delayTouchBeginEvent: TouchEvent = null;
+        private delayTouchBeginEvent: evt.TouchEvent = null;
         private touchBeginTimer: Timer = null;
-        public _onTouchBeginCapture(event: TouchEvent):void {
+        public _onTouchBeginCapture(event: evt.TouchEvent):void {
             var canScroll: boolean = this._checkScrollPolicy();
             if (!canScroll) {
                 return;
@@ -310,17 +310,17 @@ module egret {
                 target = target.parent;
             }
             event.stopPropagation();
-            var evt: TouchEvent = this.cloneTouchEvent(event);
+            var evt: evt.TouchEvent = this.cloneTouchEvent(event);
             this.delayTouchBeginEvent = evt;
             if (!this.touchBeginTimer) {
                 this.touchBeginTimer = new egret.Timer(100, 1);
-                this.touchBeginTimer.addEventListener(TimerEvent.TIMER_COMPLETE, this._onTouchBeginTimer, this);
+                this.touchBeginTimer.addEventListener(evt.TimerEvent.TIMER_COMPLETE, this._onTouchBeginTimer, this);
             }
             this.touchBeginTimer.start();
             this._onTouchBegin(event);
         }
 
-        private _onTouchEndCapture(event: TouchEvent): void {
+        private _onTouchEndCapture(event: evt.TouchEvent): void {
             if (!this.delayTouchBeginEvent) {
                 return;
             }
@@ -328,14 +328,14 @@ module egret {
         }
         private _onTouchBeginTimer():void {
             this.touchBeginTimer.stop();
-            var event: TouchEvent = this.delayTouchBeginEvent;
+            var event: evt.TouchEvent = this.delayTouchBeginEvent;
             this.delayTouchBeginEvent = null;
             //Dispatch event only if the scroll view is still on the stage
             if(this.stage)
                 this.dispatchPropagationEvent(event);
         }
 
-        private dispatchPropagationEvent(event: TouchEvent): void {
+        private dispatchPropagationEvent(event: evt.TouchEvent): void {
             var list: Array<DisplayObject> = [];
 
             var target: DisplayObject = event._target;
@@ -355,7 +355,7 @@ module egret {
         }
 
         
-        public _dispatchPropagationEvent(event: Event, list: Array<DisplayObject>, targetIndex?: number): void {
+        public _dispatchPropagationEvent(event: evt.Event, list: Array<DisplayObject>, targetIndex?: number): void {
             var length: number = list.length;
             for (var i: number = 0; i < length; i++) {
                 var currentTarget: DisplayObject = list[i];
@@ -373,7 +373,7 @@ module egret {
             }
         }
 
-        public _onTouchMove(event: TouchEvent): void {
+        public _onTouchMove(event: evt.TouchEvent): void {
             if (this._lastTouchPosition.x == event.stageX && this._lastTouchPosition.y == event.stageY)
                 return;
             if (!this._scrollStarted) {
@@ -397,40 +397,40 @@ module egret {
             this._logTouchEvent(event);
         }
 
-        public _onTouchEnd(event: TouchEvent): void {
+        public _onTouchEnd(event: evt.TouchEvent): void {
             this.touchChildren = true;
             this._scrollStarted = false;
-            egret.MainContext.instance.stage.removeEventListener(TouchEvent.TOUCH_MOVE, this._onTouchMove, this);
-            egret.MainContext.instance.stage.removeEventListener(TouchEvent.TOUCH_END, this._onTouchEnd, this);
-            egret.MainContext.instance.stage.removeEventListener(TouchEvent.LEAVE_STAGE, this._onTouchEnd, this);
-            this.removeEventListener(Event.ENTER_FRAME, this._onEnterFrame, this);
+            egret.MainContext.instance.stage.removeEventListener(evt.TouchEvent.TOUCH_MOVE, this._onTouchMove, this);
+            egret.MainContext.instance.stage.removeEventListener(evt.TouchEvent.TOUCH_END, this._onTouchEnd, this);
+            egret.MainContext.instance.stage.removeEventListener(evt.TouchEvent.LEAVE_STAGE, this._onTouchEnd, this);
+            this.removeEventListener(evt.Event.ENTER_FRAME, this._onEnterFrame, this);
             
             this._moveAfterTouchEnd();
         }
 
 
-        public _onEnterFrame(event: Event): void {
+        public _onEnterFrame(event: evt.Event): void {
             var time = getTimer();
             if (time - this._lastTouchTime > 100 && time - this._lastTouchTime < 300) {
                 this._calcVelocitys(this._lastTouchEvent);
             }
         }
 
-        private _logTouchEvent(e: TouchEvent): void {
+        private _logTouchEvent(e: evt.TouchEvent): void {
             this._lastTouchPosition.x = e.stageX;
             this._lastTouchPosition.y = e.stageY;
             this._lastTouchEvent = this.cloneTouchEvent(e);
             this._lastTouchTime = egret.getTimer();
         }
 
-        private _getPointChange(e: TouchEvent): { x: number; y: number } {
+        private _getPointChange(e: evt.TouchEvent): { x: number; y: number } {
             return {
                 x: this._hCanScroll === false ? 0 : (this._lastTouchPosition.x - e.stageX),
                 y: this._vCanScroll === false ? 0 : (this._lastTouchPosition.y - e.stageY)
             };
         }
 
-        private _calcVelocitys(e: TouchEvent): void {
+        private _calcVelocitys(e: evt.TouchEvent): void {
             var time = getTimer();
             if (this._lastTouchTime == 0) {
                 this._lastTouchTime = time;
@@ -506,7 +506,7 @@ module egret {
             this._vScrollTween = null;
             this._isHTweenPlaying = false;
             this._isVTweenPlaying = false
-            this.dispatchEvent(new Event(Event.COMPLETE));
+            this.dispatchEvent(new evt.Event(evt.Event.COMPLETE));
         }
         public setScrollTop(scrollTop: number, duration: number = 0): egret.Tween {
             var finalPosition = Math.min(this.getMaxScrollTop(), Math.max(scrollTop, 0));
@@ -573,8 +573,8 @@ module egret {
             };
             return result;
         }
-        private cloneTouchEvent(event: TouchEvent): TouchEvent {
-            var evt: TouchEvent = new TouchEvent(event._type, event._bubbles, event.cancelable);
+        private cloneTouchEvent(event: evt.TouchEvent): evt.TouchEvent {
+            var evt: evt.TouchEvent = new evt.TouchEvent(event._type, event._bubbles, event.cancelable);
             evt.touchPointID = event.touchPointID
             evt._stageX = event._stageX;
             evt._stageY = event._stageY;

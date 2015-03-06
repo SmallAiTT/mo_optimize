@@ -22,9 +22,9 @@ module RES {
 	/**
 	 * @class RES.ResourceEvent
 	 * @classdesc
-	 * @extends egret.Event
+	 * @extends egret.evt.Event
 	 */
-	export class ResourceEvent extends egret.Event{
+	export class ResourceEvent extends egret.evt.Event{
 		/**
 		 * 一个加载项加载失败事件。
 		 * @constant {string} RES.ResourceEvent.ITEM_LOAD_ERROR
@@ -89,22 +89,22 @@ module RES {
         /**
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
 		 * @method RES.ResourceEvent.dispatchResourceEvent
-		 * @param target {egret.IEventDispatcher} 
+		 * @param target {egret.evt.IEventDispatcher}
 		 * @param type {string} 
 		 * @param groupName {string} 
 		 * @param resItem {egret.ResourceItem} 
 		 * @param itemsLoaded {number} 
 		 * @param itemsTotal {number} 
          */
-        public static dispatchResourceEvent(target:egret.IEventDispatcher,type:string,
+        public static dispatchResourceEvent(target:egret.evt.IEventDispatcher,type:string,
                                                     groupName:string="",resItem:ResourceItem=null,itemsLoaded:number=0,itemsTotal:number=0):void{
             var eventClass:any = ResourceEvent;
-            var props:any = egret.Event._getPropertyData(eventClass);
+            var props:any = egret.evt.Event._getPropertyData(eventClass);
             props.groupName = groupName;
             props.resItem = resItem;
             props.itemsLoaded = itemsLoaded;
             props.itemsTotal = itemsTotal;
-            egret.Event._dispatchByTarget(eventClass,target,type,props);
+            egret.evt.Event._dispatchByTarget(eventClass,target,type,props);
         }
 	}
 }

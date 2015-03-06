@@ -28,7 +28,7 @@
 
 module egret {
 
-    export class FrameLabel extends EventDispatcher
+    export class FrameLabel extends evt.EventDispatcher
     {
         private _name: string;
         private _frame: number /*int*/;

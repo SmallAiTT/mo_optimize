@@ -35,9 +35,9 @@ module egret.gui {
 	 * 窗口弹出管理器接口。若项目需要自定义弹出框管理器，请实现此接口，
 	 * 并在项目初始化前调用Injector.mapClass("egret.gui.IPopUpManager",YourPopUpManager)，
 	 * 注入自定义的弹出框管理器类。
-	 * @extends egret.IEventDispatcher
+	 * @extends egret.evt.IEventDispatcher
 	 */
-	export interface IPopUpManager extends IEventDispatcher{
+	export interface IPopUpManager extends evt.IEventDispatcher{
 		/**
 		 * 模态遮罩的填充颜色
 		 * @member egret.gui.IPopUpManager#modalColor

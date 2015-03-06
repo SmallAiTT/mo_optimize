@@ -30,10 +30,10 @@ module egret {
 
     /**
      * @classdesc
-     * @extends egret.EventDispatcher
+     * @extends egret.evt.EventDispatcher
      * @private
      */
-    export class StageText extends EventDispatcher {
+    export class StageText extends evt.EventDispatcher {
 
         constructor() {
             super();

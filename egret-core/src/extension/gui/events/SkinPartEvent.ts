@@ -32,9 +32,9 @@ module egret.gui {
 	 * @class egret.gui.SkinPartEvent
 	 * @classdesc
 	 * 皮肤组件附加移除事件
-	 * @extends egret.Event
+	 * @extends egret.evt.Event
 	 */
-	export class SkinPartEvent extends Event{
+	export class SkinPartEvent extends evt.Event{
 		/**
 		 * 附加皮肤公共子部件 
 		 * @constant egret.gui.SkinPartEvent.PART_ADDED
@@ -80,13 +80,13 @@ module egret.gui {
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method egret.gui.SkinPartEvent.dispatchSkinPartEvent
          */
-        public static dispatchSkinPartEvent(target:IEventDispatcher,type:string,
+        public static dispatchSkinPartEvent(target:evt.IEventDispatcher,type:string,
                                             partName:string = null,instance:any = null):void{
             var eventClass:any = SkinPartEvent;
-            var props:any = Event._getPropertyData(eventClass);
+            var props:any = evt.Event._getPropertyData(eventClass);
             props.partName = partName;
             props.instance = instance;
-            Event._dispatchByTarget(eventClass,target,type,props);
+            evt.Event._dispatchByTarget(eventClass,target,type,props);
         }
 	}
 }

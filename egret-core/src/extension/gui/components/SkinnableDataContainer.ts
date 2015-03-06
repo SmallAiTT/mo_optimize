@@ -286,7 +286,7 @@ module egret.gui {
 		}
 		
 		/**
-		 * 使用 EventDispatcher 对象注册事件侦听器对象，以使侦听器能够接收事件通知
+		 * 使用 evt.EventDispatcher 对象注册事件侦听器对象，以使侦听器能够接收事件通知
 		 * @method egret.gui.SkinnableDataContainer#addEventListener
 		 * @param type {string} 
 		 * @param listener {Function} 
@@ -309,7 +309,7 @@ module egret.gui {
 		}
 		
 		/**
-		 * 从 EventDispatcher 对象中删除侦听器
+		 * 从 evt.EventDispatcher 对象中删除侦听器
 		 * @method egret.gui.SkinnableDataContainer#removeEventListener
 		 * @param type {string} 
 		 * @param listener {Function} 

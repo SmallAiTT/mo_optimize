@@ -28,7 +28,7 @@ module egret {
     /**
      * @private
      */
-    export class NativeResourceLoader extends egret.EventDispatcher{
+    export class NativeResourceLoader extends egret.evt.EventDispatcher{
 
         private _downCount:number = 0;
         private _path:string = null;
@@ -74,15 +74,15 @@ module egret {
         }
 
         private downloadingProgress(bytesLoaded:number) {
-            egret.ProgressEvent.dispatchProgressEvent(this, egret.ProgressEvent.PROGRESS, bytesLoaded, this._bytesTotal);
+            egret.evt.ProgressEvent.dispatchProgressEvent(this, egret.evt.ProgressEvent.PROGRESS, bytesLoaded, this._bytesTotal);
         }
 
         private downloadFileError() {
-            this.dispatchEvent(new egret.Event(egret.IOErrorEvent.IO_ERROR));
+            this.dispatchEvent(new egret.evt.Event(egret.evt.IOErrorEvent.IO_ERROR));
         }
 
         private loadOver() {
-            this.dispatchEvent(new egret.Event(egret.Event.COMPLETE));
+            this.dispatchEvent(new egret.evt.Event(egret.evt.Event.COMPLETE));
         }
     }
 }

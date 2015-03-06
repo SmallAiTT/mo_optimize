@@ -34,10 +34,10 @@ module egret.gui {
      * 数组的集合类数据结构包装器
      * 通常作为列表组件的数据源，使用这种数据结构包装普通数组，
      * 能在数据源发生改变的时候主动通知视图刷新变更的数据项
-     * @extends egret.EventDispatcher
+     * @extends egret.evt.EventDispatcher
      * @implements egret.gui.ICollection
      */
-    export class ArrayCollection extends EventDispatcher implements ICollection{
+    export class ArrayCollection extends evt.EventDispatcher implements ICollection{
         /**
          * 构造函数
          * @method egret.gui.ArrayCollection#constructor

@@ -26,12 +26,12 @@
  */
 
 
-module egret {
+module egret.evt {
     /**
      *
-     * @class egret.EventDispatcher
+     * @class egret.evt.EventDispatcher
      * @classdesc
-     * EventDispatcher 是 Egret 的事件派发器类，负责进行事件的发送和侦听。
+     * evt.EventDispatcher 是 Egret 的事件派发器类，负责进行事件的发送和侦听。
      *
      * 事件目标是事件如何通过显示列表层次结构这一问题的焦点。当发生鼠标单击、触摸或按键等事件时，
      * 引擎会将事件对象调度到从显示列表根开始的事件流中。然后该事件对象在显示列表中前进，直到到达事件目标，
@@ -39,14 +39,14 @@ module egret {
      * 捕获阶段包括从根到事件目标节点之前的最后一个节点的行程，目标阶段仅包括事件目标节点，冒泡阶段包括回程上遇到的任何后续节点到显示列表的根。
      * @link http://docs.egret-labs.org/post/manual/event/eventlistener.html 事件侦听器
      */
-    export class EventDispatcher extends HashObject implements IEventDispatcher {
+    export class EventDispatcher extends HashObject implements evt.IEventDispatcher {
 
         /**
-         * EventDispatcher 类是可调度事件的所有类的基类。
-         * EventDispatcher 类实现 IEventDispatcher 接口 ，并且是 DisplayObject 类的基类。
-         * EventDispatcher 类允许显示列表上的任何对象都是一个事件目标，同样允许使用 IEventDispatcher 接口的方法。
+         * evt.EventDispatcher 类是可调度事件的所有类的基类。
+         * evt.EventDispatcher 类实现 evt.IEventDispatcher 接口 ，并且是 DisplayObject 类的基类。
+         * evt.EventDispatcher 类允许显示列表上的任何对象都是一个事件目标，同样允许使用 evt.IEventDispatcher 接口的方法。
          */
-        public constructor(target:IEventDispatcher = null) {
+        public constructor(target:evt.IEventDispatcher = null) {
             super();
             if (target) {
                 this._eventTarget = target;
@@ -60,7 +60,7 @@ module egret {
         /**
          * 事件抛出对象
          */
-        private _eventTarget:IEventDispatcher = null;
+        private _eventTarget:evt.IEventDispatcher = null;
         /**
          * 引擎内部调用
          * @private
@@ -74,10 +74,10 @@ module egret {
 
         /**
          * 添加事件侦听器
-         * @method egret.EventDispatcher#addEventListener
+         * @method egret.evt.EventDispatcher#addEventListener
          * @param type {string} 事件的类型。
-         * @param listener {Function} 处理事件的侦听器函数。此函数必须接受 Event 对象作为其唯一的参数，并且不能返回任何结果，
-         * 如下面的示例所示： function(evt:Event):void 函数可以有任何名称。
+         * @param listener {Function} 处理事件的侦听器函数。此函数必须接受 evt.Event 对象作为其唯一的参数，并且不能返回任何结果，
+         * 如下面的示例所示： function(evt:evt.Event):void 函数可以有任何名称。
          * @param thisObject {any} 侦听函数绑定的this对象
          * @param useCapture {boolean} 确定侦听器是运行于捕获阶段还是运行于目标和冒泡阶段。如果将 useCapture 设置为 true，
          * 则侦听器只在捕获阶段处理事件，而不在目标或冒泡阶段处理事件。如果 useCapture 为 false，则侦听器只在目标或冒泡阶段处理事件。
@@ -143,7 +143,7 @@ module egret {
 
         /**
          * 移除事件侦听器
-         * @method egret.EventDispatcher#removeEventListener
+         * @method egret.evt.EventDispatcher#removeEventListener
          * @param type {string} 事件名
          * @param listener {Function} 侦听函数
          * @param thisObject {any} 侦听函数绑定的this对象
@@ -181,7 +181,7 @@ module egret {
 
         /**
          * 检测是否存在监听器
-         * @method egret.EventDispatcher#hasEventListener
+         * @method egret.evt.EventDispatcher#hasEventListener
          * @param type {string} 事件类型
          * @returns {boolean}
          * @stable A
@@ -192,11 +192,11 @@ module egret {
         }
 
         /**
-         * 检查是否用此 EventDispatcher 对象或其任何始祖为指定事件类型注册了事件侦听器。将指定类型的事件调度给此
-         * EventDispatcher 对象或其任一后代时，如果在事件流的任何阶段触发了事件侦听器，则此方法返回 true。
+         * 检查是否用此 evt.EventDispatcher 对象或其任何始祖为指定事件类型注册了事件侦听器。将指定类型的事件调度给此
+         * evt.EventDispatcher 对象或其任一后代时，如果在事件流的任何阶段触发了事件侦听器，则此方法返回 true。
          * hasEventListener() 与 willTrigger() 方法的区别是：hasEventListener() 只检查它所属的对象，
          * 而 willTrigger() 方法检查整个事件流以查找由 type 参数指定的事件。
-         * @method egret.EventDispatcher#willTrigger
+         * @method egret.evt.EventDispatcher#willTrigger
          * @param type {string} 事件类型
          * @returns {boolean} 是否注册过监听器，如果注册过返回true，反之返回false
          */
@@ -206,19 +206,19 @@ module egret {
 
 
         /**
-         * 将事件分派到事件流中。事件目标是对其调用 dispatchEvent() 方法的 EventDispatcher 对象。
-         * @method egret.EventDispatcher#dispatchEvent
-         * @param event {egret.Event} 调度到事件流中的 Event 对象。如果正在重新分派事件，则会自动创建此事件的一个克隆。 在调度了事件后，其 _eventTarget 属性将无法更改，因此您必须创建此事件的一个新副本以能够重新调度。
+         * 将事件分派到事件流中。事件目标是对其调用 dispatchEvent() 方法的 evt.EventDispatcher 对象。
+         * @method egret.evt.EventDispatcher#dispatchEvent
+         * @param event {egret.evt.Event} 调度到事件流中的 evt.Event 对象。如果正在重新分派事件，则会自动创建此事件的一个克隆。 在调度了事件后，其 _eventTarget 属性将无法更改，因此您必须创建此事件的一个新副本以能够重新调度。
          * @returns {boolean} 如果成功调度了事件，则值为 true。值 false 表示失败或对事件调用了 preventDefault()。
          */
-        public dispatchEvent(event:Event):boolean {
+        public dispatchEvent(event:evt.Event):boolean {
             event._reset();
             event._target = this._eventTarget;
             event._currentTarget = this._eventTarget;
             return this._notifyListener(event);
         }
 
-        public _notifyListener(event:Event):boolean {
+        public _notifyListener(event:evt.Event):boolean {
             var eventMap:Object = event._eventPhase == 1 ? this._captureEventsMap : this._eventsMap;
             if (!eventMap) {
                 return true;
@@ -245,13 +245,13 @@ module egret {
 
         /**
          * 派发一个包含了特定参数的事件到所有注册了特定类型侦听器的对象中。 这个方法使用了一个内部的事件对象池因避免重复的分配导致的额外开销。
-         * @method egret.EventDispatcher#dispatchEventWith
+         * @method egret.evt.EventDispatcher#dispatchEventWith
          * @param type {string} 事件类型
          * @param bubbles {boolean} 是否冒泡，默认false
          * @param data {any}附加数据(可选)
          */
         public dispatchEventWith(type:string, bubbles:boolean = false, data?:Object):void {
-            Event.dispatchEvent(this, type, bubbles, data);
+            evt.Event.dispatchEvent(this, type, bubbles, data);
         }
     }
 }

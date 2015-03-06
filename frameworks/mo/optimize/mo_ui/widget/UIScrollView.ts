@@ -791,7 +791,7 @@ module mo_ui{
             }
         }
 
-        handlePressLogic(event:egret.TouchEvent):void{
+        handlePressLogic(event:egret.evt.TouchEvent):void{
             this.startRecordSlidAction();
         }
 
@@ -810,14 +810,14 @@ module mo_ui{
             if(touchOption.touchEventsInited) return;//已经初始化过了就不再初始化了
             touchOption.touchEventsInited = true;
             touchOption.bePressed = false;
-            var TE = egret.TouchEvent;
+            var TE = egret.evt.TouchEvent;
             self.addEventListener(TE.TOUCH_BEGIN, self._onTouchBegin, self, true);
         }
 
         __resetDownEvent() {
             var self = this, stage:egret.Stage = egret.MainContext.instance.stage;
 
-            var TE = egret.TouchEvent;
+            var TE = egret.evt.TouchEvent;
             self._touchOption.bePressed = false;
             self.addEventListener(TE.TOUCH_BEGIN, self._onTouchBegin, self, true);
 
@@ -829,7 +829,7 @@ module mo_ui{
         __resetOtherEvents() {
             var self = this, stage:egret.Stage = egret.MainContext.instance.stage;
             self._touchOption.bePressed = true;
-            var TE = egret.TouchEvent;
+            var TE = egret.evt.TouchEvent;
             self.removeEventListener(TE.TOUCH_BEGIN, self._onTouchBegin, self, true);
 
             stage.addEventListener(TE.TOUCH_MOVE, self._onTouchMoveInStage, self, true);
@@ -838,7 +838,7 @@ module mo_ui{
 
 
         //@override
-        onTouchBegan(event:egret.TouchEvent){//这里不进行事件拦截，继续传递
+        onTouchBegan(event:egret.evt.TouchEvent){//这里不进行事件拦截，继续传递
             this._scrollOption.targetNode = <mo.Node>event.target;
             this.handlePressLogic(event);
         }
@@ -857,7 +857,7 @@ module mo_ui{
             }
         }
 
-        _end(event:egret.TouchEvent){
+        _end(event:egret.evt.TouchEvent){
             var self = this, touchOption = self._touchOption,
                 scrollOption = self._scrollOption, targetNode = scrollOption.targetNode;
             if(touchOption.movedDeltaSQ > scrollOption.maxMovedDeltaSQ && targetNode){

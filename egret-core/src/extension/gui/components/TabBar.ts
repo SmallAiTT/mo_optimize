@@ -98,7 +98,7 @@ module egret.gui {
 		/**
 		 * ViewStack选中项发生改变
 		 */		
-		private onViewStackIndexChange(event:Event):void{
+		private onViewStackIndexChange(event:evt.Event):void{
 			this._setSelectedIndex((<ViewStack><any> (this.dataProvider)).selectedIndex, false);
 		}
 
@@ -130,7 +130,7 @@ module egret.gui {
 		/**
 		 * 鼠标在项呈示器上弹起，抛出ItemClick事件。
 		 */	
-        public _item_touchEndHandler(event: TouchEvent): void {
+        public _item_touchEndHandler(event: evt.TouchEvent): void {
             var itemRenderer: IItemRenderer = <IItemRenderer> (event.currentTarget);
             if (itemRenderer != this._mouseDownItemRenderer)
                 return;

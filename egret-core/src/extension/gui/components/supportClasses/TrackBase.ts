@@ -40,8 +40,8 @@ module egret.gui {
 		 */
 		public constructor(){
 			super();
-			this.addEventListener(Event.ADDED_TO_STAGE, this.addedToStageHandler, this);
-			this.addEventListener(TouchEvent.TOUCH_BEGIN, this.mouseDownHandler, this);
+			this.addEventListener(evt.Event.ADDED_TO_STAGE, this.addedToStageHandler, this);
+			this.addEventListener(evt.TouchEvent.TOUCH_BEGIN, this.mouseDownHandler, this);
 		}
 		
 		private _slideDuration:number = 300;
@@ -161,7 +161,7 @@ module egret.gui {
 			super.changeValueByStep(increase);
 			
 			if (this.value != prevValue)
-				this.dispatchEventWith(Event.CHANGE);
+				this.dispatchEventWith(evt.Event.CHANGE);
 		}
 		
 		/**
@@ -174,13 +174,13 @@ module egret.gui {
 			super.partAdded(partName, instance);
 			
 			if (instance == this.thumb){
-				this.thumb.addEventListener(TouchEvent.TOUCH_BEGIN, this.thumb_mouseDownHandler, this);
+				this.thumb.addEventListener(evt.TouchEvent.TOUCH_BEGIN, this.thumb_mouseDownHandler, this);
 				this.thumb.addEventListener(ResizeEvent.RESIZE, this.thumb_resizeHandler, this);
 				this.thumb.addEventListener(UIEvent.UPDATE_COMPLETE, this.thumb_updateCompleteHandler, this);
 				this.thumb.stickyHighlighting = true;
 			}
 			else if (instance == this.track){
-				this.track.addEventListener(TouchEvent.TOUCH_BEGIN, this.track_mouseDownHandler, this);
+				this.track.addEventListener(evt.TouchEvent.TOUCH_BEGIN, this.track_mouseDownHandler, this);
 				this.track.addEventListener(ResizeEvent.RESIZE, this.track_resizeHandler, this);
 			}
 		}
@@ -195,12 +195,12 @@ module egret.gui {
 			super.partRemoved(partName, instance);
 			
 			if (instance == this.thumb){
-				this.thumb.removeEventListener(TouchEvent.TOUCH_BEGIN, this.thumb_mouseDownHandler, this);
+				this.thumb.removeEventListener(evt.TouchEvent.TOUCH_BEGIN, this.thumb_mouseDownHandler, this);
 				this.thumb.removeEventListener(ResizeEvent.RESIZE, this.thumb_resizeHandler, this);            
 				this.thumb.removeEventListener(UIEvent.UPDATE_COMPLETE, this.thumb_updateCompleteHandler, this);            
 			}
 			else if (instance == this.track){
-				this.track.removeEventListener(TouchEvent.TOUCH_BEGIN, this.track_mouseDownHandler, this);
+				this.track.removeEventListener(evt.TouchEvent.TOUCH_BEGIN, this.track_mouseDownHandler, this);
 				this.track.removeEventListener(ResizeEvent.RESIZE, this.track_resizeHandler, this);
 			}
 		}
@@ -241,28 +241,28 @@ module egret.gui {
 		/**
 		 * 添加到舞台时
 		 */		
-		private addedToStageHandler(event:Event):void{
+		private addedToStageHandler(event:evt.Event):void{
 			this.updateSkinDisplayList();
 		}
 		
 		/**
 		 * 轨道尺寸改变事件
 		 */		
-		private track_resizeHandler(event:Event):void{
+		private track_resizeHandler(event:evt.Event):void{
 			this.updateSkinDisplayList();
 		}
 		
 		/**
 		 * 滑块尺寸改变事件
 		 */		
-		private thumb_resizeHandler(event:Event):void{
+		private thumb_resizeHandler(event:evt.Event):void{
 			this.updateSkinDisplayList();
 		}
 		
 		/**
 		 * 滑块三个阶段的延迟布局更新完毕事件
 		 */		
-		private thumb_updateCompleteHandler(event:Event):void{
+		private thumb_updateCompleteHandler(event:evt.Event):void{
 			this.updateSkinDisplayList();
 			this.thumb.removeEventListener(UIEvent.UPDATE_COMPLETE, this.thumb_updateCompleteHandler, this);
 		}
@@ -270,13 +270,13 @@ module egret.gui {
 		/**
 		 * 滑块按下事件
 		 * @method egret.gui.TrackBase#thumb_mouseDownHandler
-		 * @param event {TouchEvent} 
+		 * @param event {evt.TouchEvent}
 		 */		
-		public thumb_mouseDownHandler(event:TouchEvent):void{        
-			UIGlobals.stage.addEventListener(TouchEvent.TOUCH_MOVE,this.stage_mouseMoveHandler,this);
-			UIGlobals.stage.addEventListener(TouchEvent.TOUCH_END,this.stage_mouseUpHandler,this);
-			UIGlobals.stage.addEventListener(Event.LEAVE_STAGE,this.stage_mouseUpHandler,this);
-			this.addEventListener(Event.ENTER_FRAME,this.onEnterFrame,this);
+		public thumb_mouseDownHandler(event:evt.TouchEvent):void{
+			UIGlobals.stage.addEventListener(evt.TouchEvent.TOUCH_MOVE,this.stage_mouseMoveHandler,this);
+			UIGlobals.stage.addEventListener(evt.TouchEvent.TOUCH_END,this.stage_mouseUpHandler,this);
+			UIGlobals.stage.addEventListener(evt.Event.LEAVE_STAGE,this.stage_mouseUpHandler,this);
+			this.addEventListener(evt.Event.ENTER_FRAME,this.onEnterFrame,this);
 			
 			var clickOffset:Point = this.thumb.globalToLocal(event.stageX, event.stageY,Point.identity);
             this._clickOffsetX = clickOffset.x;
@@ -293,7 +293,7 @@ module egret.gui {
 		/**
 		 * 拖动thumb过程中触发的EnterFrame事件
 		 */		
-		private onEnterFrame(event:Event):void{
+		private onEnterFrame(event:evt.Event):void{
 			if(!this.needUpdateValue||!this.track)
 				return;
 			this.updateWhenMouseMove();
@@ -315,7 +315,7 @@ module egret.gui {
 				this.setValue(newValue); 
 				this.validateDisplayList();
                 TrackBaseEvent.dispatchTrackBaseEvent(this,TrackBaseEvent.THUMB_DRAG);
-				this.dispatchEventWith(Event.CHANGE);
+				this.dispatchEventWith(evt.Event.CHANGE);
 			}
 		}
 
@@ -335,9 +335,9 @@ module egret.gui {
 		/**
 		 * 鼠标移动事件
 		 * @method egret.gui.TrackBase#stage_mouseMoveHandler
-		 * @param event {TouchEvent} 
+		 * @param event {evt.TouchEvent}
 		 */		
-		public stage_mouseMoveHandler(event:TouchEvent):void{
+		public stage_mouseMoveHandler(event:evt.TouchEvent):void{
             this._moveStageX = event.stageX;
             this._moveStageY = event.stageY;
 			if (this.needUpdateValue)
@@ -348,19 +348,19 @@ module egret.gui {
 		/**
 		 * 鼠标弹起事件
 		 * @method egret.gui.TrackBase#stage_mouseUpHandler
-		 * @param event {Event} 
+		 * @param event {evt.Event}
 		 */		
-		public stage_mouseUpHandler(event:Event):void{
-			UIGlobals.stage.removeEventListener(TouchEvent.TOUCH_MOVE, 
+		public stage_mouseUpHandler(event:evt.Event):void{
+			UIGlobals.stage.removeEventListener(evt.TouchEvent.TOUCH_MOVE,
 				this.stage_mouseMoveHandler, 
 				this);
-			UIGlobals.stage.removeEventListener(TouchEvent.TOUCH_END, 
+			UIGlobals.stage.removeEventListener(evt.TouchEvent.TOUCH_END,
 				this.stage_mouseUpHandler, 
 				this);
-			UIGlobals.stage.removeEventListener(Event.LEAVE_STAGE,
+			UIGlobals.stage.removeEventListener(evt.Event.LEAVE_STAGE,
 				this.stage_mouseUpHandler,
 				this);
-			this.removeEventListener(Event.ENTER_FRAME,this.updateWhenMouseMove,this);
+			this.removeEventListener(evt.Event.ENTER_FRAME,this.updateWhenMouseMove,this);
 			if(this.needUpdateValue){
 				this.updateWhenMouseMove();
 				this.needUpdateValue = false;
@@ -372,9 +372,9 @@ module egret.gui {
 		/**
 		 * 轨道被按下事件
 		 * @method egret.gui.TrackBase#track_mouseDownHandler
-		 * @param event {TouchEvent} 
+		 * @param event {evt.TouchEvent}
 		 */		
-		public track_mouseDownHandler(event:TouchEvent):void { 
+		public track_mouseDownHandler(event:evt.TouchEvent):void {
 		}
 		
         private mouseDownTarget: DisplayObject = null;
@@ -382,9 +382,9 @@ module egret.gui {
 		/**
 		 * 当在组件上按下鼠标时记录被按下的子显示对象
 		 */		
-		private mouseDownHandler(event:TouchEvent):void{
-			UIGlobals.stage.addEventListener(TouchEvent.TOUCH_END, this.stage_mouseUpSomewhereHandler, this);
-			UIGlobals.stage.addEventListener(Event.LEAVE_STAGE, this.stage_mouseUpSomewhereHandler, this);
+		private mouseDownHandler(event:evt.TouchEvent):void{
+			UIGlobals.stage.addEventListener(evt.TouchEvent.TOUCH_END, this.stage_mouseUpSomewhereHandler, this);
+			UIGlobals.stage.addEventListener(evt.Event.LEAVE_STAGE, this.stage_mouseUpSomewhereHandler, this);
 			
 			this.mouseDownTarget = <DisplayObject> (event.target);      
 		}
@@ -392,16 +392,16 @@ module egret.gui {
 		/**
 		 * 当鼠标弹起时，若不是在mouseDownTarget上弹起，而是另外的子显示对象上弹起时，额外抛出一个鼠标单击事件。
 		 */		
-		private stage_mouseUpSomewhereHandler(event:Event):void{
-			UIGlobals.stage.removeEventListener(TouchEvent.TOUCH_END, this.stage_mouseUpSomewhereHandler, this);
-			UIGlobals.stage.removeEventListener(Event.LEAVE_STAGE,this.stage_mouseUpSomewhereHandler,this);
-			if (this.mouseDownTarget != event.target && event instanceof TouchEvent && this.contains(<DisplayObject> (event.target))){ 
-				var mEvent:TouchEvent = <TouchEvent> event;
+		private stage_mouseUpSomewhereHandler(event:evt.Event):void{
+			UIGlobals.stage.removeEventListener(evt.TouchEvent.TOUCH_END, this.stage_mouseUpSomewhereHandler, this);
+			UIGlobals.stage.removeEventListener(evt.Event.LEAVE_STAGE,this.stage_mouseUpSomewhereHandler,this);
+			if (this.mouseDownTarget != event.target && event instanceof evt.TouchEvent && this.contains(<DisplayObject> (event.target))){
+				var mEvent:evt.TouchEvent = <evt.TouchEvent> event;
 
                 var mousePoint:Point = (<DisplayObject> (event.target)).localToGlobal(mEvent.localX, mEvent.localY);
 
-                TouchEvent.dispatchTouchEvent(this,
-                    TouchEvent.TOUCH_TAP,mEvent.touchPointID,mousePoint.x,mousePoint.y,
+                evt.TouchEvent.dispatchTouchEvent(this,
+                    evt.TouchEvent.TOUCH_TAP,mEvent.touchPointID,mousePoint.x,mousePoint.y,
                     mEvent.ctrlKey,mEvent.altKey,mEvent.shiftKey,mEvent.touchDown);
 			}
 			

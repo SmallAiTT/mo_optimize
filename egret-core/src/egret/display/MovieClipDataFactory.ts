@@ -29,10 +29,10 @@ module egret {
     /**
      * @class egret.MovieClipDataFactory
      * @classdesc 使用 MovieClipDataFactory 类，可以生成 MovieClipData 对象用于创建MovieClip
-     * @extends egret.EventDispatcher
+     * @extends egret.evt.EventDispatcher
      * @link http://docs.egret-labs.org/post/manual/displaycon/movieclip.html MovieClip序列帧动画
      */
-    export class MovieClipDataFactory extends EventDispatcher {
+    export class MovieClipDataFactory extends evt.EventDispatcher {
         /**
          * 是否开启缓存
          * @member {boolean} egret.MovieClipDataFactory#enableCache

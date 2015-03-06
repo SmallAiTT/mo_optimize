@@ -869,16 +869,16 @@ module egret {
 
         //增加点击事件
         private _addEvent():void {
-            this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTapHandler, this);
+            this.addEventListener(egret.evt.TouchEvent.TOUCH_TAP, this.onTapHandler, this);
         }
 
         //释放点击事件
         private _removeEvent():void {
-            this.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTapHandler, this);
+            this.removeEventListener(egret.evt.TouchEvent.TOUCH_TAP, this.onTapHandler, this);
         }
 
         //处理富文本中有href的
-        private onTapHandler(e:egret.TouchEvent):void {
+        private onTapHandler(e:egret.evt.TouchEvent):void {
             if (this._type == egret.consts.TextFieldType.INPUT) {
                 return;
             }
@@ -891,7 +891,7 @@ module egret {
             if (style && style.href) {
                 if (style.href.match(/^event:/)) {
                     var type:string = style.href.match(/^event:/)[0];
-                    egret.TextEvent.dispatchTextEvent(this, egret.TextEvent.LINK, style.href.substring(type.length));
+                    egret.evt.TextEvent.dispatchTextEvent(this, egret.evt.TextEvent.LINK, style.href.substring(type.length));
                 }
                 else {
 

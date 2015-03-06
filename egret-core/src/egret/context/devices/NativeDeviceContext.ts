@@ -236,10 +236,10 @@ egret.resolution.ContentStrategy.prototype.setEgretSize = function (w:number, h:
 
 
 egret_native.pauseApp = function () {
-    egret.MainContext.instance.stage.dispatchEvent(new egret.Event(egret.Event.DEACTIVATE));
+    egret.MainContext.instance.stage.dispatchEvent(new egret.evt.Event(egret.evt.Event.DEACTIVATE));
 };
 egret_native.resumeApp = function () {
-    egret.MainContext.instance.stage.dispatchEvent(new egret.Event(egret.Event.ACTIVATE));
+    egret.MainContext.instance.stage.dispatchEvent(new egret.evt.Event(egret.evt.Event.ACTIVATE));
 };
 
 egret.RenderTexture.prototype.init = function () {

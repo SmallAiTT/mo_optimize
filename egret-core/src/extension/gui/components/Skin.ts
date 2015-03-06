@@ -32,12 +32,12 @@ module egret.gui {
      * @class egret.gui.Skin
      * @classdesc
      * 含有视图状态功能的皮肤基类。
-     * @extends egret.EventDispatcher
+     * @extends egret.evt.EventDispatcher
      * @implements egret.gui.IStateClient
      * @implements egret.gui.ISkin
      * @implements egret.gui.IContainer
      */
-    export class Skin extends EventDispatcher
+    export class Skin extends evt.EventDispatcher
     implements IStateClient, ISkin, IContainer{
         /**
          * 构造函数

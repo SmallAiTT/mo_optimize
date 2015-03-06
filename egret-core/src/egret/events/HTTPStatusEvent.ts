@@ -26,29 +26,29 @@
  */
 
 
-module egret {
+module egret.evt {
 
     /**
-     * @class egret.HTTPStatusEvent
+     * @class egret.evt.HTTPStatusEvent
      * @classdesc
-     * 在网络请求返回 HTTP 状态代码时，应用程序将调度 HTTPStatusEvent 对象。
-     * 在错误或完成事件之前，将始终发送 HTTPStatusEvent 对象。HTTPStatusEvent 对象不一定表示错误条件；它仅反映网络堆栈提供的 HTTP 状态代码（如果有的话）。
-     * @extends egret.Event
+     * 在网络请求返回 HTTP 状态代码时，应用程序将调度 evt.HTTPStatusEvent 对象。
+     * 在错误或完成事件之前，将始终发送 evt.HTTPStatusEvent 对象。evt.HTTPStatusEvent 对象不一定表示错误条件；它仅反映网络堆栈提供的 HTTP 状态代码（如果有的话）。
+     * @extends egret.evt.Event
      */
-    export class HTTPStatusEvent extends Event {
+    export class HTTPStatusEvent extends evt.Event {
 
         /**
-         * HTTPStatusEvent.HTTP_STATUS 常量定义 httpStatus 事件对象的 type 属性值。
-         * @constant {string} egret.HTTPStatusEvent.HTTP_STATUS
+         * evt.HTTPStatusEvent.HTTP_STATUS 常量定义 httpStatus 事件对象的 type 属性值。
+         * @constant {string} egret.evt.HTTPStatusEvent.HTTP_STATUS
          */
         public static HTTP_STATUS:string = "httpStatus";
 
         /**
-         * 创建一个 egret.HTTPStatusEvent 对象
-         * @method egret.HTTPStatusEvent#constructor
-         * @param type {string} 事件的类型，可以作为 Event.type 访问。
-         * @param bubbles {boolean} 确定 Event 对象是否参与事件流的冒泡阶段。默认值为 false。
-         * @param cancelable {boolean} 确定是否可以取消 Event 对象。默认值为 false。
+         * 创建一个 egret.evt.HTTPStatusEvent 对象
+         * @method egret.evt.HTTPStatusEvent#constructor
+         * @param type {string} 事件的类型，可以作为 evt.Event.type 访问。
+         * @param bubbles {boolean} 确定 evt.Event 对象是否参与事件流的冒泡阶段。默认值为 false。
+         * @param cancelable {boolean} 确定是否可以取消 evt.Event 对象。默认值为 false。
          */
         public constructor(type:string, bubbles:boolean = false, cancelable:boolean = false) {
             super(type, bubbles, cancelable);
@@ -64,19 +64,19 @@ module egret {
             return this._status;
         }
 
-        private static httpStatusEvent:HTTPStatusEvent = null;
+        private static httpStatusEvent:evt.HTTPStatusEvent = null;
         /**
          * 使用指定的EventDispatcher对象来抛出Event事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
-         * @method egret.IOErrorEvent.dispatchIOErrorEvent
-         * @param target {egret.IEventDispatcher} 派发事件目标
+         * @method egret.evt.IOErrorEvent.dispatchIOErrorEvent
+         * @param target {egret.evt.IEventDispatcher} 派发事件目标
          * @param status {number} 由服务器返回的 HTTP 状态代码
          */
-        public static dispatchHTTPStatusEvent(target:IEventDispatcher, status:number):void {
-            if (HTTPStatusEvent.httpStatusEvent == null) {
-                HTTPStatusEvent.httpStatusEvent = new HTTPStatusEvent(HTTPStatusEvent.HTTP_STATUS);
+        public static dispatchHTTPStatusEvent(target:evt.IEventDispatcher, status:number):void {
+            if (evt.HTTPStatusEvent.httpStatusEvent == null) {
+                evt.HTTPStatusEvent.httpStatusEvent = new evt.HTTPStatusEvent(evt.HTTPStatusEvent.HTTP_STATUS);
             }
-            HTTPStatusEvent.httpStatusEvent._status = status;
-            target.dispatchEvent(HTTPStatusEvent.httpStatusEvent);
+            evt.HTTPStatusEvent.httpStatusEvent._status = status;
+            target.dispatchEvent(evt.HTTPStatusEvent.httpStatusEvent);
         }
     }
 }

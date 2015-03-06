@@ -599,17 +599,17 @@ module egret.gui {
 			this._textField.multiline = this._multiline;
 			//this._textField.wordWrap = this._multiline;
 			
-			this._textField.addEventListener(Event.CHANGE, this.textField_changeHandler, this);
+			this._textField.addEventListener(evt.Event.CHANGE, this.textField_changeHandler, this);
 			this._textField.addEventListener("scroll", this.textField_scrollHandler, this);//todo:Scroll event
             this._textField.addEventListener("input",
 				this.textField_textInputHandler,
 				this);
 		}
 		
-		private textField_changeHandler(event:Event):void{
+		private textField_changeHandler(event:evt.Event):void{
 			this._textFieldChanged();
 			event.stopImmediatePropagation();
-			this.dispatchEvent(new Event(Event.CHANGE));
+			this.dispatchEvent(new evt.Event(evt.Event.CHANGE));
 			this.invalidateSize();
 			this.invalidateDisplayList();
 			this.updateContentSize();
@@ -621,18 +621,18 @@ module egret.gui {
 		/**
 		 *  @private
 		 */
-        private textField_scrollHandler(event: Event): void{
+        private textField_scrollHandler(event: evt.Event): void{
 
 		}
 		
 		/**
 		 * 即将输入文字
 		 */
-		private textField_textInputHandler(event:Event):void{
+		private textField_textInputHandler(event:evt.Event):void{
 			event.stopImmediatePropagation();
 			
-			var newEvent:Event =
-				new Event(event.type, false, true);
+			var newEvent:evt.Event =
+				new evt.Event(event.type, false, true);
 			newEvent.data = event.data;
 			this.dispatchEvent(newEvent);
 			

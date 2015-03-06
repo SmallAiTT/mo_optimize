@@ -84,7 +84,7 @@ module egret.gui {
         public _animationUpdateHandler(animation: Animation): void {
             this.pendingValue = animation.currentValue["value"];
             this.value = animation.currentValue["value"];
-            this.dispatchEventWith(Event.CHANGE);
+            this.dispatchEventWith(evt.Event.CHANGE);
         }
         /**
          * 将相对于轨道的 x,y 像素位置转换为介于最小值和最大值（包括两者）之间的一个值

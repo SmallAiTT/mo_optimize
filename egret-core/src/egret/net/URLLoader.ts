@@ -35,10 +35,10 @@ module egret.net {
      * net.URLLoader 类以文本、二进制数据或 URL 编码变量的形式从 URL 下载数据。在下载文本文件、XML 或其他用于动态数据驱动应用程序的信息时，它很有用。
      * net.URLLoader 对象会先从 URL 中下载所有数据，然后才将数据用于应用程序中的代码。它会发出有关下载进度的通知，
      * 通过 bytesLoaded 和 bytesTotal 属性以及已调度的事件，可以监视下载进度。
-	 * @extends egret.EventDispatcher
+	 * @extends egret.evt.EventDispatcher
      * @link http://docs.egret-labs.org/post/manual/net/createconnect.html 构建通信请求
 	 */
-    export class URLLoader extends EventDispatcher {
+    export class URLLoader extends evt.EventDispatcher {
 
 		/**
          * 创建 egret.net.URLLoader 对象

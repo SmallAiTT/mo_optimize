@@ -32,10 +32,10 @@ module egret.gui {
      * @class egret.gui.PopUpManagerImpl
      * @classdesc
      * 窗口弹出管理器实现类
-     * @extends egret.EventDispatcher
+     * @extends egret.evt.EventDispatcher
      * @implements egret.gui.IPopUpManager
      */
-    export class PopUpManagerImpl extends EventDispatcher implements IPopUpManager{
+    export class PopUpManagerImpl extends evt.EventDispatcher implements IPopUpManager{
         /**
          * 构造函数
          * @method egret.gui.PopUpManagerImpl#constructor
@@ -104,7 +104,7 @@ module egret.gui {
         /**
          * 从舞台移除
          */
-        private onRemoved(event:Event):void{
+        private onRemoved(event:evt.Event):void{
             var index:number = 0;
             var list:Array<any> = this.popUpDataList;
             var length:number = list.length;
@@ -161,16 +161,16 @@ module egret.gui {
         private invalidateModal():void{
             if(!this.invalidateModalFlag){
                 this.invalidateModalFlag = true;
-                UIGlobals.stage.addEventListener(Event.ENTER_FRAME,this.validateModal,this);
-                UIGlobals.stage.addEventListener(Event.RENDER,this.validateModal,this);
+                UIGlobals.stage.addEventListener(evt.Event.ENTER_FRAME,this.validateModal,this);
+                UIGlobals.stage.addEventListener(evt.Event.RENDER,this.validateModal,this);
                 UIGlobals.stage.invalidate();
             }
         }
 
-        private validateModal(event:Event):void{
+        private validateModal(event:evt.Event):void{
             this.invalidateModalFlag = false;
-            UIGlobals.stage.removeEventListener(Event.ENTER_FRAME,this.validateModal,this);
-            UIGlobals.stage.removeEventListener(Event.RENDER,this.validateModal,this);
+            UIGlobals.stage.removeEventListener(evt.Event.ENTER_FRAME,this.validateModal,this);
+            UIGlobals.stage.removeEventListener(evt.Event.RENDER,this.validateModal,this);
             this.updateModal(UIGlobals.uiStage);
         }
 

@@ -33,9 +33,9 @@ module egret.gui {
 	 * @interface
 	 * @classdesc
 	 * 使用布局管理器的组件接口
-	 * @extends egret.IEventDispatcher
+	 * @extends egret.evt.IEventDispatcher
 	 */
-	export interface ILayoutManagerClient extends IEventDispatcher{
+	export interface ILayoutManagerClient extends evt.IEventDispatcher{
 		/**
 		 * 验证组件的属性
 		 * @method egret.gui.ILayoutManagerClient#validateProperties

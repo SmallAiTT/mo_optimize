@@ -67,7 +67,7 @@ module mo{
     var _setIntervalId:number = 1;
     export function setInterval(cb:Function, ctx:any, interval:number):number{
         var timer:egret.Timer = new egret.Timer(interval);
-        timer.addEventListener(egret.TimerEvent.TIMER, cb, ctx);
+        timer.addEventListener(egret.evt.TimerEvent.TIMER, cb, ctx);
         var id = _setIntervalId++;
         _setIntervalIdCache[id] = {timer:timer, listener:cb, ctx:ctx};
         timer.start();
@@ -79,7 +79,7 @@ module mo{
         delete _setIntervalIdCache[key];
         if(setIntervalInfo){
             var timer:egret.Timer = setIntervalInfo.timer;
-            timer.removeEventListener(egret.TimerEvent.TIMER, setIntervalInfo.listener, setIntervalInfo.ctx);
+            timer.removeEventListener(egret.evt.TimerEvent.TIMER, setIntervalInfo.listener, setIntervalInfo.ctx);
             timer.stop();
         }
     }
@@ -90,7 +90,7 @@ module mo{
             delete _setIntervalIdCache[key];
             if(setIntervalInfo){
                 var timer:egret.Timer = setIntervalInfo.timer;
-                timer.removeEventListener(egret.TimerEvent.TIMER, setIntervalInfo.listener, setIntervalInfo.ctx);
+                timer.removeEventListener(egret.evt.TimerEvent.TIMER, setIntervalInfo.listener, setIntervalInfo.ctx);
                 timer.stop();
             }
         }
