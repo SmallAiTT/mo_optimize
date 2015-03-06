@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "blk_redskills.png",
+	"frame": {"x":557,"y":2,"w":175,"h":298},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":175,"h":298},
+	"sourceSize": {"w":175,"h":298}
+},
+{
+	"filename": "blk_redskills2new.png",
+	"frame": {"x":379,"y":2,"w":176,"h":313},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":176,"h":313},
+	"sourceSize": {"w":176,"h":313}
+},
+{
+	"filename": "blk_redunder.png",
+	"frame": {"x":2,"y":338,"w":94,"h":78},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":94,"h":78},
+	"sourceSize": {"w":94,"h":78}
+},
+{
+	"filename": "copy_buzhen.png",
+	"frame": {"x":186,"y":337,"w":197,"h":48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":197,"h":48},
+	"sourceSize": {"w":197,"h":48}
+},
+{
+	"filename": "copy_dibang.png",
+	"frame": {"x":27,"y":2,"w":350,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":350,"h":333},
+	"sourceSize": {"w":350,"h":333}
+},
+{
+	"filename": "copy_gezihong1.png",
+	"frame": {"x":98,"y":337,"w":86,"h":86},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":86},
+	"sourceSize": {"w":86,"h":86}
+},
+{
+	"filename": "copy_lang.png",
+	"frame": {"x":385,"y":317,"w":94,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":94,"h":94},
+	"sourceSize": {"w":94,"h":94}
+},
+{
+	"filename": "copy_xian.png",
+	"frame": {"x":2,"y":2,"w":23,"h":334},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":334},
+	"sourceSize": {"w":23,"h":334}
+},
+{
+	"filename": "pat_battle.png",
+	"frame": {"x":481,"y":317,"w":223,"h":47},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":223,"h":47},
+	"sourceSize": {"w":223,"h":47}
+},
+{
+	"filename": "pat_power.png",
+	"frame": {"x":481,"y":366,"w":90,"h":47},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":47},
+	"sourceSize": {"w":90,"h":47}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "ui_embattle.png",
+	"format": "RGBA8888",
+	"size": {"w":734,"h":425},
+	"scale": "0.3125",
+	"smartupdate": "$TexturePacker:SmartUpdate:847ab6940add39d88350a7987aaae3e4:1/1$"
+}
+}

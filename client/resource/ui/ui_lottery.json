@@ -1,0 +1,76 @@
+{"frames": [
+
+{
+	"filename": "90off.png",
+	"frame": {"x":372,"y":313,"w":38,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":36},
+	"sourceSize": {"w":38,"h":36}
+},
+{
+	"filename": "blk_result.png",
+	"frame": {"x":2,"y":2,"w":602,"h":309},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":602,"h":309},
+	"sourceSize": {"w":602,"h":309}
+},
+{
+	"filename": "lightnormalbox.png",
+	"frame": {"x":606,"y":185,"w":188,"h":181},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":188,"h":181},
+	"sourceSize": {"w":188,"h":181}
+},
+{
+	"filename": "lightsuperbox.png",
+	"frame": {"x":606,"y":2,"w":195,"h":181},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":195,"h":181},
+	"sourceSize": {"w":195,"h":181}
+},
+{
+	"filename": "normalbox.png",
+	"frame": {"x":803,"y":2,"w":163,"h":152},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":163,"h":152},
+	"sourceSize": {"w":163,"h":152}
+},
+{
+	"filename": "ntc_10blueitem.png",
+	"frame": {"x":187,"y":313,"w":183,"h":62},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":183,"h":62},
+	"sourceSize": {"w":183,"h":62}
+},
+{
+	"filename": "ntc_10hero.png",
+	"frame": {"x":2,"y":313,"w":183,"h":62},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":183,"h":62},
+	"sourceSize": {"w":183,"h":62}
+},
+{
+	"filename": "superbox.png",
+	"frame": {"x":796,"y":185,"w":175,"h":163},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":175,"h":163},
+	"sourceSize": {"w":175,"h":163}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "ui_lottery.png",
+	"format": "RGBA8888",
+	"size": {"w":973,"h":377},
+	"scale": "0.3125",
+	"smartupdate": "$TexturePacker:SmartUpdate:a81dc2477d964a0fa011539e23ad4931:1/1$"
+}
+}

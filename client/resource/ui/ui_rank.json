@@ -1,0 +1,116 @@
+{"frames": [
+
+{
+	"filename": "blk_tagfocus.png",
+	"frame": {"x":684,"y":59,"w":165,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":165,"h":41},
+	"sourceSize": {"w":165,"h":41}
+},
+{
+	"filename": "blk_tagunfocus.png",
+	"frame": {"x":517,"y":59,"w":165,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":165,"h":41},
+	"sourceSize": {"w":165,"h":41}
+},
+{
+	"filename": "blk_title.png",
+	"frame": {"x":280,"y":2,"w":734,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":734,"h":31},
+	"sourceSize": {"w":734,"h":31}
+},
+{
+	"filename": "btn_myrank.png",
+	"frame": {"x":855,"y":35,"w":146,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":146,"h":42},
+	"sourceSize": {"w":146,"h":42}
+},
+{
+	"filename": "ntc_cut.png",
+	"frame": {"x":280,"y":35,"w":3,"h":25},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":25},
+	"sourceSize": {"w":3,"h":25}
+},
+{
+	"filename": "title_rank.png",
+	"frame": {"x":2,"y":2,"w":276,"h":63},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":276,"h":63},
+	"sourceSize": {"w":276,"h":63}
+},
+{
+	"filename": "uiShadow_rank.png",
+	"frame": {"x":2,"y":67,"w":513,"h":33},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":513,"h":33},
+	"sourceSize": {"w":513,"h":33}
+},
+{
+	"filename": "wrd_herofocus.png",
+	"frame": {"x":760,"y":35,"w":93,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":22},
+	"sourceSize": {"w":93,"h":22}
+},
+{
+	"filename": "wrd_herounfocus.png",
+	"frame": {"x":665,"y":35,"w":93,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":22},
+	"sourceSize": {"w":93,"h":22}
+},
+{
+	"filename": "wrd_towerfocus.png",
+	"frame": {"x":570,"y":35,"w":93,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":22},
+	"sourceSize": {"w":93,"h":22}
+},
+{
+	"filename": "wrd_towerunfocus.png",
+	"frame": {"x":475,"y":35,"w":93,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":22},
+	"sourceSize": {"w":93,"h":22}
+},
+{
+	"filename": "wrd_unionfocus.png",
+	"frame": {"x":380,"y":35,"w":93,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":22},
+	"sourceSize": {"w":93,"h":22}
+},
+{
+	"filename": "wrd_unionunfocus.png",
+	"frame": {"x":285,"y":35,"w":93,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":22},
+	"sourceSize": {"w":93,"h":22}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "ui_rank.png",
+	"format": "RGBA8888",
+	"size": {"w":1016,"h":102},
+	"scale": "0.3125",
+	"smartupdate": "$TexturePacker:SmartUpdate:0ade0abbad3a5ed5feeb055c240123dc:1/1$"
+}
+}

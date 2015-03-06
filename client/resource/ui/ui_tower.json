@@ -1,0 +1,100 @@
+{"frames": [
+
+{
+	"filename": "bg_ball.png",
+	"frame": {"x":2,"y":2,"w":325,"h":307},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":325,"h":307},
+	"sourceSize": {"w":325,"h":307}
+},
+{
+	"filename": "bg_platform.png",
+	"frame": {"x":329,"y":2,"w":421,"h":219},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":421,"h":219},
+	"sourceSize": {"w":421,"h":219}
+},
+{
+	"filename": "blk_challenge.png",
+	"frame": {"x":182,"y":311,"w":450,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":49},
+	"sourceSize": {"w":450,"h":49}
+},
+{
+	"filename": "btn_autochallenge.png",
+	"frame": {"x":477,"y":263,"w":146,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":146,"h":42},
+	"sourceSize": {"w":146,"h":42}
+},
+{
+	"filename": "btn_challenge.png",
+	"frame": {"x":329,"y":263,"w":146,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":146,"h":42},
+	"sourceSize": {"w":146,"h":42}
+},
+{
+	"filename": "btn_gift2.png",
+	"frame": {"x":634,"y":263,"w":94,"h":88},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":94,"h":88},
+	"sourceSize": {"w":94,"h":88}
+},
+{
+	"filename": "btn_scoreshop.png",
+	"frame": {"x":634,"y":223,"w":107,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":38},
+	"sourceSize": {"w":107,"h":38}
+},
+{
+	"filename": "ntc_receivable.png",
+	"frame": {"x":403,"y":223,"w":72,"h":28},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":28},
+	"sourceSize": {"w":72,"h":28}
+},
+{
+	"filename": "ntc_unreceivable.png",
+	"frame": {"x":329,"y":223,"w":72,"h":28},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":28},
+	"sourceSize": {"w":72,"h":28}
+},
+{
+	"filename": "title_blow.png",
+	"frame": {"x":2,"y":311,"w":178,"h":65},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":65},
+	"sourceSize": {"w":178,"h":65}
+},
+{
+	"filename": "wrd_level.png",
+	"frame": {"x":477,"y":223,"w":95,"h":25},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":95,"h":25},
+	"sourceSize": {"w":95,"h":25}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "ui_tower.png",
+	"format": "RGBA8888",
+	"size": {"w":752,"h":378},
+	"scale": "0.3125",
+	"smartupdate": "$TexturePacker:SmartUpdate:a8cdd23e6543b7fe59512d7b992f9671:1/1$"
+}
+}

@@ -1,0 +1,8 @@
+{
+    "name": "unit",
+    "dependence": ["core", "res"],
+    "source":"src",
+    "file_list" : [
+        "unit.ts"
+    ]
+}

@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "annex.png",
+	"frame": {"x":2,"y":160,"w":69,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":69,"h":49},
+	"sourceSize": {"w":69,"h":49}
+},
+{
+	"filename": "blk_newmail.png",
+	"frame": {"x":2,"y":81,"w":235,"h":77},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":235,"h":77},
+	"sourceSize": {"w":235,"h":77}
+},
+{
+	"filename": "blk_readed.png",
+	"frame": {"x":2,"y":2,"w":235,"h":77},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":235,"h":77},
+	"sourceSize": {"w":235,"h":77}
+},
+{
+	"filename": "from.png",
+	"frame": {"x":2,"y":211,"w":211,"h":20},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":211,"h":20},
+	"sourceSize": {"w":211,"h":20}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "ui_mail.png",
+	"format": "RGBA8888",
+	"size": {"w":239,"h":233},
+	"scale": "0.3125",
+	"smartupdate": "$TexturePacker:SmartUpdate:ec62e00ba99b58d16bf19be9d498ca3e:1/1$"
+}
+}

@@ -1,0 +1,13 @@
+{
+    "name": "mo_test",
+    "dependence": ["core", "socket", "action", "dragonBones", "3rdParty", "logger", "res", "mo_optimize", "unit"],
+    "source":"test",
+    "file_list" : [
+        "unit_mo_consts.ts",
+        "mo/node/test_Node.ts",
+
+
+        "mo_ui/widget/test_UIWidget.ts",
+        "mo_ui/widget/test_UIPanel.ts"
+    ]
+}

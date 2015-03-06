@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "blk_secratshope.png",
+	"frame": {"x":2,"y":49,"w":175,"h":175},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":175,"h":175},
+	"sourceSize": {"w":175,"h":175}
+},
+{
+	"filename": "blk_title.png",
+	"frame": {"x":2,"y":2,"w":382,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":382,"h":45},
+	"sourceSize": {"w":382,"h":45}
+},
+{
+	"filename": "wrd_title.png",
+	"frame": {"x":250,"y":49,"w":69,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":69,"h":21},
+	"sourceSize": {"w":69,"h":21}
+},
+{
+	"filename": "wrd_title2.png",
+	"frame": {"x":179,"y":49,"w":69,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":69,"h":21},
+	"sourceSize": {"w":69,"h":21}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "ui_secratshop.png",
+	"format": "RGBA8888",
+	"size": {"w":386,"h":226},
+	"scale": "0.3125",
+	"smartupdate": "$TexturePacker:SmartUpdate:f8b83a5b8de5d2a2b2704dc7f1cbb264:1/1$"
+}
+}

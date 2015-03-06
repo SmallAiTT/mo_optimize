@@ -1,0 +1,59 @@
+{
+  "document_class": "Main",
+  "modules": [
+	{
+	  "name": "core"
+	},
+	{
+	  "name": "dragonBones"
+	},
+	{
+	  "name": "socket"
+	},
+	{
+	  "name": "action",
+	  "path": "../frameworks/egret-action"
+	},
+	{
+	  "name": "3rdParty",
+	  "path": "../frameworks/3rdParty"
+	},
+	{
+	  "name": "logger",
+	  "path": "../frameworks/logger"
+	},
+	{
+	  "name": "res",
+	  "path": "../frameworks/res"
+	},
+	{
+	  "name": "mo_optimize",
+	  "path": "../frameworks/mo"
+	},
+
+
+	{
+	  "name": "unit",
+	  "path": "../frameworks/unit"
+	},
+	{
+	  "name": "mo_test",
+	  "path": "../frameworks/mo"
+	}
+  ],
+  "release": "./release",
+  "tscLib": "./lib.d.ts",
+  "native": {
+	"path_ignore": [
+	  "resource/test",
+	  ".idea",
+	  ".gitignore",
+	  ".DS_Store"
+	],
+	"android_path": "../aos"
+  },
+  "publish": {
+	"baseVersion": 2
+  },
+  "egret_version": "1.5.5"
+}

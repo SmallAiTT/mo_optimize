@@ -1,0 +1,84 @@
+{"frames": [
+
+{
+	"filename": "blk9_vip.png",
+	"frame": {"x":99,"y":2,"w":94,"h":94},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":94,"h":94},
+	"sourceSize": {"w":94,"h":94}
+},
+{
+	"filename": "blk9_vipblk2.png",
+	"frame": {"x":2,"y":2,"w":95,"h":95},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":95,"h":95},
+	"sourceSize": {"w":95,"h":95}
+},
+{
+	"filename": "blk_title.png",
+	"frame": {"x":195,"y":96,"w":300,"h":29},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":29},
+	"sourceSize": {"w":300,"h":29}
+},
+{
+	"filename": "btn_money.png",
+	"frame": {"x":300,"y":2,"w":96,"h":76},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":76},
+	"sourceSize": {"w":96,"h":76}
+},
+{
+	"filename": "btn_next.png",
+	"frame": {"x":195,"y":2,"w":103,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":103,"h":92},
+	"sourceSize": {"w":103,"h":92}
+},
+{
+	"filename": "btn_vipinfo.png",
+	"frame": {"x":398,"y":2,"w":95,"h":75},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":95,"h":75},
+	"sourceSize": {"w":95,"h":75}
+},
+{
+	"filename": "title.png",
+	"frame": {"x":497,"y":62,"w":383,"h":58},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":383,"h":58},
+	"sourceSize": {"w":383,"h":58}
+},
+{
+	"filename": "titlef.png",
+	"frame": {"x":497,"y":2,"w":383,"h":58},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":383,"h":58},
+	"sourceSize": {"w":383,"h":58}
+},
+{
+	"filename": "vip.png",
+	"frame": {"x":2,"y":99,"w":31,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":16},
+	"sourceSize": {"w":31,"h":16}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "ui_vip.png",
+	"format": "RGBA8888",
+	"size": {"w":882,"h":127},
+	"scale": "0.3125",
+	"smartupdate": "$TexturePacker:SmartUpdate:e51e9cbc2eb75b826e24ff594cc7b8ab:1/1$"
+}
+}

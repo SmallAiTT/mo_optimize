@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "bg.jpg",
+	"frame": {"x":2,"y":2,"w":720,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":720,"h":480},
+	"sourceSize": {"w":720,"h":480}
+},
+{
+	"filename": "randomgy.png",
+	"frame": {"x":724,"y":2,"w":190,"h":314},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":190,"h":314},
+	"sourceSize": {"w":190,"h":314}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "ui_film.png",
+	"format": "RGBA8888",
+	"size": {"w":916,"h":484},
+	"scale": "0.3125",
+	"smartupdate": "$TexturePacker:SmartUpdate:42f626b2335eb337e1d46c8b53e6dc3b:1/1$"
+}
+}
