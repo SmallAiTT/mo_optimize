@@ -40,6 +40,10 @@ egret.__callAsync--->MainContext
         "egret/utils/getQualifiedClassName.ts", 因为只有Injector里面需要，GUI的我们没用，所以直接把方法内容复制过去。
                 NativeSocket.ts中加上__global的初始化
         "egret/utils/getDefinitionByName.ts",   egret_loader.js, native_require.js
+
+
+        "egret/display/FrameLabel.ts",
+        "egret/text/HtmlTextParser.ts",
 ```
 
 # 将不用的类挪出来
