@@ -111,7 +111,7 @@ module egret {
         private setResolutionPolicy():void{
             var content = Stage.SCALE_MODE_ENUM[this._scaleMode];
             if (!content){
-                throw new Error(getString(1024));
+                throw new Error(Logger.getString(1024));
             }
             var container = new egret.EqualToFrame();
             var policy = new egret.ResolutionPolicy(container, content);

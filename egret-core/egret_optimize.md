@@ -5,8 +5,9 @@
 egret_string_code 已改
 ```
 
-# egret下面的方法和常量转移空间名
+# egret下面的方法转移空间名
 ```
+将getString改到Logger下面
 
 ```
 

@@ -34,6 +34,16 @@ module egret {
      * todo:GitHub文档，如何利用日志帮助游戏持续改进
      */
     export class Logger {
+        static getString(id:number, ...args):string {
+            var message = egret_string_code[id];
+            if (message) {
+                var length = args.length;
+                for (var i = 0; i < length; i++) {
+                    message = message.replace("{" + i + "}", args[i]);
+                }
+            }
+            return message;
+        }
         /**
          * 表示出现了致命错误，开发者必须修复错误
          * @method egret.Logger.fatal
@@ -67,34 +77,34 @@ module egret {
 
         public static fatalWithErrorId(errorId:number, ...args) {
             args.unshift(errorId);
-            var actionCode = getString.apply(null, args);
+            var actionCode = Logger.getString.apply(null, args);
             if (actionCode) {
                 Logger.fatal(actionCode);
             }
             else {
-                Logger.warning(getString(-1, errorId));
+                Logger.warning(Logger.getString(-1, errorId));
             }
         }
 
         public static infoWithErrorId(errorId:number, ...args) {
             args.unshift(errorId);
-            var actionCode = getString.apply(null, args);
+            var actionCode = Logger.getString.apply(null, args);
             if (actionCode) {
                 Logger.info(actionCode);
             }
             else {
-                Logger.warning(getString(-1, errorId));
+                Logger.warning(Logger.getString(-1, errorId));
             }
         }
 
         public static warningWithErrorId(errorId:number, ...args) {
             args.unshift(errorId);
-            var actionCode = getString.apply(null, args);
+            var actionCode = Logger.getString.apply(null, args);
             if (actionCode) {
                 Logger.warning(actionCode);
             }
             else {
-                Logger.warning(getString(-1, errorId));
+                Logger.warning(Logger.getString(-1, errorId));
             }
         }
 
@@ -181,14 +191,4 @@ module egret {
     egret_string_code[3101] = "请先连接WebSocket";
     egret_string_code[3102] = "请先设置type为二进制类型";
 
-    export function getString(id:number, ...args):string {
-        var message = egret_string_code[id];
-        if (message) {
-            var length = args.length;
-            for (var i = 0; i < length; i++) {
-                message = message.replace("{" + i + "}", args[i]);
-            }
-        }
-        return message;
-    }
 }

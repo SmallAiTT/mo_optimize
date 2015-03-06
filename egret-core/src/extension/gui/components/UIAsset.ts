@@ -288,7 +288,7 @@ module egret.gui {
 		 * @returns {DisplayObject}
 		 */		
 		public addChild(child:DisplayObject):DisplayObject{
-			throw(new Error(getString(3004, getString(3003))));
+			throw(new Error(Logger.getString(3004, Logger.getString(3003))));
 		}
 		/**
 		 * 此方法不支持
@@ -298,7 +298,7 @@ module egret.gui {
 		 * @returns {DisplayObject}
 		 */		
 		public addChildAt(child:DisplayObject, index:number):DisplayObject{
-			throw(new Error(getString(3005, getString(3003))));
+			throw(new Error(Logger.getString(3005, Logger.getString(3003))));
 		}
 		/**
 		 * 此方法不支持
@@ -307,7 +307,7 @@ module egret.gui {
 		 * @returns {DisplayObject}
 		 */		
 		public removeChild(child:DisplayObject):DisplayObject{
-			throw(new Error(getString(3006, getString(3003))));
+			throw(new Error(Logger.getString(3006, Logger.getString(3003))));
 		}
 		/**
 		 * 此方法不支持
@@ -316,7 +316,7 @@ module egret.gui {
 		 * @returns {DisplayObject}
 		 */		
 		public removeChildAt(index:number):DisplayObject{
-			throw(new Error(getString(3007, getString(3003))));
+			throw(new Error(Logger.getString(3007, Logger.getString(3003))));
 		}
 		/**
 		 * 此方法不支持
@@ -325,7 +325,7 @@ module egret.gui {
 		 * @param index {number} 
 		 */		
 		public setChildIndex(child:DisplayObject, index:number):void{
-			throw(new Error(getString(3008, getString(3003))));
+			throw(new Error(Logger.getString(3008, Logger.getString(3003))));
 		}
 		/**
 		 * 此方法不支持
@@ -334,7 +334,7 @@ module egret.gui {
 		 * @param child2 {DisplayObject} 
 		 */		
 		public swapChildren(child1:DisplayObject, child2:DisplayObject):void{
-			throw(new Error(getString(3009, getString(3003))));
+			throw(new Error(Logger.getString(3009, Logger.getString(3003))));
 		}
 		/**
 		 * 此方法不支持
@@ -343,7 +343,7 @@ module egret.gui {
 		 * @param index2 {number} 
 		 */		
 		public swapChildrenAt(index1:number, index2:number):void{
-			throw(new Error(getString(3010, getString(3003))));
+			throw(new Error(Logger.getString(3010, Logger.getString(3003))));
 		}
 	}
 }

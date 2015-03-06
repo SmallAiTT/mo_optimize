@@ -105,7 +105,7 @@ module egret {
 				delete this.mapClassDic[requestName];
 				return instance;
 			}
-			throw new Error(getString(1028, requestName));
+			throw new Error(Logger.getString(1028, requestName));
 		}
 	}
 }

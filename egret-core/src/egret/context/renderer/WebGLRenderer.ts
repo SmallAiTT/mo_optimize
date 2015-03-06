@@ -424,7 +424,7 @@ module egret {
                 }
             }
             if (!gl) {
-                throw new Error(getString(1021));
+                throw new Error(Logger.getString(1021));
             }
             WebGLRenderer.glID++;
             this.glID = WebGLRenderer.glID;

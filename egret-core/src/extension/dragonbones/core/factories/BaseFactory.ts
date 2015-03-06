@@ -46,7 +46,7 @@ module dragonBones {
 			super();
 			
 			if(self != this){ 
-				throw new Error(egret.getString(4001));
+				throw new Error(egret.Logger.getString(4001));
 			}
 		}
 		
@@ -101,7 +101,7 @@ module dragonBones {
 			}
 			name = name || data.name;
 			if(!name){
-				throw new Error(egret.getString(4002));
+				throw new Error(egret.Logger.getString(4002));
 			}
             /*
 			if(this.dragonBonesDataDic[name]){
@@ -162,7 +162,7 @@ module dragonBones {
             }
 
 			if(!name){
-				throw new Error(egret.getString(4002));
+				throw new Error(egret.Logger.getString(4002));
 			}
             /*
 			if(this.textureAtlasDic[name]){

@@ -588,7 +588,7 @@ module egret {
         }
 
         private throwNotSupportedError(): void {
-            throw new Error(getString(1023));
+            throw new Error(Logger.getString(1023));
         }
 
         /**

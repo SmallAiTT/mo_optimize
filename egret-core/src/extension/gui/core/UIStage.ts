@@ -53,7 +53,7 @@ module egret.gui {
 		 */		
 		private onAddToStage(event:Event=null):void{
             if(UIGlobals._uiStage){
-                throw new Error(getString(3013));
+                throw new Error(Logger.getString(3013));
             }
             UIGlobals._uiStage = this;
             if(this._autoResize){

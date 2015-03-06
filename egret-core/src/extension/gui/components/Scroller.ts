@@ -401,7 +401,7 @@ module egret.gui {
          * 抛出索引越界异常
          */
         private throwRangeError(index: number): void {
-            throw new RangeError(getString(3011, index));
+            throw new RangeError(Logger.getString(3011, index));
         }
         /**
          * 如果存在视域，且传入的索引为 0，则返回该视域
@@ -439,7 +439,7 @@ module egret.gui {
         }
 
         private throwNotSupportedError(): void {
-            throw new Error(getString(3012));
+            throw new Error(Logger.getString(3012));
         }
         /**
          * Scroller 不支持该操作
