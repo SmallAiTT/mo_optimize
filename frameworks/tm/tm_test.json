@@ -1,0 +1,9 @@
+{
+    "name": "tm_test",
+    "desc": "tm 测试模块",
+    "dependence": ["core", "tm"],
+    "source":"test",
+    "file_list" : [
+        "test_tm.ts"
+    ]
+}

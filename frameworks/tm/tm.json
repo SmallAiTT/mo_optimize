@@ -1,0 +1,9 @@
+{
+    "name": "tm",
+    "desc": "timer相关模块，简写成tm。时间相关的api今后也要转移到这里来",
+    "dependence": ["core"],
+    "source":"src",
+    "file_list" : [
+        "tm.ts"
+    ]
+}
