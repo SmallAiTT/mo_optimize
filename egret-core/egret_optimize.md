@@ -29,6 +29,11 @@ egret_string_code 已改
         "egret/tween/Tween.ts",
         "egret/tween/Ease.ts",
                 需要把Ease中的常量复制到mo_act.Ease中
+
+
+        "egret/display/MovieClip.ts",
+        "egret/display/MovieClipData.ts",
+        "egret/display/MovieClipDataFactory.ts",
 ```
 
 # 将不用的类挪出来
