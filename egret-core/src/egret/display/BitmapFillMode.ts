@@ -26,24 +26,24 @@
  */
 
 
-module egret {
+module egret.consts {
     /**
-     * @class egret.BitmapFillMode
+     * @class egret.consts.BitmapFillMode
      * @classdesc
-     * BitmapFillMode 类定义Bitmap的图像填充方式。
-     * BitmapFillMode 类定义了调整大小模式的一个枚举，这些模式确定 Bitmap 如何填充由布局系统指定的尺寸。
+     * consts.BitmapFillMode 类定义Bitmap的图像填充方式。
+     * consts.BitmapFillMode 类定义了调整大小模式的一个枚举，这些模式确定 Bitmap 如何填充由布局系统指定的尺寸。
      * @link http://docs.egret-labs.org/post/manual/bitmap/bitmapfillmode.html 纹理的填充方式
      */
     export class BitmapFillMode{
 
         /**
          * 重复位图以填充区域。
-         * @constant {string} egret.BitmapFillMode.REPEAT
+         * @constant {string} egret.consts.BitmapFillMode.REPEAT
          */
         public static REPEAT:string = "repeat";
         /**
          * 位图填充拉伸以填充区域。
-         * @constant {string} egret.BitmapFillMode.SCALE
+         * @constant {string} egret.consts.BitmapFillMode.SCALE
          */
         public static SCALE: string = "scale";   
 

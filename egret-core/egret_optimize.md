@@ -16,6 +16,9 @@ egret_string_code 已改
         "egret/utils/XML.ts",
 
         "egret/events/EventPhase.ts",
+
+        "egret/display/ScrollView.ts",
+        "egret/display/Sprite.ts",
 ```
 
 # 将不用的类挪出来

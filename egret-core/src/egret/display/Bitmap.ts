@@ -78,8 +78,8 @@ module egret {
 
         /**
          * 确定位图填充尺寸的方式。
-         * 设置为 BitmapFillMode.REPEAT时，位图将重复以填充区域；BitmapFillMode.SCALE时，位图将拉伸以填充区域。
-         * 默认值：BitmapFillMode.SCALE。
+         * 设置为 consts.BitmapFillMode.REPEAT时，位图将重复以填充区域；consts.BitmapFillMode.SCALE时，位图将拉伸以填充区域。
+         * 默认值：consts.BitmapFillMode.SCALE。
          * @member {string} egret.Bitmap#fillMode
          */
         public fillMode:string = "scale";

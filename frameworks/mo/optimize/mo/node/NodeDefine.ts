@@ -60,7 +60,7 @@ module mo_opt{
 
             self.scale9Grid = mo.rect(0, 0, 0, 0);
             self.scale9Enabled = false;
-            self.fillMode = egret.BitmapFillMode.SCALE;
+            self.fillMode = egret.consts.BitmapFillMode.SCALE;
         }
 
         dtor(){
