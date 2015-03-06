@@ -1,0 +1,5 @@
+proj.android/assets/egret-game/
+resources.ap_
+*.apk
+proj.android/gen/
+proj.android/bin/
