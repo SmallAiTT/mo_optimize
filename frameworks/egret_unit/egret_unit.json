@@ -3,6 +3,7 @@
     "dependence": ["core", "res", "unit"],
     "source":"src",
     "file_list" : [
-        "unit_DisplayObject.ts"
+        "unit_DisplayObject.ts",
+        "unit_Bitmap.ts"
     ]
 }
