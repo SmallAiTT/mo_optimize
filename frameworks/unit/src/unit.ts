@@ -44,6 +44,8 @@ module unit{
             testContainer.visible = false;
             testMenu.visible = true;
             subTestMenu.visible = false;
+            console.debug("===============>", Object.keys(egret).length, "->", Object.keys(egret).join(","));
+            console.debug("===============>" + Object.keys(egret).length + "->" + Object.keys(egret).join(","));
         }, this);
 
         //menu创建

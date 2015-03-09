@@ -7,6 +7,7 @@
 
 
         "mo_ui/widget/unit_UIWidget.ts",
-        "mo_ui/widget/unit_UIPanel.ts"
+        "mo_ui/widget/unit_UIPanel.ts",
+        "mo_ui/widget/unit_UIImage.ts"
     ]
 }
