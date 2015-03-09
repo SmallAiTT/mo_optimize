@@ -11,8 +11,8 @@ module unit_mo{
 
             var pWidth = parent.width, pHeight = parent.height;
             for(var i = 0; i < num; ++i){
-                var rand1 = Math.random(), rand2 = Math.random(), textureRand = Math.random();
-                var texture = textureArr[Math.floor(textureRand*10/5)];
+                var rand1 = Math.random(), rand2 = Math.random();
+                var texture = textureArr[i%2];
                 var node = new mo.Node();
                 node.x = rand1*pWidth;
                 node.y = rand2*pHeight;
