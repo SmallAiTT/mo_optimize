@@ -436,7 +436,7 @@ module mo {
 
         //=================与cocos想对应的一些回调的整理 开始==============
         //@override 有点类似visit，但又有些不同，这里做了改造，子类统一都不能覆盖这个方法
-        _updateTransform1(){
+        _updateTransform(){
             var self = this;
             if (!self._visible) return;
             if(self._reorderChildrenDirty) self.sortChildren();
